@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>¡Palabras! · Mi barrio en español · BROT2YOU</title>
 <meta name="description" content="Application d'espagnol pour le collège (5e, 4e, 3e) : un quartier à visiter, six voisins du monde hispanique, des épisodes, du vocabulaire, de la grammaire et des jeux.">
@@ -44,7 +45,7 @@ button{cursor:pointer}
 .btn.ghost{box-shadow:none;border-color:transparent;background:transparent}
 .btn .ico{width:24px;height:24px}
 .btn.small .ico{width:20px;height:20px}
-.ico{display:inline-block;width:28px;height:28px;border-radius:7px;object-fit:cover;vertical-align:middle;flex:none}
+.ico{display:inline-block;width:28px;height:28px;object-fit:contain;vertical-align:middle;flex:none}
 .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 
 /* Header */
@@ -61,7 +62,7 @@ button{cursor:pointer}
 .nivel{display:flex;align-items:center;gap:6px;font-family:var(--display);font-weight:600;background:#fff;border:2px solid var(--tinta);border-radius:12px;padding:4px 6px 4px 10px;box-shadow:0 3px 0 var(--tinta)}
 .nivel select{border:0;background:var(--cielo-claro);border-radius:8px;padding:3px 6px;font-weight:700}
 .gear{width:42px;height:42px;padding:0;border:2px solid var(--tinta);border-radius:12px;background:#fff;box-shadow:0 3px 0 var(--tinta);display:inline-flex;align-items:center;justify-content:center}
-.gear img{width:32px;height:32px;border-radius:7px}
+.gear img{width:32px;height:32px}
 
 /* Landing */
 body.is-landing .top{position:absolute;left:0;right:0;background:transparent;border:0;-webkit-backdrop-filter:none;backdrop-filter:none;justify-content:flex-end}
@@ -71,7 +72,7 @@ body.is-landing .top .logo,body.is-landing .nav{display:none}
 .landing-logo{position:absolute;top:3%;left:50%;transform:translateX(-50%);width:min(600px,74vw);max-height:30vh;object-fit:contain;filter:drop-shadow(0 6px 9px rgba(19,37,75,.45));pointer-events:none}
 .landing-menu{width:min(1000px,100%);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .landing-menu .btn{justify-content:flex-start;text-align:left;min-height:72px;padding:10px 14px;border-width:3px;border-radius:20px;box-shadow:0 5px 0 var(--tinta),0 10px 24px rgba(16,40,77,.35)}
-.landing-menu .btn .ico{width:50px;height:50px;border-radius:11px}
+.landing-menu .btn .ico{width:52px;height:52px}
 .landing-menu .btn b{display:block;font-size:clamp(1.05rem,1.6vw,1.35rem)}
 .landing-menu .btn small{display:block;font-family:var(--body);font-weight:400;font-size:.82rem;opacity:.85}
 .landing-menu .btn:nth-child(1){background:var(--sol)} .landing-menu .btn:nth-child(2){background:var(--rosa)} .landing-menu .btn:nth-child(3){background:var(--lila)}
@@ -99,7 +100,7 @@ h2{font-size:1.5rem} h3{font-size:1.2rem}
 /* Neighbours */
 .vecinos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-bottom:28px}
 .vecino{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fff;border:2.5px solid var(--tinta);border-radius:18px;padding:10px 6px 12px;box-shadow:0 4px 0 var(--tinta);text-align:center}
-.vecino img{width:78px;height:78px;border-radius:50%;object-fit:cover;border:3px solid var(--sol);background:var(--cielo-claro)}
+.vecino img{width:78px;height:78px;border-radius:50%;object-fit:cover;border:3px solid var(--sol);background:var(--cielo-claro);object-position:center top}
 .vecino b{font-family:var(--display);font-size:1.05rem}
 .vecino small{font-size:.8rem;line-height:1.25}
 .vecino .lock{font-size:.75rem;opacity:.7}
@@ -116,10 +117,10 @@ h2{font-size:1.5rem} h3{font-size:1.2rem}
   background:repeating-linear-gradient(90deg,#E86A3A 0 16px,#C8491F 16px 19px)}
 .muro{align-self:stretch;display:flex;flex-direction:column;align-items:center;gap:7px;flex:1;background:var(--cal);border:2.5px solid var(--tinta);border-top:0;border-radius:0 0 14px 14px;padding:16px 12px 14px;box-shadow:0 5px 0 var(--tinta)}
 .ventana{display:block;width:96px;height:100px;border:3px solid var(--tinta);border-radius:48px 48px 10px 10px;overflow:hidden;background:#fff}
-.ventana img{width:100%;height:100%;object-fit:cover;display:block}
+.ventana img{width:100%;height:100%;object-fit:contain;padding:8px 6px 4px;display:block}
 .fachada .plaque{font-size:1.02rem}
 .fachada .tema{font-size:.86rem;line-height:1.3;min-height:2.6em}
-.fachada .guia{position:absolute;top:30px;right:-6px;width:50px;height:50px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 2.5px var(--tinta);background:var(--cielo-claro)}
+.fachada .guia{position:absolute;top:30px;right:-6px;width:50px;height:50px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 2.5px var(--tinta);background:var(--cielo-claro);object-position:center top}
 .mini-bar{display:block;width:100%;height:9px;border:2px solid var(--tinta);border-radius:6px;background:#fff;overflow:hidden}
 .mini-bar span{display:block;height:100%;background:var(--cielo)}
 .estado{display:flex;align-items:center;justify-content:space-between;width:100%;font-size:.78rem;gap:6px}
@@ -131,7 +132,7 @@ h2{font-size:1.5rem} h3{font-size:1.2rem}
 /* Place page */
 .volver{margin-bottom:16px}
 .lugar-hero{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;margin-bottom:22px}
-.guia-big{width:140px;height:140px;border-radius:50%;object-fit:cover;border:5px solid #fff;box-shadow:0 0 0 3px var(--tinta),0 8px 0 var(--tinta);background:var(--cielo-claro)}
+.guia-big{width:140px;height:140px;border-radius:50%;object-fit:cover;border:5px solid #fff;box-shadow:0 0 0 3px var(--tinta),0 8px 0 var(--tinta);background:var(--cielo-claro);object-position:center top}
 .lugar-hero .sub{margin:10px 0 12px;font-weight:700}
 .bubble{position:relative;background:#fff;border:2.5px solid var(--tinta);border-radius:18px;padding:12px 16px;max-width:640px}
 .bubble p{margin:0 0 6px}
@@ -147,7 +148,7 @@ h2{font-size:1.5rem} h3{font-size:1.2rem}
 .linea{display:flex;align-items:flex-end;gap:10px;animation:pop .25s ease-out}
 .linea.der{flex-direction:row-reverse}
 .linea .who{display:flex;flex-direction:column;align-items:center;gap:2px;flex:none;width:68px;text-align:center;font-family:var(--display);font-weight:600;font-size:.8rem}
-.avatar{width:58px;height:58px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 2.5px var(--tinta);background:var(--cielo-claro);display:inline-flex;align-items:center;justify-content:center;font-size:32px}
+.avatar{width:58px;height:58px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 2.5px var(--tinta);background:var(--cielo-claro);display:inline-flex;align-items:center;justify-content:center;font-size:32px;object-position:center top}
 .burbuja{position:relative;background:#fff;border:2.5px solid var(--tinta);border-radius:18px 18px 18px 4px;padding:10px 14px;max-width:680px}
 .linea.der .burbuja{border-radius:18px 18px 4px 18px;background:#FFF6D6}
 .burbuja .es{font-size:1.12rem;margin:0 0 6px}
@@ -173,7 +174,7 @@ h2{font-size:1.5rem} h3{font-size:1.2rem}
 /* Games */
 .games{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
 .game{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;background:#fff;border:2.5px solid var(--tinta);border-radius:18px;padding:14px;box-shadow:0 5px 0 var(--tinta);color:var(--tinta)}
-.game .ico{width:56px;height:56px;border-radius:12px}
+.game .ico{width:60px;height:60px}
 .game b{font-family:var(--display);font-size:1.15rem}
 .game small{font-size:.88rem}
 .game:nth-child(4n+1){background:#FFF3C4}.game:nth-child(4n+2){background:#FFE0E8}.game:nth-child(4n+3){background:#ECE3FF}.game:nth-child(4n){background:#DDF8EE}
@@ -189,7 +190,7 @@ h2{font-size:1.5rem} h3{font-size:1.2rem}
 .prompt .big{font-family:var(--display);font-size:clamp(1.6rem,4.5vw,2.3rem);font-weight:600;line-height:1.2;display:block}
 .prompt .hint{font-size:.95rem}
 .prompt .listen{width:96px;height:96px;border-radius:50%;padding:0}
-.prompt .listen img{width:62px;height:62px;border-radius:12px}
+.prompt .listen img{width:62px;height:62px}
 .opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .opt{min-height:64px;font-family:var(--display);font-weight:600;font-size:1.12rem;background:#fff;border:2.5px solid var(--tinta);border-radius:16px;box-shadow:0 4px 0 var(--tinta);padding:10px}
 .opt.ok{background:var(--menta)} .opt.ko{background:var(--error)}
@@ -253,7 +254,7 @@ table.conj tr:last-child td{border-bottom:0}
 .stat small{font-size:.85rem}
 .cromos{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
 .cromo{display:flex;flex-direction:column;align-items:center;gap:6px;border:2.5px solid var(--tinta);border-radius:14px;padding:10px 6px;background:#fff;text-align:center;color:var(--tinta)}
-.cromo img{width:64px;height:64px;border-radius:12px}
+.cromo img{width:68px;height:68px;object-fit:contain}
 .cromo b{font-family:var(--display);font-size:.92rem;line-height:1.2}
 .cromo.nuevo img{filter:grayscale(1) opacity(.45)}
 .cromo.oro{background:#FFF1BF;box-shadow:0 0 0 3px var(--sol) inset}
@@ -270,7 +271,7 @@ table.conj tr:last-child td{border-bottom:0}
 .seg button+button{border-left:2px solid var(--tinta)}
 .seg button[aria-pressed="true"]{background:var(--sol)}
 .vec-modal{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
-.vec-modal img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid var(--sol)}
+.vec-modal img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid var(--sol);object-position:center top}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);z-index:80;background:var(--tinta);color:#fff;font-family:var(--display);font-weight:600;border-radius:14px;padding:10px 18px;max-width:90vw;text-align:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
 .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 footer{text-align:center;padding:10px 16px 30px;font-size:.85rem;opacity:.8}
@@ -378,7 +379,7 @@ D.pistas.forEach(function(p){ PIS[p.id] = p; });
 
 /* ---------- State ---------- */
 function defaults(){
-  return {grade: 5, w: {}, ep: {}, pista: {}, cfg: {font: 'std', size: 0, spacing: 0, rate: 0.9, voz: 'es', acentos: 1}};
+  return {grade: 5, w: {}, ep: {}, pista: {}, cfg: {font: 'std', size: 0, spacing: 0, rate: 0.9, voz: 'es', acentos: 1, motor: 'auto'}};
 }
 function load(){
   var s = defaults();
@@ -459,46 +460,111 @@ function vecinoUnlocked(id){
 }
 function dueCount(){ return available().filter(isDue).length; }
 
-/* ---------- Speech ---------- */
+/* ---------- Speech ----------
+   The browser voice is only used if it is really Spanish. Otherwise (no Spanish voice
+   installed, or voice list not ready), the app plays an online Spanish voice instead of
+   letting the browser read Spanish with its default French voice. */
 var VOICES = [];
 var HAS_TTS = ('speechSynthesis' in window) && ('SpeechSynthesisUtterance' in window);
-function loadVoices(){ if (HAS_TTS) VOICES = window.speechSynthesis.getVoices() || []; }
-if (HAS_TTS){ loadVoices(); window.speechSynthesis.onvoiceschanged = loadVoices; }
+var currentAudio = null, onlineFailed = false, helpShown = false;
+function loadVoices(){ if (HAS_TTS){ try { VOICES = window.speechSynthesis.getVoices() || []; } catch (e) { VOICES = []; } } }
+if (HAS_TTS){ loadVoices(); if ('onvoiceschanged' in window.speechSynthesis) window.speechSynthesis.onvoiceschanged = loadVoices; }
+function voiceLang(v){ return String(v.lang || '').replace('_', '-').toLowerCase(); }
+function spanishVoices(){ loadVoices(); return VOICES.filter(function(v){ return voiceLang(v).indexOf('es') === 0; }); }
 function pickVoice(lang){
-  var L = lang.toLowerCase(), i, v, vl, spain = null, latam = null, any = null;
-  for (i = 0; i < VOICES.length; i++){
-    v = VOICES[i]; vl = String(v.lang || '').replace('_', '-').toLowerCase();
-    if (vl === L) return v;
-    if (vl.indexOf('es') === 0){
-      if (!any) any = v;
-      if (vl === 'es-es'){ if (!spain) spain = v; } else if (!latam) latam = v;
-    }
+  var L = lang.toLowerCase(), list = spanishVoices(), i, vl, spain = null, latam = null;
+  if (!list.length) return null;
+  for (i = 0; i < list.length; i++){
+    vl = voiceLang(list[i]);
+    if (vl === L) return list[i];
+    if (vl === 'es-es'){ if (!spain) spain = list[i]; } else if (!latam) latam = list[i];
   }
   if (L !== 'es-es' && latam) return latam;
-  return spain || any;
+  return spain || latam || list[0];
 }
-function utter(text, lang){
-  var u = new SpeechSynthesisUtterance(text);
-  u.lang = lang; var v = pickVoice(lang); if (v) u.voice = v;
-  u.rate = Number(S.cfg.rate) || 0.9;
-  return u;
+function whenVoicesReady(cb){
+  if (!HAS_TTS || VOICES.length){ cb(); return; }
+  var tries = 0;
+  (function wait(){ loadVoices(); if (VOICES.length || tries++ > 12) cb(); else setTimeout(wait, 100); })();
 }
-function speak(text, lang){
-  if (!HAS_TTS){ toast('La lecture audio n\u2019est pas disponible sur ce navigateur.'); return; }
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(utter(text, lang || 'es-ES'));
+function engine(){
+  var m = S.cfg.motor || 'auto';
+  if (m === 'online') return 'online';
+  if (m === 'local') return (HAS_TTS && spanishVoices().length) ? 'local' : 'none';
+  return (HAS_TTS && spanishVoices().length) ? 'local' : 'online';
 }
-function speakQueue(list){
-  if (!HAS_TTS){ toast('La lecture audio n\u2019est pas disponible sur ce navigateur.'); return; }
-  window.speechSynthesis.cancel();
+function stopAudio(){
+  if (HAS_TTS){ try { window.speechSynthesis.cancel(); } catch (e) {} }
+  if (currentAudio){ try { currentAudio.onended = null; currentAudio.onerror = null; currentAudio.pause(); } catch (e) {} currentAudio = null; }
+}
+function showVoiceHelp(){
+  if (helpShown) return; helpShown = true;
+  openModal('Installer une voix espagnole', voiceHelpHtml());
+}
+function voiceHelpHtml(){
+  return '<p>Cet appareil n\u2019a pas de voix espagnole, et la voix en ligne n\u2019est pas joignable (pas de connexion, ou réseau qui la bloque). Sans voix espagnole, l\u2019appli préfère se taire plutôt que de lire l\u2019espagnol avec une voix française.</p>' +
+    '<h3>Ajouter une voix espagnole (gratuit)</h3><ul>' +
+    '<li><b>iPhone, iPad :</b> Réglages, Accessibilité, Contenu énoncé, Voix, puis Espagnol (Espagne ou Mexique).</li>' +
+    '<li><b>Android :</b> Paramètres, Accessibilité (ou Langues et saisie), Synthèse vocale, moteur Google, Installer les données vocales, Espagnol.</li>' +
+    '<li><b>Windows :</b> Paramètres, Heure et langue, Voix, Ajouter des voix, Español.</li>' +
+    '<li><b>Mac :</b> Réglages Système, Accessibilité, Contenu énoncé, Voix du système, Gérer les voix, Espagnol.</li></ul>' +
+    '<p>Ensuite, recharge la page.</p>';
+}
+function splitText(t){
+  if (t.length <= 180) return [t];
+  var parts = t.split(/([.!?;,] )/), out = [], cur = '';
+  for (var i = 0; i < parts.length; i++){
+    if ((cur + parts[i]).length > 180 && cur){ out.push(cur); cur = ''; }
+    cur += parts[i];
+  }
+  if (cur) out.push(cur);
+  return out;
+}
+function onlineUrl(text){
+  return 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=es&q=' + encodeURIComponent(text);
+}
+function playOnline(list, i){
+  if (i >= list.length) return;
+  var a = new Audio(onlineUrl(list[i].text));
+  currentAudio = a;
+  try { a.playbackRate = Number(S.cfg.rate) < 0.85 ? 0.8 : 1; } catch (e) {}
+  a.onended = function(){ if (currentAudio === a) setTimeout(function(){ playOnline(list, i + 1); }, 200); };
+  a.onerror = function(){ if (currentAudio !== a) return; onlineFailed = true; showVoiceHelp(); };
+  var pr = a.play();
+  if (pr && pr.catch) pr.catch(function(err){ if (err && err.name === 'NotAllowedError') return; onlineFailed = true; showVoiceHelp(); });
+}
+function playLocal(list){
   var i = 0;
   function next(){
     if (i >= list.length) return;
-    var u = utter(list[i].text, list[i].lang); i++;
+    var it = list[i]; i++;
+    var v = pickVoice(it.lang);
+    var u = new SpeechSynthesisUtterance(it.text);
+    u.voice = v; u.lang = v.lang;
+    u.rate = Number(S.cfg.rate) || 0.9;
     u.onend = function(){ setTimeout(next, 250); };
     window.speechSynthesis.speak(u);
   }
   next();
+}
+function sayList(list){
+  stopAudio();
+  var clean_ = [];
+  list.forEach(function(x){ splitText(String(x.text).replace(/…/g, ' ')).forEach(function(t){ clean_.push({text: t, lang: x.lang}); }); });
+  whenVoicesReady(function(){
+    var e = engine();
+    if (e === 'local') playLocal(clean_);
+    else if (e === 'online'){ if (onlineFailed && !(HAS_TTS && spanishVoices().length)){ helpShown = false; showVoiceHelp(); } else playOnline(clean_, 0); }
+    else { helpShown = false; showVoiceHelp(); }
+  });
+}
+function speak(text, lang){ sayList([{text: text, lang: lang || 'es-ES'}]); }
+function speakQueue(list){ sayList(list); }
+function voiceStatus(){
+  var e = engine();
+  if (e === 'local'){ var v = pickVoice(wordLang()); return 'Voix de l\u2019appareil : ' + v.name + ' (' + v.lang + ').'; }
+  if (e === 'online') return 'Voix espagnole en ligne (connexion internet nécessaire)' + ((S.cfg.motor || 'auto') === 'auto' ? ', car aucune voix espagnole n\u2019est installée sur cet appareil.' : '.');
+  return 'Aucune voix espagnole sur cet appareil.';
 }
 function wordLang(){ return S.cfg.voz === 'latam' ? 'es-MX' : 'es-ES'; }
 function speakerLang(id){
@@ -506,7 +572,7 @@ function speakerLang(id){
   if (VEC[id]) return VEC[id].voz;
   return D.extras[id] ? D.extras[id].voz : 'es-ES';
 }
-function speakWord(w){ speak(w.main.replace(/…/g, ' '), wordLang()); }
+function speakWord(w){ speak(w.main, wordLang()); }
 
 /* ---------- Toast & modal ---------- */
 var toastTimer = null;
@@ -530,7 +596,7 @@ var NAV = [
 ];
 var NAV_PARENT = {lugar: 'barrio', partida: 'juegos', resultado: 'juegos', pista: 'gramatica'};
 function go(page){
-  if (HAS_TTS) window.speechSynthesis.cancel();
+  stopAudio();
   view.page = page;
   render();
   window.scrollTo(0, 0);
@@ -1092,7 +1158,9 @@ function openAjustes(confirmReset){
     '<div class="cfg-row"><span>Vitesse de la voix</span>' + seg('rate', [[0.7, 'Lente'], [0.9, 'Normale']]) + '</div>' +
     '<div class="cfg-row"><span>Accent des mots</span>' + seg('voz', [['es', 'Espagne'], ['latam', 'Amérique latine']]) + '</div>' +
     '<div class="cfg-row"><span>Chaque voisin parle avec l\u2019accent de son pays</span>' + seg('acentos', [[1, 'Oui'], [0, 'Non']]) + '</div>' +
-    '<p class="muted" style="font-size:.85rem">Les accents dépendent des voix installées sur l\u2019appareil. S\u2019il n\u2019y en a pas, la voix espagnole standard est utilisée.</p>' +
+    '<div class="cfg-row"><span>Source de la voix</span>' + seg('motor', [['auto', 'Automatique'], ['local', 'Appareil'], ['online', 'En ligne']]) + '</div>' +
+    '<p class="muted" style="font-size:.88rem;margin:8px 0 0">' + esc(voiceStatus()) + ' Les accents des voisins demandent des voix de ces pays sur l\u2019appareil.</p>' +
+    '<div class="row" style="margin:8px 0 6px"><button class="btn small" data-act="test-voz">' + ico('u-sonido') + 'Tester la voix</button><button class="btn small" data-act="voz-help">Installer une voix espagnole</button></div>' +
     '<div class="cfg-row"><span>Progression</span><span class="row"><button class="btn small" data-act="export">Exporter</button><button class="btn small" data-act="import">Importer</button>' +
     (confirmReset ? '<button class="btn small" data-act="reset-yes" style="background:var(--error)">Oui, tout effacer</button><button class="btn small" data-act="ajustes">Annuler</button>'
                   : '<button class="btn small" data-act="reset-ask">Tout effacer</button>') + '</span></div>';
@@ -1157,7 +1225,7 @@ var ACT = {
     view.lugar = l.id; go('lugar');
   },
   'back-lugar': function(el){ view.lugar = el.getAttribute('data-id'); view.tab = 'jugar'; go('lugar'); },
-  'tab': function(el){ view.tab = el.getAttribute('data-tab'); if (HAS_TTS) window.speechSynthesis.cancel(); render(); },
+  'tab': function(el){ view.tab = el.getAttribute('data-tab'); stopAudio(); render(); },
   'toggle': function(el){ var t = $(el.getAttribute('data-target')); if (t) t.classList.toggle('hidden'); },
   'say-intro': function(){ var l = LUG[view.lugar]; speak(l.intro[0], speakerLang(l.guia)); },
   'say-word': function(el){ var w = BYID[el.getAttribute('data-id')]; if (w) speakWord(w); },
@@ -1176,7 +1244,7 @@ var ACT = {
     speakQueue(e.lineas.map(function(ln){ return {text: ln[1], lang: speakerLang(ln[0])}; }));
   },
   'ep-restart': function(){ EP = {lugar: view.lugar, shown: 1, mode: 'lectura', qi: 0, score: 0, answered: false, choice: -1}; render(); },
-  'ep-quiz': function(){ EP.mode = 'quiz'; EP.qi = 0; EP.score = 0; EP.answered = false; if (HAS_TTS) window.speechSynthesis.cancel(); render(); },
+  'ep-quiz': function(){ EP.mode = 'quiz'; EP.qi = 0; EP.score = 0; EP.answered = false; stopAudio(); render(); },
   'ep-resp': function(el){
     if (EP.answered) return;
     var q = LUG[view.lugar].episodio.preguntas[EP.qi];
@@ -1261,11 +1329,14 @@ var ACT = {
   'modal-bg': function(el, ev){ if (ev.target === el) closeModal(); },
   'cfg': function(el){
     var k = el.getAttribute('data-k'), v = el.getAttribute('data-v');
-    S.cfg[k] = (k === 'font' || k === 'voz') ? v : Number(v);
+    S.cfg[k] = (k === 'font' || k === 'voz' || k === 'motor') ? v : Number(v);
     save(); applyCfg(); openAjustes(false);
-    if (k === 'rate' || k === 'voz') speak('¡Hola! Bienvenido al barrio.', wordLang());
+    if (k === 'motor') onlineFailed = false;
+    if (k === 'rate' || k === 'voz' || k === 'motor') speak('¡Hola! Bienvenido al barrio.', wordLang());
   },
   'reset-ask': function(){ openAjustes(true); },
+  'test-voz': function(){ onlineFailed = false; helpShown = false; speak('¡Hola! Me llamo Mateo y vivo en el barrio.', wordLang()); },
+  'voz-help': function(){ openModal('Installer une voix espagnole', voiceHelpHtml().replace(/^<p>.*?<\/p>/, '<p>Sans voix espagnole installée, l\u2019appli utilise une voix en ligne. Pour une voix qui marche aussi sans internet :</p>')); },
   'reset-yes': function(){
     var cfg = S.cfg, g = S.grade; S = defaults(); S.cfg = cfg; S.grade = g; save();
     G = null; EP = null; PX = null; closeModal(); go('inicio'); toast('Progression effacée.');

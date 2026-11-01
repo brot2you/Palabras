@@ -36,6 +36,10 @@ Déposer un nouveau fichier **avec le même nom** dans `assets/` :
 - `u-*.webp` : boutons d'interface
 - `accueil.webp` (paysage), `accueil-mobile.webp` (portrait), `logo.webp` (fond transparent)
 
+## Audio
+
+L'appli utilise la voix espagnole de l'appareil si elle existe. Sinon, elle bascule sur une voix espagnole en ligne (service de synthèse de Google Traduction, non officiel, connexion nécessaire). Elle ne lit jamais l'espagnol avec une voix française : si aucune des deux n'est disponible, elle affiche comment installer une voix espagnole. Réglages : Source de la voix (Automatique / Appareil / En ligne) et bouton Tester la voix.
+
 ## Technique
 
 Un seul fichier HTML, JavaScript ES5 (compatible anciens iPad/iPhone), données en JSON, `localStorage` (clé `palabras-v3`), export / import de la progression en fichier JSON.
