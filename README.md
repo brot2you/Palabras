@@ -14,7 +14,8 @@ Application d'espagnol pour le collège (5e, 4e, 3e), par BROT2YOU. Gratuite, sa
 - 6 voisins guides (Madrid, Mexico, Séville, Buenos Aires, Bogotá, Lima), chacun avec l'accent de son pays si la voix existe sur l'appareil
 - 282 mots avec phrase d'exemple traduite
 - 13 épisodes dialogués (8 répliques + 3 questions de compréhension)
-- 13 fiches de grammaire (explication, tableau, exemples, 6 exercices), une par lieu, en progression spiralaire
+- 13 enquêtes de grammaire en démarche inductive (une par lieu, progression spiralaire) : 1. Observa (phrases de l'épisode, formes surlignées) ; 2. Reflexiona (questions guidées) ; 3. Tu regla (l'élève écrit la règle avec ses mots, enregistrée) ; 4. La regla (comparaison avec la règle, tableau, exemples) ; 5. Practica (6 exercices)
+- Code couleur des mots : el (bleu), la (rouge), verbe (vert), expression (jaune), adjectif / autre mot (violet) ; filtre par type dans le dictionnaire
 - 7 jeux : FR → ES, ES → FR, écoute, écriture (avec clavier d'accents), article, phrase à remettre dans l'ordre, défi mélangé
 - Révisions espacées (6 cases : 1, 2, 4, 8, 16 jours), cartes de lieux (argent / or), cartes culture des voisins à débloquer
 - Réglages d'accessibilité : police Lexend, taille du texte, espacement, vitesse de la voix
@@ -23,7 +24,7 @@ Application d'espagnol pour le collège (5e, 4e, 3e), par BROT2YOU. Gratuite, sa
 
 Tout le contenu est dans le bloc `<script type="application/json" id="palabras-data">` de `index.html`.
 
-- **Ajouter un mot** : l'ajouter **à la fin** de la liste `palabras` du lieu (l'identifiant d'un mot est sa position ; insérer au milieu décalerait la progression des élèves). Format : `["el mot", "traduction", "emoji", "Phrase d'exemple.", "Traduction de l'exemple."]`. Pour un nom qui ne doit pas aller dans le jeu des articles (comme *el agua*), ajouter `{"nog": 1}` en 6e élément.
+- **Ajouter un mot** : l'ajouter **à la fin** de la liste `palabras` du lieu (l'identifiant d'un mot est sa position ; insérer au milieu décalerait la progression des élèves). Format : `["el mot", "traduction", "emoji", "Phrase d'exemple.", "Traduction de l'exemple."]`. L'emoji (3e élément) n'est plus affiché. Pour un nom qui ne doit pas aller dans le jeu des articles (comme *el agua*), ajouter `{"nog": 1}` en 6e élément. Pour illustrer un mot, ajouter `{"img": "naranja"}` et déposer `assets/w-naranja.webp` : l'image remplace la pastille de couleur.
 - **Variantes** : séparer par ` / ` (`"el coche / el auto"`) ; toutes les formes sont acceptées dans le jeu d'écriture.
 - **Ressources** : les capsules culturelles sont rédigées dans l'appli ; on peut y ajouter des liens vers des documents authentiques.
 
@@ -38,7 +39,7 @@ Déposer un nouveau fichier **avec le même nom** dans `assets/` :
 
 ## Audio
 
-L'appli utilise la voix espagnole de l'appareil si elle existe. Sinon, elle bascule sur une voix espagnole en ligne (service de synthèse de Google Traduction, non officiel, connexion nécessaire). Elle ne lit jamais l'espagnol avec une voix française : si aucune des deux n'est disponible, elle affiche comment installer une voix espagnole. Réglages : Source de la voix (Automatique / Appareil / En ligne) et bouton Tester la voix.
+L'appli utilise la voix espagnole de l'appareil si elle existe. Sinon, elle bascule sur une voix espagnole en ligne (service de synthèse de Google Traduction, non officiel, connexion nécessaire). Le son démarre toujours directement au toucher, comme l'exige iOS. Sur iPhone, le mode silencieux coupe la voix de l'appareil. Elle ne lit jamais l'espagnol avec une voix française : si aucune des deux n'est disponible, elle affiche comment installer une voix espagnole. Réglages : Source de la voix (Automatique / Appareil / En ligne) et bouton Tester la voix.
 
 ## Technique
 
