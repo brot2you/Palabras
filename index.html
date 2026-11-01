@@ -1,67 +1,1310 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>¡PALABRAS! — Barrio Pop · BROT2YOU</title><style>
-:root{--ink:#272431;--cream:#fff8e8;--red:#e64e48;--yellow:#ffd66d;--blue:#b9e4f3}*{box-sizing:border-box}body{margin:0;background:#f7eacb;color:var(--ink);font-family:'Trebuchet MS',Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer;border:2px solid var(--ink);border-radius:13px;background:white;padding:10px 14px;box-shadow:3px 3px 0 var(--ink);font-weight:bold}button:hover{transform:translateY(-2px)}button.active,.primary{background:var(--yellow)}header{background:#fff4d9;border-bottom:3px solid var(--ink);padding:14px max(16px,calc((100vw - 1160px)/2));display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}h1{font-size:clamp(30px,5vw,54px);color:var(--red);text-shadow:2px 2px #222;margin:0;letter-spacing:-2px}header p{margin:0}main{max-width:1160px;margin:auto;padding:20px 16px 50px}.nav{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 24px}.nav button.active{background:#f7b6a8}.panel{background:var(--cream);border:3px solid var(--ink);border-radius:20px;padding:22px;box-shadow:6px 6px 0 #292431;margin-bottom:22px}.hero{background:linear-gradient(135deg,#bfe8ee,#fff1c0);display:grid;grid-template-columns:1.2fr 1fr;gap:20px;align-items:center}.hero img{width:100%;border-radius:14px;border:2px solid var(--ink)}h2{margin:0 0 15px;font-size:26px}h3{margin:0 0 8px}.muted{color:#555}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}.tile{border:2px solid var(--ink);border-radius:16px;padding:18px;background:white;text-align:left;min-height:125px}.tile .emoji{font-size:36px;display:block;margin-bottom:8px}.tile small{display:block;margin-top:6px}.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 20px}.toolbar input,.toolbar select{border:2px solid var(--ink);border-radius:10px;padding:10px;background:white;min-width:120px}.toolbar input{flex:1}.word{background:#fff;border:2px solid var(--ink);border-radius:15px;padding:15px;display:flex;flex-direction:column;gap:8px}.word .symbol{font-size:42px}.word strong{font-size:20px}.word button{box-shadow:none;font-size:13px;padding:8px}.actions{display:flex;gap:8px;flex-wrap:wrap}.hidden{display:none!important}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:20px 0}.choices button{min-height:65px}.feedback{min-height:28px;font-weight:bold}.bar{height:16px;border:2px solid var(--ink);background:white;border-radius:20px;overflow:hidden}.bar span{display:block;background:#78c8a2;height:100%;transition:width .2s}.comic{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.frame{border:3px solid #222;background:#fff9ec;border-radius:8px;padding:16px;min-height:170px}.frame .face{font-size:50px}.bubble{border:2px solid #222;border-radius:40% 35% 38% 30%;background:white;padding:15px;margin:8px 0}.pill{display:inline-block;background:#fce2a4;border:2px solid #222;border-radius:20px;padding:5px 12px;font-size:13px}footer{text-align:center;padding:20px;color:#555}@media(max-width:650px){.hero{grid-template-columns:1fr}.comic{grid-template-columns:1fr}.choices{grid-template-columns:1fr}.panel{padding:16px}header{justify-content:center;text-align:center}}
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>¡Palabras! · Mi barrio en español · BROT2YOU</title>
+<meta name="description" content="Application d'espagnol pour le collège (5e, 4e, 3e) : un quartier à visiter, six voisins du monde hispanique, des épisodes, du vocabulaire, de la grammaire et des jeux.">
+<link rel="icon" href="assets/i-fuente.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fredoka:wght@500;600;700&family=Lexend:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cielo:#38C5ED; --cielo-claro:#C9EFFB; --sol:#FFCC34; --coral:#FF586C;
+  --tinta:#173257; --cobalto:#1F4FA3; --cal:#FFFDF4; --teja:#E0592A;
+  --menta:#9BEBCB; --rosa:#FFB3C6; --lila:#CDB8FF; --error:#FFC9D1;
+  --display:'Fredoka','Trebuchet MS',system-ui,sans-serif;
+  --body:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --fs:17px; --ls:0; --ws:0;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;color:var(--tinta);font-family:var(--body);font-size:var(--fs);line-height:1.5;letter-spacing:var(--ls);word-spacing:var(--ws);
+  background:linear-gradient(180deg,var(--cielo) 0,var(--cielo-claro) 220px,var(--cal) 520px) no-repeat,var(--cal);}
+body.f-lexend{--body:'Lexend',system-ui,sans-serif}
+body.sz-1{--fs:19px} body.sz-2{--fs:22px}
+body.sp-1{--ls:.06em;--ws:.16em} body.sp-1 p,body.sp-1 li{line-height:1.8}
+img{max-width:100%}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.hidden{display:none!important}
 
-/* BARRIO POP V2: interactive HTML controls, artwork never used as click targets */
-:root{--ink:#173257;--cream:#fffdf4;--red:#ff586c;--yellow:#ffcc34;--blue:#38c5ed}
-body{background:linear-gradient(180deg,#65d5fa 0,#fff0bf 440px,#fff9ed 100%);font-family:system-ui,'Trebuchet MS',sans-serif}
-header{background:#ffffffec;border-bottom:4px solid #166ca6;box-shadow:0 5px 18px #1476a31b}
-h1{color:#ffad0b;-webkit-text-stroke:1.2px #19325b;text-shadow:3px 4px 0 #f65e2d,5px 6px 0 #1e365c;font-weight:1000;letter-spacing:-1px}
-header p{font-weight:700;color:#226e9b}
-main{max-width:1250px}.nav{gap:8px;position:sticky;top:0;z-index:4;padding:10px 0;background:#fef8e7e8;backdrop-filter:blur(10px);border-radius:0 0 16px 16px}
-button{border:2px solid #21486f;box-shadow:0 4px 0 #19436a;border-radius:14px;transition:transform .15s,box-shadow .15s}
-button:hover{transform:translateY(-2px);box-shadow:0 6px 0 #19436a}button:active{transform:translateY(3px);box-shadow:0 1px 0 #19436a}
-.nav button{background:#fff;border-color:#4b99c6;font-size:14px}.nav button.active{background:#ffcd3d}
-.panel{border:2px solid #3b88b4;box-shadow:0 7px 0 #3b88b4;background:#fffdf4;border-radius:22px}
-.hero{display:flex;flex-direction:column;padding:0;overflow:hidden;gap:0;background:#fff}
-.hero img{order:-1;width:100%;height:auto;max-height:540px;object-fit:cover;border:0;border-radius:0;display:block}
-.hero>div{padding:24px 28px;background:linear-gradient(90deg,#fff6d6,#fff);width:100%}
-.hero h2{color:#153e6c;font-size:clamp(23px,3vw,34px)}
-.pill{background:#ffcf39!important;color:#19365a!important}
-.tile{background:linear-gradient(145deg,#fff,#eaf8ff);border:2px solid #68b9df;box-shadow:0 5px 0 #68b9df;min-height:120px}
-.tile:nth-child(4n+1){background:linear-gradient(135deg,#fff2b5,#ffe5a0)}.tile:nth-child(4n+2){background:linear-gradient(135deg,#ffd8df,#ffeaf0)}.tile:nth-child(4n+3){background:linear-gradient(135deg,#e6d9ff,#f5edff)}.tile:nth-child(4n){background:linear-gradient(135deg,#baf6e7,#e8fff6)}
-.word{border-color:#8dc4df!important;background:#fff!important;box-shadow:0 4px 0 #8dc4df}
-footer{color:#245781!important}
-@media(max-width:650px){main{padding:10px 10px 35px}.nav{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.nav button{padding:9px 5px;font-size:12px}.hero img{height:300px;object-fit:cover;object-position:center top}.hero>div{padding:17px}.panel{padding:15px}.hero{padding:0}header{padding:12px}h1{font-size:36px}}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--display);font-weight:600;font-size:1rem;
+  border:2.5px solid var(--tinta);border-radius:14px;background:#fff;color:var(--tinta);padding:9px 16px;box-shadow:0 4px 0 var(--tinta);
+  transition:transform .12s,box-shadow .12s;text-decoration:none;line-height:1.2}
+.btn:hover{transform:translateY(-1px);box-shadow:0 5px 0 var(--tinta)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--tinta)}
+.btn[disabled]{opacity:.5;cursor:default;transform:none;box-shadow:0 4px 0 var(--tinta)}
+.btn.primary{background:var(--sol)}
+.btn.small{padding:6px 11px;font-size:.88rem;border-width:2px;box-shadow:0 3px 0 var(--tinta);border-radius:11px}
+.btn.ghost{box-shadow:none;border-color:transparent;background:transparent}
+.btn .ico{width:24px;height:24px}
+.btn.small .ico{width:20px;height:20px}
+.ico{display:inline-block;width:28px;height:28px;border-radius:7px;object-fit:cover;vertical-align:middle;flex:none}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 
-/* Accueil épuré : une illustration, un seul menu HTML interactif. */
-body:has(.landing) header{position:absolute;z-index:10;top:12px;left:16px;background:transparent;border:0;box-shadow:none;padding:0;pointer-events:none}body:has(.landing) header>div:first-child{display:none}body:has(.landing) header>div:last-child{pointer-events:auto;background:#fffdf2e8;border:2px solid #234f76;border-radius:14px;padding:8px 12px;box-shadow:0 3px 0 #234f76}body:has(.landing) .nav{display:none}body:has(.landing) main{max-width:none;padding:0}body:has(.landing) footer{display:none}.landing{min-height:100svh;position:relative;background-image:linear-gradient(180deg,transparent 47%,rgba(10,34,70,.35) 100%),url('assets/accueil-barrio-pop.png.%20.PNG'),url('assets/barrio-pop-cover.webp');background-size:cover;background-position:center 37%;display:flex;align-items:flex-end;justify-content:center;padding:24px 22px 5vh}.landing-menu{width:min(980px,100%);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.landing-menu button{border:3px solid #173257;border-radius:20px;background:#ffd34d;color:#173257;box-shadow:0 5px 0 #173257,0 8px 22px #10284d55;padding:15px 10px;font-size:clamp(14px,1.6vw,21px);font-weight:900;min-height:68px;text-shadow:0 1px #fff6}.landing-menu button:nth-child(2){background:#ff94b3}.landing-menu button:nth-child(3){background:#bb9dff}.landing-menu button:nth-child(4){background:#82e7c1}.landing-menu button:nth-child(5){background:#8de4fa}.landing-menu button:nth-child(6){background:#ffb96a}.landing-menu button:focus-visible{outline:4px solid white;outline-offset:3px}@media(max-width:650px){.landing{background-image:linear-gradient(180deg,transparent 55%,rgba(10,34,70,.38) 100%),url('assets/accueil-mobile.png..PNG?v=mobile-20261101');background-size:100% 100%,100% auto;background-repeat:no-repeat;background-color:#4dbdf0}body:has(.landing) header{top:8px;left:8px}body:has(.landing) header>div:last-child{padding:4px 7px;font-size:12px}.landing{background-position:center top;padding:14px 12px 22px;min-height:100svh}.landing-menu{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.landing-menu button{min-height:54px;padding:10px 5px;font-size:13px;border-radius:14px}}
- .landing-logo{position:absolute;top:3%;left:50%;transform:translateX(-50%);width:min(620px,76vw);height:auto;max-height:31vh;object-fit:contain;z-index:2;filter:drop-shadow(0 6px 9px #13254b77);pointer-events:none}@media(max-width:650px){.landing-logo{top:6%;width:min(90vw,410px);max-height:23svh}} 
-/* Illustration originale : icônes découpées virtuellement depuis la planche A4, sans rogner les cellules */
-.pop-icon{display:inline-block;flex:none;width:46px;height:46px;vertical-align:middle;background-image:url('assets/planche-icones.png.png?v=3');background-repeat:no-repeat;background-size:600% 400%;background-position-y:33.3333%;border-radius:9px}
-.pop-1{background-position-x:0%}.pop-2{background-position-x:20%}.pop-3{background-position-x:40%}.pop-4{background-position-x:60%}.pop-5{background-position-x:80%}.pop-6{background-position-x:100%}
-.landing-menu button{display:flex;align-items:center;justify-content:center;gap:9px}.landing-menu .pop-icon{width:46px;height:46px}.nav button{display:inline-flex;align-items:center;gap:6px}.nav .pop-icon{width:27px;height:27px;border-radius:5px}.tile .pop-icon{width:76px;height:76px;display:block;margin:0 auto 10px}.tile{text-align:center}.panel h2 .pop-icon{width:49px;height:49px;margin-right:8px}.face-pop{width:100%;height:110px;background-image:url('assets/planche-icones.png.png?v=3');background-size:600% 400%;background-repeat:no-repeat;background-position-y:0%}.face-pop-4{background-position-x:60%}.face-pop-2{background-position-x:20%}.face-pop-6{background-position-x:100%}
-@media(max-width:650px){.landing-menu .pop-icon{width:34px;height:34px}.landing-menu button{gap:5px}.landing-menu button span:not(.pop-icon){font-size:12px}.nav .pop-icon{width:24px;height:24px}.tile .pop-icon{width:66px;height:66px}}
-</style></head><body><header><div><h1>¡PALABRAS!</h1><p>Mi mundo en español · by BROT2YOU</p></div><div><label for="grade">Mi nivel </label><select id="grade"><option value="5">5e</option><option value="4">4e</option><option value="3">3e</option></select></div></header><main><nav class="nav" id="nav"></nav><section id="view"></section></main><footer>¡PALABRAS! Barrio Pop V2 · Apprendre, jouer, réviser · Sauvegarde locale</footer><script>
-const DATA=[
-['familia','👨‍👩‍👧','La familia',5,[['la madre','la mère','👩','Mi madre es simpática.'],['el padre','le père','👨','Mi padre trabaja.'],['el hermano','le frère','👦','Mi hermano es pequeño.'],['la hermana','la sœur','👧','Mi hermana canta.'],['los abuelos','les grands-parents','👵','Mis abuelos viven aquí.'],['el amigo','l’ami','🧑','Mi amigo se llama Pablo.'],['la amiga','l’amie','👩','Mi amiga juega conmigo.'],['la familia','la famille','👨‍👩‍👧','Mi familia es grande.']]],
-['escuela','🏫','El instituto',5,[['la escuela','l’école','🏫','Voy a la escuela.'],['el libro','le livre','📖','Leo un libro.'],['el cuaderno','le cahier','📓','Tengo un cuaderno.'],['el bolígrafo','le stylo','🖊️','Escribo con un bolígrafo.'],['la mochila','le sac à dos','🎒','Mi mochila es azul.'],['el profesor','le professeur','👨‍🏫','El profesor habla español.'],['la clase','la classe','🏫','La clase empieza a las ocho.'],['los deberes','les devoirs','📝','Hago los deberes.']]],
-['casa','🏠','La casa',5,[['la casa','la maison','🏠','Mi casa es pequeña.'],['la habitación','la chambre','🛏️','Mi habitación es luminosa.'],['la cocina','la cuisine','🍳','La cocina es grande.'],['el baño','la salle de bains','🛁','El baño está aquí.'],['la puerta','la porte','🚪','Abro la puerta.'],['la ventana','la fenêtre','🪟','Cierro la ventana.'],['la mesa','la table','🪑','La mesa es redonda.'],['la cama','le lit','🛏️','La cama es cómoda.']]],
-['comida','🍎','La comida',5,[['la manzana','la pomme','🍎','Como una manzana.'],['el pan','le pain','🍞','Me gusta el pan.'],['el agua','l’eau','💧','Bebo agua.'],['la leche','le lait','🥛','Bebo leche.'],['el queso','le fromage','🧀','Como queso.'],['el arroz','le riz','🍚','Preparo arroz.'],['la naranja','l’orange','🍊','Quiero una naranja.'],['el desayuno','le petit-déjeuner','🥐','El desayuno es a las siete.']]],
-['ciudad','🏙️','La ciudad',5,[['la calle','la rue','🛣️','La calle es larga.'],['la plaza','la place','⛲','Nos vemos en la plaza.'],['el parque','le parc','🌳','Juego en el parque.'],['la tienda','le magasin','🏬','La tienda está abierta.'],['la estación','la gare','🚉','Voy a la estación.'],['el museo','le musée','🏛️','Visito el museo.'],['el hospital','l’hôpital','🏥','El hospital está cerca.'],['la biblioteca','la bibliothèque','📚','Estudio en la biblioteca.']]],
-['ocio','⚽','Los pasatiempos',5,[['el fútbol','le football','⚽','Juego al fútbol.'],['la música','la musique','🎵','Escucho música.'],['el cine','le cinéma','🎬','Me gusta el cine.'],['bailar','danser','💃','Me encanta bailar.'],['leer','lire','📚','Prefiero leer.'],['dibujar','dessiner','🎨','Me gusta dibujar.'],['nadar','nager','🏊','Sé nadar.'],['jugar','jouer','🎮','Quiero jugar.']]],
-['rutina','⏰','La vida cotidiana',4,[['despertarse','se réveiller','⏰','Me despierto temprano.'],['levantarse','se lever','🛏️','Me levanto a las siete.'],['desayunar','prendre le petit-déjeuner','🥣','Desayuno en casa.'],['almorzar','déjeuner','🍽️','Almuerzo con mis amigos.'],['volver','revenir','↩️','Vuelvo a casa.'],['acostarse','se coucher','🌙','Me acuesto a las diez.'],['siempre','toujours','🔁','Siempre llego a tiempo.'],['a veces','parfois','🕒','A veces leo por la noche.']]],
-['viajes','✈️','Los viajes',4,[['el viaje','le voyage','🧳','El viaje es largo.'],['el billete','le billet','🎫','Compro un billete.'],['el avión','l’avion','✈️','Viajo en avión.'],['el tren','le train','🚆','Tomo el tren.'],['el alojamiento','l’hébergement','🏨','Busco alojamiento.'],['el mapa','la carte','🗺️','Miro el mapa.'],['la maleta','la valise','🧳','Preparo la maleta.'],['el aeropuerto','l’aéroport','🛫','Llegamos al aeropuerto.']]],
-['emociones','💛','Las emociones',4,[['alegre','joyeux / joyeuse','😊','Hoy estoy alegre.'],['triste','triste','😢','Estoy triste.'],['enfadado','fâché','😠','Está enfadado.'],['preocupado','inquiet','😟','Estoy preocupado.'],['orgulloso','fier','🏅','Estoy orgulloso.'],['tener miedo','avoir peur','😨','Tengo miedo.'],['estar cansado','être fatigué','😴','Estoy cansado.'],['sorprendido','surpris','😮','Estoy sorprendido.']]],
-['naturaleza','🌿','La naturaleza',4,[['el bosque','la forêt','🌲','Caminamos por el bosque.'],['el río','la rivière','🏞️','El río es largo.'],['la montaña','la montagne','⛰️','Subimos la montaña.'],['la playa','la plage','🏖️','Vamos a la playa.'],['el árbol','l’arbre','🌳','El árbol es alto.'],['el pájaro','l’oiseau','🐦','Veo un pájaro.'],['la lluvia','la pluie','🌧️','La lluvia es fuerte.'],['el sol','le soleil','☀️','Hoy brilla el sol.']]],
-['tecnologia','💻','La tecnología',3,[['la pantalla','l’écran','🖥️','Miro la pantalla.'],['la contraseña','le mot de passe','🔑','Cambio mi contraseña.'],['la red social','le réseau social','📱','Uso una red social.'],['descargar','télécharger','⬇️','Voy a descargar un archivo.'],['compartir','partager','🤝','Quiero compartir una foto.'],['el mensaje','le message','💬','Envío un mensaje.'],['la noticia','l’information / la nouvelle','📰','Leo una noticia.'],['la privacidad','la vie privée','🔒','Protejo mi privacidad.']]],
-['ambiente','🌎','El medioambiente',3,[['reciclar','recycler','♻️','Es importante reciclar.'],['la contaminación','la pollution','🏭','La contaminación es un problema.'],['ahorrar agua','économiser l’eau','💧','Debemos ahorrar agua.'],['el cambio climático','le changement climatique','🌡️','Hablamos del cambio climático.'],['la energía','l’énergie','⚡','Usamos energía solar.'],['proteger','protéger','🛡️','Hay que proteger la naturaleza.'],['los residuos','les déchets','🗑️','Reducimos los residuos.'],['sostenible','durable','🌱','Buscamos un futuro sostenible.']]],
-['opiniones','🗣️','Las opiniones',3,[['pienso que','je pense que','💭','Pienso que es importante.'],['creo que','je crois que','🤔','Creo que tienes razón.'],['estoy de acuerdo','je suis d’accord','👍','Estoy de acuerdo contigo.'],['sin embargo','cependant','↔️','Sin embargo, es difícil.'],['porque','parce que','❓','Estudio porque me gusta.'],['además','de plus','➕','Además, es divertido.'],['en mi opinión','à mon avis','🗣️','En mi opinión, es útil.'],['por eso','c’est pourquoi','➡️','Por eso quiero ayudar.']]]
+/* Header */
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;padding:8px max(14px,env(safe-area-inset-left));padding-top:max(8px,env(safe-area-inset-top));
+  background:rgba(255,253,244,.95);border-bottom:3px solid var(--tinta);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.top .logo{height:40px;width:auto;flex:none;cursor:pointer;background:none;border:0;padding:0}
+.top .logo img{height:40px;width:auto;display:block}
+.nav{display:flex;gap:6px;overflow-x:auto;flex:1;scrollbar-width:none;padding:4px 2px 6px}
+.nav::-webkit-scrollbar{display:none}
+.navbtn{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-family:var(--display);font-weight:600;font-size:.95rem;background:#fff;border:2px solid var(--tinta);border-radius:12px;padding:5px 11px 5px 6px;box-shadow:0 3px 0 var(--tinta)}
+.navbtn .ico{width:26px;height:26px}
+.navbtn[aria-current="page"]{background:var(--sol)}
+.top-tools{display:flex;gap:8px;align-items:center;flex:none}
+.nivel{display:flex;align-items:center;gap:6px;font-family:var(--display);font-weight:600;background:#fff;border:2px solid var(--tinta);border-radius:12px;padding:4px 6px 4px 10px;box-shadow:0 3px 0 var(--tinta)}
+.nivel select{border:0;background:var(--cielo-claro);border-radius:8px;padding:3px 6px;font-weight:700}
+.gear{width:42px;height:42px;padding:0;border:2px solid var(--tinta);border-radius:12px;background:#fff;box-shadow:0 3px 0 var(--tinta);display:inline-flex;align-items:center;justify-content:center}
+.gear img{width:32px;height:32px;border-radius:7px}
+
+/* Landing */
+body.is-landing .top{position:absolute;left:0;right:0;background:transparent;border:0;-webkit-backdrop-filter:none;backdrop-filter:none;justify-content:flex-end}
+body.is-landing .top .logo,body.is-landing .nav{display:none}
+.landing{position:relative;min-height:100vh;display:flex;align-items:flex-end;justify-content:center;padding:24px 22px 5vh;
+  background-image:linear-gradient(180deg,transparent 50%,rgba(10,34,70,.42) 100%),url('assets/accueil.webp');background-size:cover;background-position:center 37%;background-color:#4dbdf0}
+.landing-logo{position:absolute;top:3%;left:50%;transform:translateX(-50%);width:min(600px,74vw);max-height:30vh;object-fit:contain;filter:drop-shadow(0 6px 9px rgba(19,37,75,.45));pointer-events:none}
+.landing-menu{width:min(1000px,100%);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.landing-menu .btn{justify-content:flex-start;text-align:left;min-height:72px;padding:10px 14px;border-width:3px;border-radius:20px;box-shadow:0 5px 0 var(--tinta),0 10px 24px rgba(16,40,77,.35)}
+.landing-menu .btn .ico{width:50px;height:50px;border-radius:11px}
+.landing-menu .btn b{display:block;font-size:clamp(1.05rem,1.6vw,1.35rem)}
+.landing-menu .btn small{display:block;font-family:var(--body);font-weight:400;font-size:.82rem;opacity:.85}
+.landing-menu .btn:nth-child(1){background:var(--sol)} .landing-menu .btn:nth-child(2){background:var(--rosa)} .landing-menu .btn:nth-child(3){background:var(--lila)}
+.landing-menu .btn:nth-child(4){background:var(--menta)} .landing-menu .btn:nth-child(5){background:#A9E8FA} .landing-menu .btn:nth-child(6){background:#FFC98A}
+.badge{display:inline-block;min-width:24px;padding:0 7px;border-radius:12px;background:var(--coral);color:#fff;font-family:var(--display);font-weight:700;font-size:.8rem;text-align:center;line-height:22px;margin-left:4px}
+
+/* Pages */
+main{display:block}
+.page{max-width:1180px;margin:0 auto;padding:22px 16px 60px}
+.page-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin:6px 0 22px}
+.lede{margin:0;max-width:60ch;font-size:1.02rem}
+.panel{background:#fff;border:2.5px solid var(--tinta);border-radius:22px;padding:20px;box-shadow:0 6px 0 var(--tinta);margin-bottom:22px}
+h2,h3{font-family:var(--display);font-weight:600;line-height:1.2;margin:0 0 12px}
+h2{font-size:1.5rem} h3{font-size:1.2rem}
+.muted{opacity:.78}
+
+/* Azulejo plaque: the signature element */
+.plaque{display:inline-block;margin:0;font-family:var(--display);font-weight:700;color:var(--cobalto);font-size:1.6rem;line-height:1.15;padding:.32em .9em .36em;
+  background:radial-gradient(circle at 9px 9px,var(--cobalto) 3.5px,transparent 4.5px),radial-gradient(circle at calc(100% - 9px) 9px,var(--cobalto) 3.5px,transparent 4.5px),
+  radial-gradient(circle at 9px calc(100% - 9px),var(--cobalto) 3.5px,transparent 4.5px),radial-gradient(circle at calc(100% - 9px) calc(100% - 9px),var(--cobalto) 3.5px,transparent 4.5px),#fff;
+  border:3px solid var(--cobalto);border-radius:8px;box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 5px var(--cobalto),0 4px 0 var(--tinta)}
+.plaque.big{font-size:clamp(1.7rem,4vw,2.4rem)}
+.plaque.sm{font-size:1rem;padding:.22em .7em;background:#fff;border-width:2.5px;box-shadow:inset 0 0 0 2px #fff,inset 0 0 0 3.5px var(--cobalto)}
+
+/* Neighbours */
+.vecinos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-bottom:28px}
+.vecino{display:flex;flex-direction:column;align-items:center;gap:4px;background:#fff;border:2.5px solid var(--tinta);border-radius:18px;padding:10px 6px 12px;box-shadow:0 4px 0 var(--tinta);text-align:center}
+.vecino img{width:78px;height:78px;border-radius:50%;object-fit:cover;border:3px solid var(--sol);background:var(--cielo-claro)}
+.vecino b{font-family:var(--display);font-size:1.05rem}
+.vecino small{font-size:.8rem;line-height:1.25}
+.vecino .lock{font-size:.75rem;opacity:.7}
+
+/* Streets and facades */
+.calle{margin-bottom:34px}
+.street-sign{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+.street-sign .nivel-tag{font-family:var(--display);font-weight:700;background:var(--tinta);color:#fff;border-radius:10px;padding:3px 10px;font-size:.95rem}
+.fachadas{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px 22px;padding:0 6px 20px;
+  background:linear-gradient(180deg,transparent calc(100% - 20px),#E8D9B5 calc(100% - 20px)) no-repeat;border-radius:0 0 12px 12px}
+.fachada{position:relative;display:flex;flex-direction:column;background:none;border:0;padding:0;text-align:center;color:var(--tinta);transition:transform .15s}
+.fachada:hover{transform:translateY(-3px)}
+.tejado{display:block;align-self:stretch;height:28px;margin:0 -8px;border:2.5px solid var(--tinta);border-radius:8px 8px 3px 3px;
+  background:repeating-linear-gradient(90deg,#E86A3A 0 16px,#C8491F 16px 19px)}
+.muro{align-self:stretch;display:flex;flex-direction:column;align-items:center;gap:7px;flex:1;background:var(--cal);border:2.5px solid var(--tinta);border-top:0;border-radius:0 0 14px 14px;padding:16px 12px 14px;box-shadow:0 5px 0 var(--tinta)}
+.ventana{display:block;width:96px;height:100px;border:3px solid var(--tinta);border-radius:48px 48px 10px 10px;overflow:hidden;background:#fff}
+.ventana img{width:100%;height:100%;object-fit:cover;display:block}
+.fachada .plaque{font-size:1.02rem}
+.fachada .tema{font-size:.86rem;line-height:1.3;min-height:2.6em}
+.fachada .guia{position:absolute;top:30px;right:-6px;width:50px;height:50px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 2.5px var(--tinta);background:var(--cielo-claro)}
+.mini-bar{display:block;width:100%;height:9px;border:2px solid var(--tinta);border-radius:6px;background:#fff;overflow:hidden}
+.mini-bar span{display:block;height:100%;background:var(--cielo)}
+.estado{display:flex;align-items:center;justify-content:space-between;width:100%;font-size:.78rem;gap:6px}
+.sello{font-family:var(--display);font-weight:700;font-size:.75rem;border-radius:8px;padding:1px 7px;border:2px solid var(--tinta)}
+.sello.oro{background:var(--sol)} .sello.plata{background:#E3E8EF} .sello.visto{background:var(--cielo-claro)} .sello.nuevo{background:#fff}
+.fachada.locked .muro,.fachada.locked .tejado{filter:grayscale(1) opacity(.55)}
+.fachada.locked .candado{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);background:var(--tinta);color:#fff;font-family:var(--display);font-weight:600;border-radius:12px;padding:6px 12px;font-size:.9rem;white-space:nowrap}
+
+/* Place page */
+.volver{margin-bottom:16px}
+.lugar-hero{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;margin-bottom:22px}
+.guia-big{width:140px;height:140px;border-radius:50%;object-fit:cover;border:5px solid #fff;box-shadow:0 0 0 3px var(--tinta),0 8px 0 var(--tinta);background:var(--cielo-claro)}
+.lugar-hero .sub{margin:10px 0 12px;font-weight:700}
+.bubble{position:relative;background:#fff;border:2.5px solid var(--tinta);border-radius:18px;padding:12px 16px;max-width:640px}
+.bubble p{margin:0 0 6px}
+.bubble .fr{font-style:italic;opacity:.85}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.tab{font-family:var(--display);font-weight:600;background:#fff;border:2.5px solid var(--tinta);border-radius:14px 14px 6px 6px;padding:8px 14px;box-shadow:0 3px 0 var(--tinta);display:inline-flex;align-items:center;gap:7px}
+.tab[aria-selected="true"]{background:var(--sol)}
+.tab .ico{width:24px;height:24px}
+
+/* Episode */
+.ep-title{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:16px}
+.lineas{display:flex;flex-direction:column;gap:14px;margin-bottom:18px}
+.linea{display:flex;align-items:flex-end;gap:10px;animation:pop .25s ease-out}
+.linea.der{flex-direction:row-reverse}
+.linea .who{display:flex;flex-direction:column;align-items:center;gap:2px;flex:none;width:68px;text-align:center;font-family:var(--display);font-weight:600;font-size:.8rem}
+.avatar{width:58px;height:58px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 0 2.5px var(--tinta);background:var(--cielo-claro);display:inline-flex;align-items:center;justify-content:center;font-size:32px}
+.burbuja{position:relative;background:#fff;border:2.5px solid var(--tinta);border-radius:18px 18px 18px 4px;padding:10px 14px;max-width:680px}
+.linea.der .burbuja{border-radius:18px 18px 4px 18px;background:#FFF6D6}
+.burbuja .es{font-size:1.12rem;margin:0 0 6px}
+.burbuja .fr{margin:6px 0 0;font-style:italic;opacity:.85}
+.mot{background:none;border:0;padding:0;font:inherit;color:inherit;border-bottom:2.5px dotted var(--cobalto);cursor:pointer}
+.mot:hover{background:var(--cielo-claro)}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Words */
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.word{background:#fff;border:2.5px solid var(--tinta);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;box-shadow:0 4px 0 var(--tinta)}
+.word .top-line{display:flex;align-items:center;gap:10px}
+.word .emo{font-size:2rem;line-height:1}
+.word strong{font-family:var(--display);font-size:1.2rem;font-weight:600;line-height:1.2}
+.word .fr{font-size:.95rem}
+.word .ej{font-size:.9rem;border-top:2px dashed #E3D9BF;padding-top:6px;margin-top:4px}
+.word .ej i{display:block;opacity:.75;font-size:.85rem}
+.pips{display:inline-flex;gap:3px;margin-left:auto}
+.pips span{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--tinta);background:#fff}
+.pips span.on{background:var(--cielo)}
+.pips.done span.on{background:var(--sol)}
+
+/* Games */
+.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.game{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;background:#fff;border:2.5px solid var(--tinta);border-radius:18px;padding:14px;box-shadow:0 5px 0 var(--tinta);color:var(--tinta)}
+.game .ico{width:56px;height:56px;border-radius:12px}
+.game b{font-family:var(--display);font-size:1.15rem}
+.game small{font-size:.88rem}
+.game:nth-child(4n+1){background:#FFF3C4}.game:nth-child(4n+2){background:#FFE0E8}.game:nth-child(4n+3){background:#ECE3FF}.game:nth-child(4n){background:#DDF8EE}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.chip{font-family:var(--display);font-weight:600;border:2px solid var(--tinta);border-radius:20px;background:#fff;padding:5px 12px;font-size:.92rem}
+.chip[aria-pressed="true"]{background:var(--tinta);color:#fff}
+.partida{max-width:760px;margin:0 auto}
+.p-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.bar{height:14px;border:2.5px solid var(--tinta);border-radius:10px;background:#fff;overflow:hidden;margin-bottom:22px}
+.bar span{display:block;height:100%;background:var(--cielo);transition:width .25s}
+.prompt{text-align:center;margin:8px 0 22px}
+.prompt .emo{font-size:3.4rem;line-height:1.1;display:block}
+.prompt .big{font-family:var(--display);font-size:clamp(1.6rem,4.5vw,2.3rem);font-weight:600;line-height:1.2;display:block}
+.prompt .hint{font-size:.95rem}
+.prompt .listen{width:96px;height:96px;border-radius:50%;padding:0}
+.prompt .listen img{width:62px;height:62px;border-radius:12px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.opt{min-height:64px;font-family:var(--display);font-weight:600;font-size:1.12rem;background:#fff;border:2.5px solid var(--tinta);border-radius:16px;box-shadow:0 4px 0 var(--tinta);padding:10px}
+.opt.ok{background:var(--menta)} .opt.ko{background:var(--error)}
+.opt[disabled]{cursor:default}
+.feedback{margin-top:20px;border:2.5px solid var(--tinta);border-radius:16px;padding:14px 16px;background:#fff}
+.feedback.ok{background:#E3FAF0} .feedback.ko{background:#FFEFF2} .feedback.casi{background:#FFF7D9}
+.feedback b.title{font-family:var(--display);font-size:1.15rem;display:block;margin-bottom:4px}
+.typing{display:flex;flex-direction:column;gap:10px;align-items:stretch}
+.typing input{font-family:var(--display);font-size:1.5rem;font-weight:600;text-align:center;border:2.5px solid var(--tinta);border-radius:14px;padding:12px;background:#fff}
+.acentos{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.acentos button{min-width:44px;height:44px;font-family:var(--display);font-weight:700;font-size:1.15rem;border:2px solid var(--tinta);border-radius:10px;background:var(--cielo-claro)}
+.zona{min-height:64px;border:2.5px dashed var(--tinta);border-radius:16px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;background:#fff;margin-bottom:14px}
+.banco{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+.token{font-family:var(--display);font-weight:600;font-size:1.1rem;border:2px solid var(--tinta);border-radius:12px;background:#FFF3C4;padding:7px 12px;box-shadow:0 3px 0 var(--tinta)}
+.zona .token{background:var(--cielo-claro)}
+.resumen{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.resumen li{border:2px solid var(--tinta);border-radius:12px;padding:6px 10px;background:#fff}
+.resumen li.ok{background:#E3FAF0} .resumen li.ko{background:#FFEFF2}
+
+/* Reviews (Leitner boxes) */
+.cajas{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:16px 0}
+.caja{border:2.5px solid var(--tinta);border-radius:14px;padding:10px 6px;text-align:center;background:#fff}
+.caja b{display:block;font-family:var(--display);font-size:1.6rem}
+.caja small{font-size:.78rem;line-height:1.2;display:block}
+.caja:nth-child(1){background:#F2F2F2}.caja:nth-child(2){background:#FFE0E8}.caja:nth-child(3){background:#FFF3C4}.caja:nth-child(4){background:#DDF3FF}.caja:nth-child(5){background:#DDF8EE}.caja:nth-child(6){background:var(--sol)}
+
+/* Grammar */
+.pistas{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.pista-card{display:flex;gap:12px;align-items:flex-start;text-align:left;background:#fff;border:2.5px solid var(--tinta);border-radius:16px;padding:12px;box-shadow:0 4px 0 var(--tinta);color:var(--tinta)}
+.pista-card .ico{width:48px;height:48px}
+.pista-card b{font-family:var(--display);font-size:1.05rem;display:block;line-height:1.25}
+.pista-card small{display:block;font-size:.85rem}
+.pista-card.locked{opacity:.5}
+.explica p{max-width:70ch}
+.tabla-wrap{overflow-x:auto;margin:14px 0}
+table.conj{border-collapse:separate;border-spacing:0;border:2.5px solid var(--cobalto);border-radius:12px;overflow:hidden;min-width:280px;background:#fff}
+table.conj th,table.conj td{padding:7px 14px;border-bottom:1.5px solid #CFDDF3;text-align:left}
+table.conj tr:first-child th{background:var(--cobalto);color:#fff;font-family:var(--display);font-weight:600}
+table.conj td:first-child{font-weight:700;color:var(--cobalto)}
+table.conj b{color:var(--coral)}
+table.conj tr:last-child td{border-bottom:0}
+.ejemplos{list-style:none;padding:0;margin:0 0 10px;display:flex;flex-direction:column;gap:8px}
+.ejemplos li{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.gap{display:inline-block;min-width:3.2em;border-bottom:3px solid var(--coral);text-align:center;font-weight:700;color:var(--coral)}
+.frase{font-family:var(--display);font-size:clamp(1.3rem,3.6vw,1.8rem);font-weight:500;text-align:center;margin:10px 0 22px;line-height:1.35}
+
+/* Dictionary */
+.dic-tools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.dic-tools input,.dic-tools select{border:2.5px solid var(--tinta);border-radius:12px;padding:9px 12px;background:#fff;min-width:0}
+.dic-tools input{flex:1 1 240px}
+.dic-list{display:flex;flex-direction:column;gap:6px}
+.dic-row{display:grid;grid-template-columns:42px minmax(0,1.2fr) minmax(0,1fr) auto auto;gap:10px;align-items:center;background:#fff;border:2px solid var(--tinta);border-radius:12px;padding:6px 10px}
+.dic-row .emo{font-size:1.6rem;text-align:center}
+.dic-row strong{font-family:var(--display);font-weight:600}
+.dic-row small{font-size:.78rem;white-space:nowrap}
+
+/* Progress */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:22px}
+.stat{background:#fff;border:2.5px solid var(--tinta);border-radius:16px;padding:12px;text-align:center;box-shadow:0 4px 0 var(--tinta)}
+.stat b{display:block;font-family:var(--display);font-size:2rem;line-height:1.1}
+.stat small{font-size:.85rem}
+.cromos{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px}
+.cromo{display:flex;flex-direction:column;align-items:center;gap:6px;border:2.5px solid var(--tinta);border-radius:14px;padding:10px 6px;background:#fff;text-align:center;color:var(--tinta)}
+.cromo img{width:64px;height:64px;border-radius:12px}
+.cromo b{font-family:var(--display);font-size:.92rem;line-height:1.2}
+.cromo.nuevo img{filter:grayscale(1) opacity(.45)}
+.cromo.oro{background:#FFF1BF;box-shadow:0 0 0 3px var(--sol) inset}
+.cromo.plata{background:#F1F4F8}
+
+/* Modal and toast */
+.modal-bg{position:fixed;inset:0;z-index:60;background:rgba(23,50,87,.55);display:flex;align-items:center;justify-content:center;padding:16px}
+.modal{background:var(--cal);border:3px solid var(--tinta);border-radius:22px;box-shadow:0 8px 0 var(--tinta);max-width:620px;width:100%;max-height:88vh;overflow:auto;padding:20px}
+.modal-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.cfg-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:10px 0;border-bottom:2px dashed #E3D9BF}
+.cfg-row > span{flex:1 1 180px;font-weight:700}
+.seg{display:inline-flex;flex-wrap:wrap;max-width:100%;border:2px solid var(--tinta);border-radius:12px;overflow:hidden}
+.seg button{border:0;background:#fff;padding:7px 12px;font-family:var(--display);font-weight:600}
+.seg button+button{border-left:2px solid var(--tinta)}
+.seg button[aria-pressed="true"]{background:var(--sol)}
+.vec-modal{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.vec-modal img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid var(--sol)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);z-index:80;background:var(--tinta);color:#fff;font-family:var(--display);font-weight:600;border-radius:14px;padding:10px 18px;max-width:90vw;text-align:center;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+footer{text-align:center;padding:10px 16px 30px;font-size:.85rem;opacity:.8}
+body.is-landing footer{display:none}
+
+@media (max-width:900px){
+  .vecinos{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:650px){
+  .top{gap:8px;flex-wrap:wrap}
+  .top .logo img{height:32px}
+  .nav{order:3;flex-basis:100%}
+  .top-tools{margin-left:auto}
+  .landing{background-image:linear-gradient(180deg,transparent 52%,rgba(10,34,70,.45) 100%),url('assets/accueil-mobile.webp');background-size:100% 100%,100% auto;background-repeat:no-repeat;background-position:center top;padding:14px 12px 22px}
+  .landing-logo{top:7%;width:min(88vw,400px);max-height:22vh}
+  .landing-menu{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .landing-menu .btn{min-height:60px;padding:8px 9px;border-radius:15px;gap:7px}
+  .landing-menu .btn .ico{width:36px;height:36px}
+  .landing-menu .btn small{display:none}
+  .page{padding:16px 12px 50px}
+  .fachadas{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}
+  .ventana{width:76px;height:80px}
+  .fachada .guia{width:40px;height:40px;top:26px}
+  .lugar-hero{grid-template-columns:1fr;justify-items:start}
+  .guia-big{width:96px;height:96px}
+  .opts{grid-template-columns:1fr}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;margin-left:-12px;margin-right:-12px;padding-left:12px;padding-right:12px}
+  .tab{flex:none}
+  .cajas{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .dic-row{grid-template-columns:34px minmax(0,1fr) auto;}
+  .dic-row .fr-col{grid-column:2/3;grid-row:2}
+  .dic-row small{display:none}
+  .vec-modal{grid-template-columns:1fr}
+  .linea .who{width:52px}
+  .avatar{width:46px;height:46px;font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .btn:hover,.fachada:hover{transform:none}
+}
+</style>
+</head>
+<body class="is-landing">
+<header class="top">
+  <button class="logo" data-act="go" data-page="inicio" aria-label="Accueil ¡Palabras!"><img src="assets/logo.webp" alt="¡Palabras!"></button>
+  <nav class="nav" id="nav" aria-label="Menu principal"></nav>
+  <div class="top-tools">
+    <label class="nivel"><span>Mi nivel</span>
+      <select id="grade" aria-label="Choisir ton niveau">
+        <option value="5">5e</option><option value="4">4e</option><option value="3">3e</option>
+      </select>
+    </label>
+    <button class="gear" data-act="ajustes" aria-label="Réglages"><img src="assets/u-ajustes.webp" alt=""></button>
+  </div>
+</header>
+<main id="app" tabindex="-1"></main>
+<footer>¡Palabras! · une application BROT2YOU, gratuite et sans compte · ta progression reste sur cet appareil</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="modal-root"></div>
+<input type="file" id="importFile" accept="application/json,.json" class="hidden">
+
+<script type="application/json" id="palabras-data">{"calles":[{"nivel":5,"nombre":"Calle del Sol"},{"nivel":4,"nombre":"Calle de las Flores"},{"nivel":3,"nombre":"Paseo de la Luna"}],"vecinos":[{"id":"mateo","nombre":"Mateo","edad":12,"ciudad":"Madrid","pais":"España","voz":"es-ES","frase":"Me gusta la historia y el baloncesto.","frasefr":"J'aime l'histoire et le basket.","cultura":"L'Espagne compte 17 communautés autonomes et Madrid en est la capitale. À côté du castillan (l'espagnol), on parle aussi catalan, galicien et basque dans certaines régions. Le 31 décembre, on mange 12 grains de raisin aux douze coups de minuit : las doce uvas. Et en Espagne, on tutoie facilement, même les adultes qu'on connaît bien."},{"id":"valentina","nombre":"Valentina","edad":12,"ciudad":"Ciudad de México","pais":"México","voz":"es-MX","frase":"Me encanta cocinar con mi abuela.","frasefr":"J'adore cuisiner avec ma grand-mère.","cultura":"Le Mexique est le pays qui compte le plus d'hispanophones au monde. Le Día de Muertos, les 1er et 2 novembre, on honore les défunts avec des autels colorés, des fleurs orange (el cempasúchil) et du pan de muerto. Le maïs est la base de la cuisine : tortillas, tacos, tamales. En Amérique latine, on dit ustedes au lieu de vosotros."},{"id":"diego","nombre":"Diego","edad":13,"ciudad":"Sevilla","pais":"España (Andalucía)","voz":"es-ES","frase":"¡El fútbol es mi vida!","frasefr":"Le foot, c'est ma vie !","cultura":"L'Andalousie est la région la plus peuplée d'Espagne. Le flamenco y est né : il est inscrit au patrimoine culturel immatériel de l'UNESCO depuis 2010. En avril, Séville fête la Feria : on danse des sevillanas en robe à volants. Et l'été, il peut faire plus de 40 °C !"},{"id":"lucia","nombre":"Lucía","edad":13,"ciudad":"Buenos Aires","pais":"Argentina","voz":"es-AR","frase":"Me encanta viajar y la moda.","frasefr":"J'adore voyager et la mode.","cultura":"En Argentine, on utilise vos au lieu de tú : vos tenés, vos sos. Entre amis, on partage le mate, une infusion bue dans une calebasse avec une paille en métal (la bombilla). Buenos Aires est la ville du tango. Tout au sud, la Patagonie abrite le glacier Perito Moreno."},{"id":"pablo","nombre":"Pablo","edad":14,"ciudad":"Bogotá","pais":"Colombia","voz":"es-CO","frase":"Me gusta la radio, la música y los museos.","frasefr":"J'aime la radio, la musique et les musées.","cultura":"La Colombie est l'un des pays les plus riches au monde en biodiversité, et son café est célèbre partout. L'écrivain Gabriel García Márquez y est né : il a reçu le prix Nobel de littérature en 1982. Bogotá, la capitale, est perchée à plus de 2 600 mètres d'altitude."},{"id":"sofia","nombre":"Sofía","edad":14,"ciudad":"Lima","pais":"Perú","voz":"es-PE","frase":"Me preocupa el planeta. ¡Un día seré alcaldesa!","frasefr":"La planète m'inquiète. Un jour, je serai maire !","cultura":"Au Pérou, l'espagnol partage le statut de langue officielle avec le quechua, la langue des Incas. Le Machu Picchu, cité inca perchée dans les Andes, est l'un des sites les plus visités d'Amérique du Sud. Le ceviche, du poisson cru mariné au citron vert, est le plat national."}],"extras":{"vendedora":{"nombre":"Doña Carmen","voz":"es-ES","avatar":"🧑‍🌾"},"medica":{"nombre":"Doctora López","voz":"es-ES","avatar":"👩‍⚕️"}},"lugares":[{"id":"plaza","nombre":"La Plaza","icono":"i-fuente","nivel":5,"guia":"mateo","tema":"Saluer et se présenter","pista":"p-ser","intro":["¡Hola! Soy Mateo. Esta es la plaza: aquí todo el barrio se saluda.","Salut ! Je suis Mateo. Voici la place : ici, tout le quartier se dit bonjour."],"cultura":"En Espagne, la **plaza mayor** est le cœur de la ville : on s'y retrouve, on s'installe en terrasse, on y fait la fête. Pour saluer, on fait souvent **dos besos** (deux bises) en Espagne, une seule en Amérique latine. On dit **¡Buenos días!** jusqu'au déjeuner, puis **¡Buenas tardes!** jusqu'au soir.","palabras":[["¡Hola!","Salut !","👋","¡Hola! ¿Qué tal?","Salut ! Ça va ?"],["buenos días","bonjour (le matin)","☀️","Buenos días, señora.","Bonjour, madame."],["buenas tardes","bonjour (l'après-midi)","🌇","Buenas tardes, chicos.","Bonjour, les jeunes."],["buenas noches","bonsoir, bonne nuit","🌙","Buenas noches, mamá.","Bonne nuit, maman."],["adiós","au revoir","🚶","Adiós, ¡hasta mañana!","Au revoir, à demain !"],["hasta luego","à plus tard","⏳","Hasta luego, Diego.","À plus tard, Diego."],["¿Qué tal?","Comment ça va ?","🙂","¿Qué tal, Lucía?","Ça va, Lucía ?"],["muy bien","très bien","👍","Estoy muy bien, gracias.","Je vais très bien, merci."],["gracias","merci","🙏","Muchas gracias, Mateo.","Merci beaucoup, Mateo."],["por favor","s'il te plaît, s'il vous plaît","🤲","Un agua, por favor.","Une eau, s'il vous plaît."],["me llamo…","je m'appelle…","🏷️","Me llamo Mateo.","Je m'appelle Mateo."],["¿Cómo te llamas?","Comment tu t'appelles ?","❓","Hola, ¿cómo te llamas?","Salut, comment tu t'appelles ?"],["tengo … años","j'ai … ans","🎂","Tengo doce años.","J'ai douze ans."],["¿Cuántos años tienes?","Quel âge as-tu ?","🔢","¿Cuántos años tienes, Sofía?","Quel âge as-tu, Sofía ?"],["soy de…","je suis de…","📍","Soy de Madrid.","Je suis de Madrid."],["¿De dónde eres?","D'où es-tu ?","🌍","¿De dónde eres, Pablo?","D'où es-tu, Pablo ?"],["mucho gusto","enchanté(e)","🤝","Me llamo Sofía. ¡Mucho gusto!","Je m'appelle Sofía. Enchantée !"],["el chico","le garçon","👦","El chico se llama Diego.","Le garçon s'appelle Diego."],["la chica","la fille","👧","La chica es de México.","La fille est du Mexique."],["el vecino / la vecina","le voisin, la voisine","🏘️","Mi vecino es muy simpático.","Mon voisin est très sympathique."],["la plaza","la place","⛲","Nos vemos en la plaza.","On se voit sur la place."]],"episodio":{"titulo":"Una vecina nueva","lineas":[["mateo","¡Hola! Me llamo Mateo. ¿Y tú? ¿Cómo te llamas?","Salut ! Je m'appelle Mateo. Et toi ? Comment tu t'appelles ?"],["sofia","Hola, Mateo. Me llamo Sofía. ¡Mucho gusto!","Salut, Mateo. Je m'appelle Sofía. Enchantée !"],["mateo","Mucho gusto. ¿De dónde eres?","Enchanté. D'où es-tu ?"],["sofia","Soy de Lima, en Perú. Soy nueva en el barrio.","Je suis de Lima, au Pérou. Je suis nouvelle dans le quartier."],["mateo","¡Qué bien! Yo soy de Madrid. ¿Cuántos años tienes?","Super ! Moi, je suis de Madrid. Quel âge as-tu ?"],["sofia","Tengo catorce años. ¿Y tú?","J'ai quatorze ans. Et toi ?"],["mateo","Tengo doce años. ¡Bienvenida a la plaza!","J'ai douze ans. Bienvenue sur la place !"],["sofia","Gracias, Mateo. ¡Hasta luego!","Merci, Mateo. À plus tard !"]],"preguntas":[["D'où vient Sofía ?",["De Madrid","De Lima","De Bogotá"],1],["Quel âge a Mateo ?",["12 ans","13 ans","14 ans"],0],["Que dit Sofía sur elle ?",["Elle habite le quartier depuis longtemps","Elle est nouvelle dans le quartier","Elle est la prof de Mateo"],1]]}},{"id":"casa","nombre":"La Casa","icono":"i-maceta","nivel":5,"guia":"valentina","tema":"La famille et la maison","pista":"p-tener","intro":["¡Bienvenido a mi casa! Te presento a mi familia.","Bienvenue chez moi ! Je te présente ma famille."],"cultura":"Au Mexique comme en Espagne, la famille est très présente : les grands-parents vivent souvent tout près et on se retrouve le dimanche pour un long repas. Les hispanophones ont **deux noms de famille** : celui du père puis celui de la mère. Valentina García López porte donc le nom **García** de son père et **López** de sa mère.","palabras":[["la familia","la famille","👨‍👩‍👧","Mi familia es grande.","Ma famille est grande."],["la madre","la mère","👩","Mi madre se llama Rosa.","Ma mère s'appelle Rosa."],["el padre","le père","👨","Mi padre es alto.","Mon père est grand."],["los padres","les parents","👫","Mis padres trabajan mucho.","Mes parents travaillent beaucoup."],["el hermano","le frère","👦","Tengo un hermano pequeño.","J'ai un petit frère."],["la hermana","la sœur","👧","Mi hermana tiene ocho años.","Ma sœur a huit ans."],["el abuelo","le grand-père","👴","Mi abuelo vive en Puebla.","Mon grand-père vit à Puebla."],["la abuela","la grand-mère","👵","Mi abuela cocina muy bien.","Ma grand-mère cuisine très bien."],["el tío","l'oncle","🧔","Mi tío es muy simpático.","Mon oncle est très sympathique."],["la tía","la tante","👩‍🦰","Mi tía vive en Monterrey.","Ma tante vit à Monterrey."],["el primo / la prima","le cousin, la cousine","🧒","Mi primo juega al fútbol.","Mon cousin joue au foot."],["el perro","le chien","🐶","Tengo un perro marrón.","J'ai un chien marron."],["el gato","le chat","🐱","Mi gato es negro.","Mon chat est noir."],["la casa","la maison","🏠","Vivo en una casa pequeña.","Je vis dans une petite maison."],["el piso / el departamento","l'appartement (Espagne / Amérique)","🏢","Vivimos en un piso grande.","Nous vivons dans un grand appartement."],["la habitación","la chambre","🛏️","Mi habitación es azul.","Ma chambre est bleue."],["la cocina","la cuisine","🍳","La cocina es muy grande.","La cuisine est très grande."],["el salón","le salon","🛋️","Vemos la tele en el salón.","Nous regardons la télé dans le salon."],["el baño","la salle de bains","🛁","El baño está arriba.","La salle de bains est en haut."],["el jardín","le jardin","🌷","Hay flores en el jardín.","Il y a des fleurs dans le jardin."]],"episodio":{"titulo":"La familia de Valentina","lineas":[["valentina","Mira, Diego, esta es mi casa. Es pequeña pero bonita.","Regarde, Diego, voici ma maison. Elle est petite mais jolie."],["diego","¡Qué bonita! ¿Vives con tus padres?","Qu'elle est jolie ! Tu vis avec tes parents ?"],["valentina","Sí, vivo con mis padres, mi hermano y mi abuela.","Oui, je vis avec mes parents, mon frère et ma grand-mère."],["diego","¿Cómo se llama tu hermano?","Comment s'appelle ton frère ?"],["valentina","Se llama Andrés. Tiene ocho años y es muy divertido.","Il s'appelle Andrés. Il a huit ans et il est très drôle."],["diego","¿Y tienes animales?","Et tu as des animaux ?"],["valentina","Sí, tengo un gato negro. Se llama Tako y duerme en mi habitación.","Oui, j'ai un chat noir. Il s'appelle Tako et il dort dans ma chambre."],["diego","¡Yo tengo un perro! Se llama Rayo.","Moi, j'ai un chien ! Il s'appelle Rayo."]],"preguntas":[["Avec qui vit Valentina ?",["Avec ses parents, son frère et sa grand-mère","Seule avec sa mère","Avec ses cousins"],0],["Quel âge a Andrés ?",["6 ans","8 ans","12 ans"],1],["Où dort Tako, le chat ?",["Dans le salon","Dans la cuisine","Dans la chambre de Valentina"],2]]}},{"id":"instituto","nombre":"El Instituto","icono":"i-libros","nivel":5,"guia":"mateo","tema":"Le collège","pista":"p-ar","intro":["Este es mi instituto. ¡Vamos a clase!","Voici mon collège. Allons en cours !"],"cultura":"En Espagne, on va **al colegio** jusqu'à 12 ans, puis **al instituto** (la ESO, de 12 à 16 ans). Dans beaucoup de régions, les cours finissent vers 14 h 30 et l'après-midi est libre. Les notes vont de 0 à 10 : avec **5**, on est **aprobado** (reçu).","palabras":[["el instituto","le collège, le lycée","🏫","Voy al instituto en autobús.","Je vais au collège en bus."],["la clase","la classe, le cours","📋","La clase empieza a las ocho y media.","Le cours commence à huit heures et demie."],["el profesor / la profesora","le professeur, la professeure","🧑‍🏫","La profesora explica la lección.","La prof explique la leçon."],["el alumno / la alumna","l'élève","🧑‍🎓","Somos veinticinco alumnos.","Nous sommes vingt-cinq élèves."],["la asignatura","la matière","📚","Mi asignatura favorita es la historia.","Ma matière préférée est l'histoire."],["las matemáticas","les mathématiques","➗","Las matemáticas son difíciles.","Les maths sont difficiles."],["el inglés","l'anglais","🗽","Estudio inglés y francés.","J'étudie l'anglais et le français."],["la historia","l'histoire","🏺","Me gusta mucho la historia.","J'aime beaucoup l'histoire."],["la educación física","l'EPS","🏃","Tenemos educación física el lunes.","Nous avons EPS le lundi."],["el recreo","la récréation","🔔","En el recreo hablo con mis amigos.","À la récré, je parle avec mes amis."],["el horario","l'emploi du temps","🗓️","Mi horario es muy largo.","Mon emploi du temps est très long."],["el libro","le livre","📖","Abre el libro, por favor.","Ouvre le livre, s'il te plaît."],["el cuaderno","le cahier","📓","Mi cuaderno está en la mochila.","Mon cahier est dans le sac."],["el bolígrafo","le stylo","🖊️","¿Tienes un bolígrafo?","Tu as un stylo ?"],["la mochila","le sac à dos","🎒","Mi mochila pesa mucho.","Mon sac pèse lourd."],["los deberes","les devoirs","📝","Hago los deberes por la tarde.","Je fais mes devoirs l'après-midi."],["estudiar","étudier, travailler","🤓","Estudio en la biblioteca.","J'étudie à la bibliothèque."],["escuchar","écouter","👂","Escucho a la profesora.","J'écoute la prof."],["hablar","parler","🗣️","Hablo español en clase.","Je parle espagnol en classe."],["la biblioteca","la bibliothèque, le CDI","🏛️","La biblioteca está cerrada.","La bibliothèque est fermée."]],"episodio":{"titulo":"¡Mi cuaderno!","lineas":[["pablo","Mateo, ¿qué clase tenemos ahora?","Mateo, on a quel cours maintenant ?"],["mateo","Ahora tenemos matemáticas con la profesora Ruiz.","Maintenant, on a maths avec Mme Ruiz."],["pablo","¡Uf! Las matemáticas son difíciles para mí.","Pff ! Les maths, c'est difficile pour moi."],["mateo","Para mí no. Pero mi asignatura favorita es la historia.","Pas pour moi. Mais ma matière préférée, c'est l'histoire."],["pablo","A mí me gusta el inglés. Escucho canciones en inglés todos los días.","Moi, j'aime l'anglais. J'écoute des chansons en anglais tous les jours."],["mateo","¿Tienes los deberes de historia?","Tu as les devoirs d'histoire ?"],["pablo","Sí, están en mi mochila… ¡Ay, no! ¡Mi cuaderno está en casa!","Oui, ils sont dans mon sac… Oh non ! Mon cahier est à la maison !"],["mateo","Tranquilo. En el recreo estudiamos juntos.","T'inquiète. À la récré, on travaille ensemble."]],"preguntas":[["Quel cours ont-ils maintenant ?",["Histoire","Mathématiques","Anglais"],1],["Quelle est la matière préférée de Mateo ?",["Les maths","L'histoire","L'anglais"],1],["Quel est le problème de Pablo ?",["Il a oublié son cahier à la maison","Il est en retard","Il a perdu son stylo"],0]]}},{"id":"mercado","nombre":"El Mercado","icono":"i-naranjas","nivel":5,"guia":"valentina","tema":"La nourriture et les courses","pista":"p-gustar","intro":["¡Vamos al mercado! Doña Carmen tiene la mejor fruta del barrio.","Allons au marché ! Madame Carmen a les meilleurs fruits du quartier."],"cultura":"En Espagne, on mange plus tard qu'en France : **la comida** vers 14 h et **la cena** vers 21 h ou 22 h. Les marchés couverts, comme **la Boqueria** à Barcelone, sont des lieux de vie. Au Mexique, on fait ses courses au **tianguis**, un marché en plein air dont la tradition remonte aux Aztèques.","palabras":[["el mercado","le marché","🧺","Voy al mercado con mi madre.","Je vais au marché avec ma mère."],["la fruta","les fruits","🍓","La fruta está muy fresca.","Les fruits sont très frais."],["la manzana","la pomme","🍎","Como una manzana en el recreo.","Je mange une pomme à la récré."],["la naranja","l'orange","🍊","Las naranjas de Valencia son famosas.","Les oranges de Valence sont célèbres."],["el plátano","la banane","🍌","Me gusta el plátano.","J'aime la banane."],["el tomate","la tomate","🍅","Compramos un kilo de tomates.","Nous achetons un kilo de tomates."],["la patata / la papa","la pomme de terre (Espagne / Amérique)","🥔","Mi abuela prepara patatas.","Ma grand-mère prépare des pommes de terre."],["el pan","le pain","🍞","Compro pan en la panadería.","J'achète du pain à la boulangerie."],["el queso","le fromage","🧀","Me encanta el queso manchego.","J'adore le fromage manchego."],["el pescado","le poisson (à manger)","🐟","El pescado está fresco.","Le poisson est frais."],["la carne","la viande","🥩","No como carne.","Je ne mange pas de viande."],["el pollo","le poulet","🍗","Hoy comemos pollo con arroz.","Aujourd'hui, nous mangeons du poulet avec du riz."],["el agua","l'eau","💧","Bebo mucha agua.","Je bois beaucoup d'eau.",{"nog":1}],["la leche","le lait","🥛","Desayuno leche con cereales.","Je prends du lait avec des céréales au petit-déjeuner."],["el chocolate","le chocolat","🍫","Me encanta el chocolate caliente.","J'adore le chocolat chaud."],["el desayuno","le petit-déjeuner","🥐","El desayuno es a las siete.","Le petit-déjeuner est à sept heures."],["la comida","le repas, le déjeuner","🍽️","La comida es a las dos.","Le déjeuner est à deux heures."],["la cena","le dîner","🌮","La cena es a las nueve.","Le dîner est à neuf heures."],["comprar","acheter","🛒","Voy a comprar fruta.","Je vais acheter des fruits."],["¿Cuánto cuesta?","Combien ça coûte ?","💰","¿Cuánto cuesta un kilo de tomates?","Combien coûte un kilo de tomates ?"],["el kilo","le kilo","⚖️","Un kilo de naranjas, por favor.","Un kilo d'oranges, s'il vous plaît."]],"episodio":{"titulo":"En el puesto de doña Carmen","lineas":[["valentina","Buenos días, doña Carmen.","Bonjour, madame Carmen."],["vendedora","Buenos días, Valentina. ¿Qué quieres hoy?","Bonjour, Valentina. Qu'est-ce que tu veux aujourd'hui ?"],["valentina","Un kilo de tomates y dos aguacates, por favor.","Un kilo de tomates et deux avocats, s'il vous plaît."],["vendedora","Aquí tienes. ¿Algo más?","Voilà. Autre chose ?"],["valentina","Sí. ¿Cuánto cuestan las naranjas?","Oui. Combien coûtent les oranges ?"],["vendedora","Dos euros el kilo. Son de Valencia, ¡están muy dulces!","Deux euros le kilo. Elles viennent de Valence, elles sont très sucrées !"],["valentina","¡Me encantan las naranjas! Un kilo, por favor.","J'adore les oranges ! Un kilo, s'il vous plaît."],["vendedora","Son seis euros en total. ¡Gracias, guapa!","Ça fait six euros en tout. Merci, ma belle !"]],"preguntas":[["Que demande Valentina en premier ?",["Des tomates et des avocats","Du pain et du fromage","Du poisson"],0],["Combien coûtent les oranges ?",["1 € le kilo","2 € le kilo","6 € le kilo"],1],["Combien paie Valentina en tout ?",["2 €","4 €","6 €"],2]]}},{"id":"parque","nombre":"El Parque","icono":"i-banco","nivel":4,"guia":"diego","tema":"Les loisirs et le sport","pista":"p-diptongo","intro":["¿Juegas al fútbol? En el parque siempre hay un partido.","Tu joues au foot ? Au parc, il y a toujours un match."],"cultura":"Le football est une passion en Espagne. À Séville, deux clubs rivaux se partagent la ville, **el Betis** et **el Sevilla** : leur match s'appelle **el derbi sevillano**. Le basket (**el baloncesto**) est l'autre grand sport du pays, et les parcs se remplissent le soir, quand il fait moins chaud.","palabras":[["el parque","le parc","🌳","Quedamos en el parque.","On se retrouve au parc."],["el fútbol","le football","⚽","Juego al fútbol los sábados.","Je joue au foot le samedi."],["el baloncesto","le basket","🏀","Mateo prefiere el baloncesto.","Mateo préfère le basket."],["la natación","la natation","🏊","Hago natación dos veces por semana.","Je fais de la natation deux fois par semaine."],["montar en bici","faire du vélo","🚲","Monto en bici en el parque.","Je fais du vélo au parc."],["correr","courir","🏃","Corro con mi padre los domingos.","Je cours avec mon père le dimanche."],["patinar","faire du roller, patiner","🛼","Mi hermana patina muy bien.","Ma sœur fait très bien du roller."],["jugar","jouer","🎮","Juego a los videojuegos con mi primo.","Je joue aux jeux vidéo avec mon cousin."],["el partido","le match","🏟️","El partido empieza a las seis.","Le match commence à six heures."],["el equipo","l'équipe","👕","Mi equipo favorito es el Betis.","Mon équipe préférée est le Betis."],["el balón","le ballon","🏐","¿Dónde está el balón?","Où est le ballon ?"],["ganar","gagner","🏆","Mi equipo gana casi siempre.","Mon équipe gagne presque toujours."],["perder","perdre","😞","Hoy perdemos tres a uno.","Aujourd'hui, nous perdons trois à un."],["quedar","se donner rendez-vous","📲","¿Quedamos a las cinco?","On se retrouve à cinq heures ?"],["el tiempo libre","le temps libre","⏱️","En mi tiempo libre, leo cómics.","Pendant mon temps libre, je lis des BD."],["leer","lire","📚","Me gusta leer en el parque.","J'aime lire au parc."],["dibujar","dessiner","🎨","Dibujo personajes de manga.","Je dessine des personnages de manga."],["bailar","danser","💃","Mi hermana baila flamenco.","Ma sœur danse le flamenco."],["escuchar música","écouter de la musique","🎧","Escucho música en el autobús.","J'écoute de la musique dans le bus."],["me encanta","j'adore","😍","Me encanta bailar.","J'adore danser."],["prefiero","je préfère","🤔","Prefiero el baloncesto.","Je préfère le basket."],["odio","je déteste","😤","Odio perder.","Je déteste perdre."]],"episodio":{"titulo":"Betis contra Real Madrid","lineas":[["diego","¡Mateo! ¿Quedamos en el parque esta tarde?","Mateo ! On se retrouve au parc cet après-midi ?"],["mateo","Vale. ¿Jugamos al fútbol?","D'accord. On joue au foot ?"],["diego","¡Claro! Juego al fútbol todos los días. Me encanta.","Bien sûr ! Je joue au foot tous les jours. J'adore."],["mateo","Yo prefiero el baloncesto, pero puedo jugar al fútbol.","Moi, je préfère le basket, mais je peux jouer au foot."],["diego","Y después, ¿quieres ver el partido del Betis en mi casa?","Et après, tu veux voir le match du Betis chez moi ?"],["mateo","¡Uf! Yo soy del Real Madrid…","Pff ! Moi, je suis pour le Real Madrid…"],["diego","No pasa nada. ¡Hoy gana el Betis!","Pas grave. Aujourd'hui, c'est le Betis qui gagne !"],["mateo","Ya veremos. ¡Hasta las cinco!","On verra bien. À cinq heures !"]],"preguntas":[["Que fait Diego tous les jours ?",["Du basket","Du foot","Du vélo"],1],["Quel est le sport préféré de Mateo ?",["Le foot","La natation","Le basket"],2],["Quelle équipe soutient Mateo ?",["Le Betis","Le Real Madrid","Le Sevilla"],1]]}},{"id":"terraza","nombre":"La Terraza","icono":"i-terraza","nivel":4,"guia":"mateo","tema":"La journée et l'heure","pista":"p-pronominal","intro":["En la terraza hablamos de todo: del día, de la hora, de la vida.","Sur la terrasse, on parle de tout : de la journée, de l'heure, de la vie."],"cultura":"En Espagne, la journée est décalée : on prend le goûter (**la merienda**) vers 18 h et on dîne tard. L'été, les terrasses restent pleines jusqu'à minuit. Mais la **siesta** tous les jours est surtout un cliché : la plupart des Espagnols n'ont pas le temps d'en faire une !","palabras":[["despertarse","se réveiller","⏰","Me despierto a las siete.","Je me réveille à sept heures."],["levantarse","se lever","🛏️","Me levanto temprano.","Je me lève tôt."],["ducharse","se doucher","🚿","Me ducho por la mañana.","Je me douche le matin."],["vestirse","s'habiller","🧦","Me visto muy rápido.","Je m'habille très vite."],["desayunar","prendre le petit-déjeuner","🥣","Desayuno cereales con leche.","Je prends des céréales au lait au petit-déjeuner."],["comer","manger, déjeuner","🍝","Como a las dos con mi familia.","Je déjeune à deux heures avec ma famille."],["merendar","prendre le goûter","🥪","Meriendo a las seis.","Je goûte à six heures."],["cenar","dîner","🌙","Cenamos a las nueve y media.","Nous dînons à neuf heures et demie."],["acostarse","se coucher","😴","Me acuesto a las diez.","Je me couche à dix heures."],["temprano","tôt","🐓","Mi padre se levanta temprano.","Mon père se lève tôt."],["tarde","tard","🦉","El sábado me acuesto tarde.","Le samedi, je me couche tard."],["por la mañana","le matin","🌅","Por la mañana voy al instituto.","Le matin, je vais au collège."],["por la tarde","l'après-midi","🌆","Por la tarde hago los deberes.","L'après-midi, je fais mes devoirs."],["por la noche","le soir, la nuit","🌃","Por la noche leo en la cama.","Le soir, je lis au lit."],["siempre","toujours","🔁","Siempre desayuno en casa.","Je prends toujours mon petit-déjeuner à la maison."],["a veces","parfois","🎲","A veces como en la terraza.","Parfois, je mange sur la terrasse."],["nunca","jamais","🚫","Nunca me levanto tarde.","Je ne me lève jamais tard."],["¿Qué hora es?","Quelle heure est-il ?","🕐","Perdona, ¿qué hora es?","Pardon, quelle heure est-il ?"],["son las dos","il est deux heures","🕑","Son las dos y media.","Il est deux heures et demie."],["y media","et demie","🕧","Es la una y media.","Il est une heure et demie."],["menos cuarto","moins le quart","🕤","Son las tres menos cuarto.","Il est trois heures moins le quart."],["el fin de semana","le week-end","🎉","El fin de semana duermo mucho.","Le week-end, je dors beaucoup."],["la terraza","la terrasse","☕","Merendamos en la terraza.","Nous goûtons sur la terrasse."]],"episodio":{"titulo":"Mateo está cansado","lineas":[["lucia","Mateo, ¡qué cara de cansado tienes!","Mateo, tu as l'air vraiment fatigué !"],["mateo","Sí… Me levanto a las siete y me acuesto muy tarde.","Oui… Je me lève à sept heures et je me couche très tard."],["lucia","¿A qué hora te acuestas?","À quelle heure tu te couches ?"],["mateo","A las once y media. Ceno a las diez, como mi familia.","À onze heures et demie. Je dîne à dix heures, comme ma famille."],["lucia","¡A las diez! En Buenos Aires también cenamos muy tarde.","À dix heures ! À Buenos Aires aussi, on dîne très tard."],["mateo","Y por la mañana nunca desayuno. No tengo tiempo.","Et le matin, je ne prends jamais de petit-déjeuner. Je n'ai pas le temps."],["lucia","¡Mal! Mañana desayunamos juntos aquí, en la terraza. A las ocho menos cuarto.","Pas bien ! Demain, on prend le petit-déjeuner ensemble ici, sur la terrasse. À huit heures moins le quart."],["mateo","Vale, pero ¡tú me despiertas!","D'accord, mais c'est toi qui me réveilles !"]],"preguntas":[["À quelle heure se couche Mateo ?",["22 h","23 h 30","Minuit"],1],["Que ne fait jamais Mateo ?",["Dîner","Prendre son petit-déjeuner","Se doucher"],1],["Quel rendez-vous fixent-ils ?",["Demain 7 h 45 sur la terrasse","Demain 8 h 15 au collège","Ce soir 22 h chez Lucía"],0]]}},{"id":"estacion","nombre":"La Estación","icono":"i-cartel","nivel":4,"guia":"lucia","tema":"Les voyages et les transports","pista":"p-ira","intro":["¡Che, bienvenido a la estación! ¿Adónde vas a viajar?","Hé, bienvenue à la gare ! Où vas-tu voyager ?"],"cultura":"L'Espagne possède l'un des plus grands réseaux de trains à grande vitesse au monde : **el AVE** relie Madrid à Séville en 2 h 30 environ. En Argentine, les distances sont immenses : pour aller de Buenos Aires à la Patagonie, on prend souvent **el micro** (le car) de nuit ou l'avion.","palabras":[["la estación","la gare","🚉","La estación está cerca de la plaza.","La gare est près de la place."],["el tren","le train","🚆","Tomo el tren a Barcelona.","Je prends le train pour Barcelone."],["el autobús","le bus","🚌","Voy al instituto en autobús.","Je vais au collège en bus."],["el avión","l'avion","✈️","Viajo en avión a Buenos Aires.","Je vais à Buenos Aires en avion."],["el metro","le métro","🚇","Tomo el metro para ir al centro.","Je prends le métro pour aller au centre."],["el coche / el auto","la voiture (Espagne / Amérique)","🚗","Mi madre va al trabajo en coche.","Ma mère va au travail en voiture."],["a pie","à pied","🚶‍♀️","Voy al parque a pie.","Je vais au parc à pied."],["el billete / el boleto","le billet (Espagne / Amérique)","🎫","No encuentro mi billete.","Je ne trouve pas mon billet."],["la maleta","la valise","🧳","Mi maleta es muy pesada.","Ma valise est très lourde."],["el viaje","le voyage","🧭","¡Buen viaje!","Bon voyage !"],["viajar","voyager","🌎","Voy a viajar a Argentina.","Je vais voyager en Argentine."],["salir","partir, sortir","🚪","El tren sale a las diez.","Le train part à dix heures."],["llegar","arriver","🏁","Llegamos a Córdoba por la noche.","Nous arrivons à Cordoue le soir."],["el andén","le quai","🛤️","El tren está en el andén tres.","Le train est quai trois."],["el mapa","la carte, le plan","🗺️","Mira el mapa del metro.","Regarde le plan du métro."],["el pasaporte","le passeport","🛂","Necesito mi pasaporte.","J'ai besoin de mon passeport."],["las vacaciones","les vacances","🌴","En vacaciones voy a casa de mis abuelos.","En vacances, je vais chez mes grands-parents."],["la playa","la plage","🏖️","Vamos a la playa en agosto.","Nous allons à la plage en août."],["la montaña","la montagne","⛰️","Vamos a la montaña en invierno.","Nous allons à la montagne en hiver."],["el hotel","l'hôtel","🏨","El hotel está cerca de la playa.","L'hôtel est près de la plage."],["reservar","réserver","💻","Mis padres reservan el hotel.","Mes parents réservent l'hôtel."],["la frontera","la frontière","🚧","Pasamos la frontera con Francia.","Nous passons la frontière avec la France."]],"episodio":{"titulo":"El billete perdido","lineas":[["lucia","¡Sofía! ¿Adónde vas con esa maleta?","Sofía ! Où vas-tu avec cette valise ?"],["sofia","Voy a viajar a Barcelona con mi familia.","Je vais voyager à Barcelone avec ma famille."],["lucia","¡Qué suerte! ¿Vas a ir en avión?","Quelle chance ! Tu vas y aller en avion ?"],["sofia","No, vamos a tomar el tren. Es más ecológico.","Non, nous allons prendre le train. C'est plus écologique."],["lucia","¿A qué hora sale el tren?","À quelle heure part le train ?"],["sofia","Sale a las diez y cuarto del andén cuatro. ¡Y no encuentro mi billete!","Il part à dix heures et quart, quai quatre. Et je ne trouve pas mon billet !"],["lucia","Mirá… ¡está en tu mano!","Regarde… il est dans ta main !"],["sofia","¡Ay, qué despistada soy! Gracias, Lucía. ¡Hasta la vuelta!","Oh, que je suis tête en l'air ! Merci, Lucía. À mon retour !"]],"preguntas":[["Où va Sofía ?",["À Madrid","À Barcelone","À Buenos Aires"],1],["Comment voyage-t-elle ?",["En avion","En bus","En train"],2],["Où est le billet de Sofía ?",["Dans la valise","Dans sa main","À la maison"],1]]}},{"id":"tiendas","nombre":"Las Tiendas","icono":"i-abanico","nivel":4,"guia":"lucia","tema":"Les vêtements et les achats","pista":"p-comparar","intro":["¡Me encanta ir de tiendas! ¿Me ayudás a elegir?","J'adore faire les magasins ! Tu m'aides à choisir ?"],"cultura":"On ne paie pas avec la même monnaie partout : **el euro** en Espagne, **el peso** en Argentine, au Mexique et en Colombie, **el sol** au Pérou. Le vocabulaire change aussi : un tee-shirt se dit **una camiseta** en Espagne mais **una remera** en Argentine !","palabras":[["la tienda","le magasin","🏬","La tienda abre a las diez.","Le magasin ouvre à dix heures."],["la ropa","les vêtements","👚","Me gusta la ropa de colores.","J'aime les vêtements colorés."],["la camiseta","le tee-shirt","👕","Llevo una camiseta blanca.","Je porte un tee-shirt blanc."],["el pantalón","le pantalon","👖","Este pantalón es muy cómodo.","Ce pantalon est très confortable."],["la falda","la jupe","🩰","La falda es demasiado larga.","La jupe est trop longue."],["el vestido","la robe","👗","Lucía lleva un vestido azul.","Lucía porte une robe bleue."],["los zapatos","les chaussures","👞","Necesito zapatos nuevos.","J'ai besoin de chaussures neuves."],["las zapatillas","les baskets","👟","Mis zapatillas son blancas.","Mes baskets sont blanches."],["la chaqueta","la veste","🧥","Esta chaqueta es muy cara.","Cette veste est très chère."],["la gorra","la casquette","🧢","Diego lleva una gorra verde.","Diego porte une casquette verte."],["llevar","porter (un vêtement)","🧍","Hoy llevo un vestido.","Aujourd'hui, je porte une robe."],["probarse","essayer (un vêtement)","🪞","¿Puedo probarme esta chaqueta?","Je peux essayer cette veste ?"],["la talla","la taille","📏","¿Qué talla tienes?","Quelle taille fais-tu ?"],["caro / cara","cher, chère","💸","Es demasiado caro.","C'est trop cher."],["barato / barata","bon marché","🏷️","Esta camiseta es barata.","Ce tee-shirt n'est pas cher."],["el precio","le prix","💲","¿Cuál es el precio?","Quel est le prix ?"],["pagar","payer","💳","¿Puedo pagar con tarjeta?","Je peux payer par carte ?"],["rojo / roja","rouge","🔴","Mi gorra es roja.","Ma casquette est rouge."],["azul","bleu, bleue","🔵","Me gusta la chaqueta azul.","J'aime la veste bleue."],["verde","vert, verte","🟢","Diego lleva una gorra verde.","Diego porte une casquette verte."],["amarillo / amarilla","jaune","🟡","Valentina lleva una chaqueta amarilla.","Valentina porte une veste jaune."],["negro / negra","noir, noire","⚫","Mis zapatos son negros.","Mes chaussures sont noires."],["blanco / blanca","blanc, blanche","⚪","Las zapatillas blancas son bonitas.","Les baskets blanches sont jolies."]],"episodio":{"titulo":"La chaqueta perfecta","lineas":[["lucia","Valentina, ¿qué te parece esta chaqueta?","Valentina, qu'est-ce que tu penses de cette veste ?"],["valentina","Es bonita, pero es muy cara. Cuesta ochenta euros.","Elle est jolie, mais elle est très chère. Elle coûte quatre-vingts euros."],["lucia","¿Y esa chaqueta azul? Es más barata que la roja.","Et cette veste bleue ? Elle est moins chère que la rouge."],["valentina","Sí, cuesta treinta euros. ¿Qué talla tienes?","Oui, elle coûte trente euros. Quelle taille fais-tu ?"],["lucia","La M. Voy a probármela.","Du M. Je vais l'essayer."],["valentina","¡Te queda genial! Es perfecta con tus zapatillas blancas.","Elle te va super bien ! Elle est parfaite avec tes baskets blanches."],["lucia","Entonces me la llevo. ¿Puedo pagar con tarjeta?","Alors je la prends. Je peux payer par carte ?"],["valentina","¡Claro! Y después vamos a la terraza.","Bien sûr ! Et après, on va à la terrasse."]],"preguntas":[["Combien coûte la veste rouge ?",["30 €","50 €","80 €"],2],["Quelle veste Lucía achète-t-elle ?",["La rouge","La bleue","La blanche"],1],["Quelle taille fait Lucía ?",["S","M","L"],1]]}},{"id":"salud","nombre":"El Centro de Salud","icono":"i-cactus","nivel":4,"guia":"diego","tema":"Le corps, la santé, les émotions","pista":"p-serestar","intro":["¡Ay, mi pie! Acompáñame al centro de salud, por favor.","Aïe, mon pied ! Accompagne-moi au centre de santé, s'il te plaît."],"cultura":"Pour dire « j'ai mal », l'espagnol utilise **doler** comme **gustar** : **me duele la cabeza**, **me duelen los pies**. En Espagne, la pharmacie se repère à sa croix verte, comme en France. Au Mexique, on dit **enojado** plutôt que **enfadado** pour « fâché ».","palabras":[["la cabeza","la tête","🤕","Me duele la cabeza.","J'ai mal à la tête."],["el brazo","le bras","💪","Tengo el brazo roto.","J'ai le bras cassé."],["la pierna","la jambe","🦵","Me duele la pierna derecha.","J'ai mal à la jambe droite."],["el pie","le pied","🦶","Me duele mucho el pie.","J'ai très mal au pied."],["la mano","la main","✋","Levanta la mano.","Lève la main."],["la espalda","le dos","🧍‍♂️","Mi mochila pesa y me duele la espalda.","Mon sac pèse lourd et j'ai mal au dos."],["el estómago","l'estomac, le ventre","🤢","Me duele el estómago.","J'ai mal au ventre."],["los ojos","les yeux","👀","Tengo los ojos verdes.","J'ai les yeux verts."],["la boca","la bouche","👄","Abre la boca, por favor.","Ouvre la bouche, s'il te plaît."],["me duele","j'ai mal à","😣","Me duele el pie.","J'ai mal au pied."],["estar enfermo / enferma","être malade","🤒","Hoy estoy enfermo.","Aujourd'hui, je suis malade."],["el médico / la médica","le médecin","🩺","Voy al médico esta tarde.","Je vais chez le médecin cet après-midi."],["la farmacia","la pharmacie","💊","La farmacia está en la plaza.","La pharmacie est sur la place."],["descansar","se reposer","🛌","Tienes que descansar.","Tu dois te reposer."],["contento / contenta","content, contente","😊","Hoy estoy muy contenta.","Aujourd'hui, je suis très contente."],["triste","triste","😢","Diego está triste.","Diego est triste."],["cansado / cansada","fatigué, fatiguée","🥱","Estoy cansado después del partido.","Je suis fatigué après le match."],["nervioso / nerviosa","nerveux, stressé","😬","Estoy nerviosa antes del examen.","Je suis stressée avant l'examen."],["enfadado / enfadada","fâché, fâchée","😠","Mi padre está enfadado.","Mon père est fâché."],["tener miedo","avoir peur","😨","Tengo miedo de los perros.","J'ai peur des chiens."],["tener hambre","avoir faim","🤤","¡Tengo mucha hambre!","J'ai très faim !"],["tener sed","avoir soif","🥤","Después de correr, tengo sed.","Après avoir couru, j'ai soif."]],"episodio":{"titulo":"El pie de Diego","lineas":[["medica","Hola, Diego. ¿Qué te pasa?","Bonjour, Diego. Qu'est-ce qui t'arrive ?"],["diego","Me duele mucho el pie. Es por el partido de fútbol.","J'ai très mal au pied. C'est à cause du match de foot."],["medica","A ver… No está roto. Pero tienes que descansar.","Voyons… Il n'est pas cassé. Mais tu dois te reposer."],["diego","¿Descansar? ¿Y el partido del sábado?","Me reposer ? Et le match de samedi ?"],["medica","Nada de fútbol durante una semana.","Pas de foot pendant une semaine."],["diego","Estoy muy triste… y un poco enfadado.","Je suis très triste… et un peu fâché."],["medica","Es normal. Pero eres fuerte, Diego. ¡En siete días, a jugar!","C'est normal. Mais tu es fort, Diego. Dans sept jours, tu rejoues !"],["diego","Vale, doctora. ¡Gracias!","D'accord, docteure. Merci !"]],"preguntas":[["Où Diego a-t-il mal ?",["À la tête","Au pied","Au dos"],1],["Que doit-il faire ?",["Se reposer","Aller à la pharmacie","Courir"],0],["Combien de temps sans football ?",["Trois jours","Une semaine","Un mois"],1]]}},{"id":"radio","nombre":"Radio Barrio","icono":"i-guitarra","nivel":3,"guia":"pablo","tema":"Les médias, la technologie, l'avenir","pista":"p-futuro","intro":["¡Silencio, estamos en directo! Bienvenido a Radio Barrio.","Silence, on est en direct ! Bienvenue sur Radio Barrio."],"cultura":"La radio reste très écoutée dans le monde hispanique. En Colombie, des **radios comunitarias** informent les villages des montagnes et de l'Amazonie, souvent loin de tout. Et selon les pays, ton portable s'appelle **el móvil** (Espagne) ou **el celular** (Amérique latine), ton ordinateur **el ordenador** ou **la computadora**.","palabras":[["la radio","la radio","📻","Escucho la radio por la mañana.","J'écoute la radio le matin."],["el programa","l'émission","🎙️","El programa empieza a las cinco.","L'émission commence à cinq heures."],["la noticia","la nouvelle, l'info","📰","Leo las noticias en el móvil.","Je lis les infos sur mon portable."],["el periodista / la periodista","le / la journaliste","🎤","Quiero ser periodista.","Je veux être journaliste."],["la entrevista","l'interview","🗨️","Hoy hacemos una entrevista.","Aujourd'hui, nous faisons une interview."],["el móvil / el celular","le portable (Espagne / Amérique)","📱","Mi móvil no tiene batería.","Mon portable n'a plus de batterie."],["la pantalla","l'écran","🖥️","Paso mucho tiempo delante de la pantalla.","Je passe beaucoup de temps devant l'écran."],["el ordenador / la computadora","l'ordinateur (Espagne / Amérique)","💻","Hago los deberes con el ordenador.","Je fais mes devoirs sur l'ordinateur."],["las redes sociales","les réseaux sociaux","🌐","Mis padres no usan las redes sociales.","Mes parents n'utilisent pas les réseaux sociaux."],["el mensaje","le message","💬","Te mando un mensaje esta noche.","Je t'envoie un message ce soir."],["la contraseña","le mot de passe","🔑","No compartas tu contraseña.","Ne partage pas ton mot de passe."],["descargar","télécharger","⬇️","Voy a descargar la aplicación.","Je vais télécharger l'application."],["compartir","partager","🔁","Antes de compartir, hay que pensar.","Avant de partager, il faut réfléchir."],["subir","publier, mettre en ligne","⬆️","Pablo sube un vídeo cada semana.","Pablo met une vidéo en ligne chaque semaine."],["el vídeo","la vidéo","🎬","Este vídeo es muy divertido.","Cette vidéo est très drôle."],["el seguidor / la seguidora","l'abonné, l'abonnée","👥","La radio tiene mil seguidores.","La radio a mille abonnés."],["la inteligencia artificial","l'intelligence artificielle","🤖","La inteligencia artificial nos ayudará.","L'intelligence artificielle nous aidera."],["el robot","le robot","🦾","En el futuro habrá robots en casa.","À l'avenir, il y aura des robots à la maison."],["el futuro","l'avenir, le futur","🔮","¿Cómo será el futuro?","Comment sera l'avenir ?"],["la privacidad","la vie privée","🔒","Hay que proteger la privacidad.","Il faut protéger la vie privée."],["la noticia falsa","la fausse information","⚠️","Esta noticia falsa circula en las redes.","Cette fausse info circule sur les réseaux."],["estar conectado / conectada","être connecté(e)","📶","Estoy conectado todo el día.","Je suis connecté toute la journée."]],"episodio":{"titulo":"La vida en 2050","lineas":[["pablo","¡Buenas tardes! Estáis escuchando Radio Barrio. Hoy hablamos del futuro.","Bonjour ! Vous écoutez Radio Barrio. Aujourd'hui, on parle de l'avenir."],["pablo","Sofía, ¿cómo será la vida en 2050?","Sofía, comment sera la vie en 2050 ?"],["sofia","Creo que la inteligencia artificial nos ayudará mucho, en el instituto y en el hospital.","Je crois que l'intelligence artificielle nous aidera beaucoup, au collège et à l'hôpital."],["pablo","¿Y los móviles? ¿Pasaremos el día delante de la pantalla?","Et les portables ? On passera la journée devant l'écran ?"],["sofia","Espero que no… Tendremos que proteger nuestra privacidad.","J'espère que non… Nous devrons protéger notre vie privée."],["pablo","Y también tendremos que verificar las noticias. Hay muchas noticias falsas en las redes sociales.","Et nous devrons aussi vérifier les infos. Il y a beaucoup de fausses infos sur les réseaux sociaux."],["sofia","Exacto. Antes de compartir, ¡hay que pensar!","Exactement. Avant de partager, il faut réfléchir !"],["pablo","Gracias, Sofía. ¡Hasta mañana, queridos oyentes!","Merci, Sofía. À demain, chers auditeurs !"]],"preguntas":[["Quel est le thème de l'émission ?",["Le passé","L'avenir","Le sport"],1],["Selon Sofía, l'intelligence artificielle…",["aidera au collège et à l'hôpital","remplacera les profs","sera interdite"],0],["Que faut-il faire avant de partager ?",["Télécharger","Réfléchir","S'abonner"],1]]}},{"id":"museo","nombre":"El Museo","icono":"i-azulejo","nivel":3,"guia":"pablo","tema":"L'art, l'histoire, le passé","pista":"p-indefinido","intro":["En el museo descubrimos el pasado… y a grandes artistas.","Au musée, on découvre le passé… et de grands artistes."],"cultura":"**El Guernica**, peint par Pablo Picasso en 1937 après le bombardement de la ville basque de Guernica, est exposé au **museo Reina Sofía** de Madrid. En Colombie, **Fernando Botero** est célèbre pour ses personnages aux formes rondes. Au Mexique, **Frida Kahlo** a peint de nombreux autoportraits.","palabras":[["el museo","le musée","🏛️","Hoy visitamos el museo.","Aujourd'hui, nous visitons le musée."],["el cuadro","le tableau","🖼️","Este cuadro es de Frida Kahlo.","Ce tableau est de Frida Kahlo."],["el pintor / la pintora","le peintre, la peintre","👨‍🎨","Botero es un pintor colombiano.","Botero est un peintre colombien."],["pintar","peindre","🖌️","Picasso pintó el Guernica.","Picasso a peint Guernica."],["la obra","l'œuvre","🎭","Es una obra muy famosa.","C'est une œuvre très célèbre."],["la exposición","l'exposition","🎟️","La exposición abre el lunes.","L'exposition ouvre lundi."],["la escultura","la sculpture","🗿","Me gusta esta escultura.","J'aime cette sculpture."],["el siglo","le siècle","📜","Este cuadro es del siglo diecisiete.","Ce tableau est du dix-septième siècle."],["el pasado","le passé","⏪","Estudiamos el pasado.","Nous étudions le passé."],["la guerra","la guerre","⚔️","El Guernica representa la guerra.","Guernica représente la guerre."],["la paz","la paix","🕊️","Queremos vivir en paz.","Nous voulons vivre en paix."],["el rey / la reina","le roi, la reine","👑","El rey vivió en este palacio.","Le roi a vécu dans ce palais."],["la civilización","la civilisation","🏺","Los mayas fueron una gran civilización.","Les Mayas ont été une grande civilisation."],["la pirámide","la pyramide","🔺","Visitamos una pirámide maya.","Nous avons visité une pyramide maya."],["descubrir","découvrir","🔍","Hoy descubrí la obra de Botero.","Aujourd'hui, j'ai découvert l'œuvre de Botero."],["visitar","visiter","🚶‍♂️","Ayer visitamos el museo.","Hier, nous avons visité le musée."],["nacer","naître","👶","Frida Kahlo nació en 1907.","Frida Kahlo est née en 1907."],["vivir","vivre","🏡","Picasso vivió muchos años en Francia.","Picasso a vécu de nombreuses années en France."],["ayer","hier","📅","Ayer fui al museo con mi clase.","Hier, je suis allé au musée avec ma classe."],["el año pasado","l'an dernier","🗓️","El año pasado viajé a México.","L'an dernier, j'ai voyagé au Mexique."],["famoso / famosa","célèbre","⭐","Es un cuadro muy famoso.","C'est un tableau très célèbre."],["el guía / la guía","le guide, la guide","🧭","La guía explica el cuadro.","La guide explique le tableau."]],"episodio":{"titulo":"De Picasso a Botero","lineas":[["pablo","Mateo, ¿qué hiciste el fin de semana?","Mateo, qu'est-ce que tu as fait ce week-end ?"],["mateo","Fui al Museo Reina Sofía con mi clase. Vi el Guernica de Picasso.","Je suis allé au musée Reina Sofía avec ma classe. J'ai vu Guernica de Picasso."],["pablo","¡Qué suerte! ¿Te gustó?","Quelle chance ! Ça t'a plu ?"],["mateo","Sí, mucho. Picasso lo pintó en 1937. Representa la guerra y el dolor.","Oui, beaucoup. Picasso l'a peint en 1937. Il représente la guerre et la douleur."],["pablo","Yo, el año pasado, visité el Museo Botero en Bogotá.","Moi, l'an dernier, j'ai visité le musée Botero à Bogotá."],["mateo","¿Botero? ¿El pintor de las figuras grandes y redondas?","Botero ? Le peintre des personnages grands et ronds ?"],["pablo","¡Exacto! Nació en Medellín y es muy famoso en Colombia.","Exactement ! Il est né à Medellín et il est très célèbre en Colombie."],["mateo","¡Un día vamos a visitar ese museo juntos!","Un jour, on visitera ce musée ensemble !"]],"preguntas":[["Qu'a vu Mateo au musée ?",["Guernica de Picasso","Un tableau de Botero","Une pyramide maya"],0],["Quand Guernica a-t-il été peint ?",["En 1907","En 1937","En 1982"],1],["Où Pablo a-t-il visité le musée Botero ?",["À Madrid","À Medellín","À Bogotá"],2]]}},{"id":"huerto","nombre":"El Huerto","icono":"i-aceite","nivel":3,"guia":"sofia","tema":"L'environnement","pista":"p-obligacion","intro":["En el huerto cuidamos la tierra. ¿Me echas una mano?","Au potager, on prend soin de la terre. Tu me donnes un coup de main ?"],"cultura":"Le sud de l'Espagne connaît des **sequías** (sécheresses) de plus en plus fréquentes. Beaucoup de villes créent des **huertos urbanos**, des potagers partagés installés sur des terrains abandonnés. Au Pérou, on cultive des milliers de variétés de **papas** (pommes de terre) dans les Andes.","palabras":[["el huerto","le potager","🥕","Trabajamos en el huerto del barrio.","Nous travaillons au potager du quartier."],["el medioambiente","l'environnement","🌍","Hay que cuidar el medioambiente.","Il faut prendre soin de l'environnement."],["la naturaleza","la nature","🌿","Me encanta pasear por la naturaleza.","J'adore me promener dans la nature."],["reciclar","recycler","♻️","En casa reciclamos el papel.","À la maison, nous recyclons le papier."],["la basura","les déchets, la poubelle","🗑️","No tires basura en la calle.","Ne jette pas de déchets dans la rue."],["el plástico","le plastique","🧴","Usamos menos plástico.","Nous utilisons moins de plastique."],["la contaminación","la pollution","🏭","La contaminación es un gran problema.","La pollution est un grand problème."],["el cambio climático","le changement climatique","🌡️","El cambio climático es real.","Le changement climatique est réel."],["el calor","la chaleur","🥵","En verano hace mucho calor en Sevilla.","En été, il fait très chaud à Séville."],["la sequía","la sécheresse","🏜️","En el sur de España hay sequía.","Dans le sud de l'Espagne, il y a la sécheresse."],["ahorrar","économiser","💧","Hay que ahorrar agua.","Il faut économiser l'eau."],["proteger","protéger","🛡️","Debemos proteger los bosques.","Nous devons protéger les forêts."],["plantar","planter","🌱","Hoy plantamos tomates.","Aujourd'hui, nous plantons des tomates."],["el árbol","l'arbre","🌲","Plantamos un árbol en el parque.","Nous plantons un arbre dans le parc."],["la energía solar","l'énergie solaire","🔆","El instituto usa energía solar.","Le collège utilise l'énergie solaire."],["el planeta","la planète","🪐","Solo tenemos un planeta.","Nous n'avons qu'une seule planète."],["el clima","le climat","🌦️","El clima está cambiando.","Le climat est en train de changer."],["el transporte público","les transports en commun","🚋","Uso el transporte público.","J'utilise les transports en commun."],["sostenible","durable","💚","Queremos un barrio sostenible.","Nous voulons un quartier durable."],["cuidar","prendre soin de","🫶","Tenemos que cuidar el planeta.","Nous devons prendre soin de la planète."],["hay que","il faut","☝️","Hay que reciclar el plástico.","Il faut recycler le plastique."],["tener que","devoir","📌","Tengo que regar las plantas.","Je dois arroser les plantes."]],"episodio":{"titulo":"Un huerto para todos","lineas":[["sofia","Diego, ¡ven a ayudarme en el huerto del barrio!","Diego, viens m'aider au potager du quartier !"],["diego","Vale. ¿Qué hay que hacer?","D'accord. Qu'est-ce qu'il faut faire ?"],["sofia","Hay que plantar tomates y regar las plantas. Pero tenemos que ahorrar agua.","Il faut planter des tomates et arroser les plantes. Mais nous devons économiser l'eau."],["diego","Claro, en Sevilla hay mucha sequía en verano.","Bien sûr, à Séville, il y a beaucoup de sécheresse en été."],["sofia","Por eso recogemos el agua de la lluvia. Y aquí no usamos plástico.","C'est pour ça qu'on récupère l'eau de pluie. Et ici, on n'utilise pas de plastique."],["diego","¿Y la basura de la cocina?","Et les déchets de cuisine ?"],["sofia","Hacemos compost. Todos debemos proteger el planeta.","On fait du compost. Nous devons tous protéger la planète."],["diego","¡Me gusta este huerto! Vuelvo el sábado.","J'aime ce potager ! Je reviens samedi."]],"preguntas":[["Que faut-il planter ?",["Des tomates","Des oranges","Des pommes de terre"],0],["Quel problème y a-t-il à Séville en été ?",["Les inondations","La sécheresse","La neige"],1],["Que font-ils des déchets de cuisine ?",["Ils les jettent","Du compost","Ils les brûlent"],1]]}},{"id":"ayuntamiento","nombre":"El Ayuntamiento","icono":"i-castillo","nivel":3,"guia":"sofia","tema":"La citoyenneté et le débat","pista":"p-opinion","intro":["Hoy hay consejo de jóvenes en el ayuntamiento. ¡Tu opinión cuenta!","Aujourd'hui, il y a conseil des jeunes à la mairie. Ton avis compte !"],"cultura":"Dans le monde hispanique, beaucoup de villes ont un **consejo de jóvenes** où les adolescents proposent des projets pour leur quartier. En Espagne, on vote à partir de 18 ans ; en Argentine, on peut voter **dès 16 ans**.","palabras":[["el ayuntamiento","la mairie","🏰","El ayuntamiento está en la plaza.","La mairie est sur la place."],["el alcalde / la alcaldesa","le maire, la maire","🎩","La alcaldesa escucha a los jóvenes.","La maire écoute les jeunes."],["el ciudadano / la ciudadana","le citoyen, la citoyenne","🧑‍🤝‍🧑","Todos somos ciudadanos.","Nous sommes tous citoyens."],["votar","voter","🗳️","En Argentina se puede votar a los dieciséis años.","En Argentine, on peut voter à seize ans."],["la ley","la loi","⚖️","La ley es igual para todos.","La loi est la même pour tous."],["el derecho","le droit","📜","Todos tenemos derecho a la educación.","Nous avons tous droit à l'éducation."],["la igualdad","l'égalité","🟰","Defendemos la igualdad entre chicos y chicas.","Nous défendons l'égalité entre garçons et filles."],["la libertad","la liberté","🗽","La libertad de expresión es importante.","La liberté d'expression est importante."],["el debate","le débat","🗣️","Hoy tenemos un debate en clase.","Aujourd'hui, nous avons un débat en classe."],["la opinión","l'opinion, l'avis","💭","Respeto tu opinión.","Je respecte ton avis."],["creo que","je crois que","💡","Creo que es una buena idea.","Je crois que c'est une bonne idée."],["pienso que","je pense que","🧠","Pienso que tienes razón.","Je pense que tu as raison."],["en mi opinión","à mon avis","🙋","En mi opinión, hay mucho ruido.","À mon avis, il y a beaucoup de bruit."],["estoy de acuerdo","je suis d'accord","👍","Estoy de acuerdo contigo.","Je suis d'accord avec toi."],["no estoy de acuerdo","je ne suis pas d'accord","👎","No estoy de acuerdo con esa idea.","Je ne suis pas d'accord avec cette idée."],["sin embargo","cependant","↔️","Es buena idea; sin embargo, es cara.","C'est une bonne idée ; cependant, elle coûte cher."],["además","de plus","➕","Además, es bueno para la salud.","De plus, c'est bon pour la santé."],["por eso","c'est pourquoi","➡️","Hay mucho ruido. Por eso propongo cerrar la plaza.","Il y a beaucoup de bruit. C'est pourquoi je propose de fermer la place."],["porque","parce que","❓","Voto sí porque es justo.","Je vote oui parce que c'est juste."],["el problema","le problème","🚨","El tráfico es un problema.","La circulation est un problème."],["la solución","la solution","✅","Tenemos una solución.","Nous avons une solution."],["proponer","proposer","📝","Propongo crear un carril bici.","Je propose de créer une piste cyclable."]],"episodio":{"titulo":"¿Una plaza sin coches?","lineas":[["sofia","Bienvenidos al consejo de jóvenes. Hoy debatimos: ¿hay que cerrar la plaza a los coches?","Bienvenue au conseil des jeunes. Aujourd'hui, nous débattons : faut-il fermer la place aux voitures ?"],["mateo","En mi opinión, sí. Hay mucha contaminación y mucho ruido.","À mon avis, oui. Il y a beaucoup de pollution et beaucoup de bruit."],["lucia","No estoy de acuerdo. Mi abuela necesita el coche para ir al médico.","Je ne suis pas d'accord. Ma grand-mère a besoin de la voiture pour aller chez le médecin."],["diego","Es verdad. Sin embargo, sin coches los niños pueden jugar sin peligro.","C'est vrai. Cependant, sans voitures, les enfants peuvent jouer sans danger."],["sofia","¿Qué solución proponéis?","Quelle solution proposez-vous ?"],["mateo","Propongo cerrar la plaza los fines de semana. Además, podemos crear un carril bici.","Je propose de fermer la place le week-end. De plus, on peut créer une piste cyclable."],["lucia","Eso me parece bien. Así todos ganamos.","Ça me semble bien. Comme ça, tout le monde y gagne."],["sofia","Muy bien. ¡Vamos a votar!","Très bien. Passons au vote !"]],"preguntas":[["Quel est le sujet du débat ?",["Fermer la place aux voitures","Construire un stade","Changer les horaires du collège"],0],["Pourquoi Lucía n'est-elle pas d'accord au début ?",["Elle adore les voitures","Sa grand-mère a besoin de la voiture","Elle habite loin"],1],["Quelle solution Mateo propose-t-il ?",["Fermer la place tous les jours","Fermer le week-end et créer une piste cyclable","Ne rien changer"],1]]}}],"pistas":[{"id":"p-ser","nivel":5,"lugar":"plaza","titulo":"Ser y llamarse : je me présente","explica":["Pour te présenter, tu as besoin de deux verbes : **ser** (être) et **llamarse** (s'appeler).","Avec **ser**, on dit qui on est et d'où on vient : *Soy de Madrid.* Avec **llamarse**, on donne son prénom : *Me llamo Mateo.* Le petit mot **me / te / se** change avec la personne."],"tabla":[["","ser","llamarse"],["yo","soy","me llamo"],["tú","eres","te llamas"],["él / ella","es","se llama"],["nosotros","somos","nos llamamos"],["vosotros","sois","os llamáis"],["ellos / ellas","son","se llaman"]],"ejemplos":[["Soy de Lima.","Je suis de Lima."],["¿Cómo te llamas?","Comment tu t'appelles ?"],["Mateo es de Madrid.","Mateo est de Madrid."]],"ejercicio":[["Yo ___ Mateo.",["me llamo","te llamas","se llama"],0,"Je m'appelle Mateo."],["Tú ___ de Perú.",["soy","eres","es"],1,"Tu es du Pérou."],["Valentina ___ de México.",["soy","es","son"],1,"Valentina est du Mexique."],["¿Cómo ___ tu hermano?",["se llama","me llamo","te llamas"],0,"Comment s'appelle ton frère ?"],["Nosotros ___ del barrio.",["sois","son","somos"],2,"Nous sommes du quartier."],["Diego y Lucía ___ amigos.",["es","son","somos"],1,"Diego et Lucía sont amis."]]},{"id":"p-tener","nivel":5,"lugar":"casa","titulo":"Tener et les possessifs","explica":["**Tener** (avoir) sert à parler de sa famille, de ses animaux… et de son âge ! Comme en français, on *a* des années : *Tengo doce años.*","Les possessifs sont simples : **mi** (mon, ma), **tu** (ton, ta), **su** (son, sa). Au pluriel, on ajoute un **s** : **mis, tus, sus**. Pas de différence entre masculin et féminin !"],"tabla":[["","tener","possessif"],["yo","tengo","mi / mis"],["tú","tienes","tu / tus"],["él / ella","tiene","su / sus"],["nosotros","tenemos","nuestro, nuestra…"],["vosotros","tenéis","vuestro, vuestra…"],["ellos / ellas","tienen","su / sus"]],"ejemplos":[["Tengo un gato negro.","J'ai un chat noir."],["Mis abuelos viven en Puebla.","Mes grands-parents vivent à Puebla."],["¿Cuántos años tienes?","Quel âge as-tu ?"]],"ejercicio":[["Yo ___ un hermano.",["tengo","tienes","tiene"],0,"J'ai un frère."],["¿Cuántos años ___ tú?",["tengo","tienes","tienen"],1,"Quel âge as-tu ?"],["Valentina ___ un gato.",["tiene","tienes","tenemos"],0,"Valentina a un chat."],["___ padres trabajan mucho.",["Mi","Mis","Tu"],1,"Mes parents travaillent beaucoup."],["¿Cómo se llama ___ perro, Diego?",["tu","tus","mis"],0,"Comment s'appelle ton chien, Diego ?"],["Nosotros ___ una casa pequeña.",["tienen","tenemos","tenéis"],1,"Nous avons une petite maison."]]},{"id":"p-ar","nivel":5,"lugar":"instituto","titulo":"Le présent des verbes en -AR","explica":["La plupart des verbes espagnols se terminent par **-ar** : *estudiar, hablar, escuchar*. Pour les conjuguer au présent, on enlève **-ar** et on ajoute les terminaisons.","Pas besoin de pronom sujet : la terminaison suffit ! *Estudio* veut déjà dire « j'étudie »."],"tabla":[["","estudiar"],["yo","estudi**o**"],["tú","estudi**as**"],["él / ella","estudi**a**"],["nosotros","estudi**amos**"],["vosotros","estudi**áis**"],["ellos / ellas","estudi**an**"]],"ejemplos":[["Hablo español en clase.","Je parle espagnol en classe."],["¿Escuchas música?","Tu écoutes de la musique ?"],["Estudiamos juntos en el recreo.","Nous travaillons ensemble à la récré."]],"ejercicio":[["Yo ___ inglés.",["estudio","estudias","estudia"],0,"J'étudie l'anglais."],["Tú ___ muy bien.",["hablo","hablas","hablan"],1,"Tu parles très bien."],["La profesora ___ la lección.",["explico","explicas","explica"],2,"La prof explique la leçon."],["Nosotros ___ música.",["escuchamos","escucháis","escuchan"],0,"Nous écoutons de la musique."],["Pablo y Mateo ___ en la biblioteca.",["estudia","estudiamos","estudian"],2,"Pablo et Mateo étudient à la bibliothèque."],["¿Vosotros ___ español?",["habláis","hablamos","hablan"],0,"Vous parlez espagnol ?"]]},{"id":"p-gustar","nivel":5,"lugar":"mercado","titulo":"Gustar : me gusta, me gustan","explica":["**Gustar** fonctionne à l'envers du français : *me gusta el chocolate* veut dire mot à mot « le chocolat me plaît ».","Si ce qui plaît est au singulier ou un verbe, on dit **gusta**. Si c'est au pluriel, on dit **gustan**. Pour dire qu'on adore, **encantar** marche pareil : *me encantan las naranjas.*"],"tabla":[["à qui ?","+ singulier ou verbe","+ pluriel"],["(a mí) me","gusta","gustan"],["(a ti) te","gusta","gustan"],["(a él / ella) le","gusta","gustan"],["(a nosotros) nos","gusta","gustan"],["(a vosotros) os","gusta","gustan"],["(a ellos) les","gusta","gustan"]],"ejemplos":[["Me gusta el pan.","J'aime le pain."],["Me encantan las naranjas.","J'adore les oranges."],["¿Te gusta cocinar?","Tu aimes cuisiner ?"]],"ejercicio":[["Me ___ el chocolate.",["gusta","gustan"],0,"J'aime le chocolat."],["Me ___ las manzanas.",["gusta","gustan"],1,"J'aime les pommes."],["¿Te ___ cocinar?",["gusta","gustan"],0,"Tu aimes cuisiner ?"],["A Valentina ___ gustan los tacos.",["me","te","le"],2,"Valentina aime les tacos."],["A nosotros ___ encanta el mercado.",["nos","os","les"],0,"Nous adorons le marché."],["No me ___ los tomates.",["gusta","gustan"],1,"Je n'aime pas les tomates."]]},{"id":"p-diptongo","nivel":4,"lugar":"parque","titulo":"Les verbes qui changent : o → ue, e → ie","explica":["Certains verbes changent de voyelle au présent : **o → ue** (*poder → puedo*), **e → ie** (*querer → quiero, preferir → prefiero*). **Jugar** fait **u → ue** : *juego*.","Le changement ne se fait pas avec **nosotros** et **vosotros** : *podemos, queremos, jugamos*. Si tu entoures les formes qui changent dans le tableau, tu obtiens une botte : on les appelle les verbes « botte »."],"tabla":[["","jugar","poder","querer"],["yo","j**ue**go","p**ue**do","qu**ie**ro"],["tú","j**ue**gas","p**ue**des","qu**ie**res"],["él / ella","j**ue**ga","p**ue**de","qu**ie**re"],["nosotros","jugamos","podemos","queremos"],["vosotros","jugáis","podéis","queréis"],["ellos / ellas","j**ue**gan","p**ue**den","qu**ie**ren"]],"ejemplos":[["Juego al fútbol todos los días.","Je joue au foot tous les jours."],["¿Quieres ver el partido?","Tu veux voir le match ?"],["Podemos jugar en el parque.","Nous pouvons jouer au parc."]],"ejercicio":[["Yo ___ al fútbol.",["jugo","juego","jugamos"],1,"Je joue au foot."],["¿___ venir al parque?",["Puedes","Podes","Podéis"],0,"Tu peux venir au parc ?"],["Mateo ___ el baloncesto.",["prefere","prefiere","preferimos"],1,"Mateo préfère le basket."],["Nosotros ___ jugar.",["queremos","quieremos","quieren"],0,"Nous voulons jouer."],["Diego y Mateo ___ al fútbol.",["juegan","jugan","jugamos"],0,"Diego et Mateo jouent au foot."],["Hoy no ___ jugar, estoy cansado.",["podo","puedo","puede"],1,"Aujourd'hui, je ne peux pas jouer, je suis fatigué."]]},{"id":"p-pronominal","nivel":4,"lugar":"terraza","titulo":"Les verbes pronominaux et l'heure","explica":["Les verbes de la routine sont souvent **pronominaux** : *levantarse* (se lever), *ducharse* (se doucher). Le pronom se place devant le verbe conjugué : **me** levanto, **te** levantas, **se** levanta, **nos** levantamos, **os** levantáis, **se** levantan.","Pour l'heure : **Es la una** (il est une heure), mais **Son las dos, las tres…** On ajoute **y cuarto**, **y media**, **menos cuarto**. Pour dire « à » telle heure : **a las ocho**."],"tabla":[["","levantarse","acostarse (o → ue)"],["yo","me levanto","me acuesto"],["tú","te levantas","te acuestas"],["él / ella","se levanta","se acuesta"],["nosotros","nos levantamos","nos acostamos"],["vosotros","os levantáis","os acostáis"],["ellos / ellas","se levantan","se acuestan"]],"ejemplos":[["Me levanto a las siete.","Je me lève à sept heures."],["Son las tres menos cuarto.","Il est trois heures moins le quart."],["¿A qué hora te acuestas?","À quelle heure te couches-tu ?"]],"ejercicio":[["Yo ___ levanto a las siete.",["me","te","se"],0,"Je me lève à sept heures."],["¿A qué hora ___ duchas?",["me","te","se"],1,"À quelle heure te douches-tu ?"],["Mateo se ___ muy tarde.",["acosta","acuesta","acuestan"],1,"Mateo se couche très tard."],["___ la una y media.",["Es","Son"],0,"Il est une heure et demie."],["___ las nueve menos cuarto.",["Es","Son"],1,"Il est neuf heures moins le quart."],["Nosotros ___ despertamos temprano.",["nos","os","se"],0,"Nous nous réveillons tôt."]]},{"id":"p-ira","nivel":4,"lugar":"estacion","titulo":"Ir a + infinitif : le futur proche","explica":["Pour parler de ce qu'on va faire, on utilise **ir a + infinitif**, exactement comme « aller + infinitif » en français. N'oublie pas le petit **a** !","*Voy a viajar* = je vais voyager. *Vamos a tomar el tren* = nous allons prendre le train."],"tabla":[["","ir","+ a + infinitif"],["yo","voy","a viajar"],["tú","vas","a salir"],["él / ella","va","a llegar"],["nosotros","vamos","a tomar el tren"],["vosotros","vais","a reservar"],["ellos / ellas","van","a volver"]],"ejemplos":[["Voy a viajar a Barcelona.","Je vais voyager à Barcelone."],["¿Vas a ir en avión?","Tu vas y aller en avion ?"],["Vamos a tomar el tren.","Nous allons prendre le train."]],"ejercicio":[["Yo ___ a viajar a Argentina.",["voy","vas","va"],0,"Je vais voyager en Argentine."],["¿Tú ___ a tomar el avión?",["vamos","vas","van"],1,"Tu vas prendre l'avion ?"],["Sofía va ___ visitar Barcelona.",["a","de","en"],0,"Sofía va visiter Barcelone."],["Nosotros ___ a llegar tarde.",["vais","van","vamos"],2,"Nous allons arriver tard."],["Mis padres ___ a reservar el hotel.",["va","van","vamos"],1,"Mes parents vont réserver l'hôtel."],["¿Qué ___ a hacer vosotros?",["vais","vas","van"],0,"Qu'allez-vous faire ?"]]},{"id":"p-comparar","nivel":4,"lugar":"tiendas","titulo":"Montrer et comparer","explica":["Pour montrer un objet : **este / esta** (ce…-ci, tout près), **ese / esa** (ce…-là). Au pluriel : **estos / estas**, **esos / esas**.","Pour comparer : **más… que** (plus… que), **menos… que** (moins… que), **tan… como** (aussi… que). *Esta camiseta es más barata que esa.*"],"tabla":[["","masculin","féminin"],["ici, singulier","este","esta"],["ici, pluriel","estos","estas"],["là, singulier","ese","esa"],["là, pluriel","esos","esas"]],"ejemplos":[["Esta chaqueta es muy cara.","Cette veste est très chère."],["La azul es más barata que la roja.","La bleue est moins chère que la rouge."],["Estos zapatos son tan bonitos como esos.","Ces chaussures sont aussi jolies que celles-là."]],"ejercicio":[["___ camiseta es bonita.",["Este","Esta","Estos"],1,"Ce tee-shirt est joli."],["___ zapatos son caros.",["Esos","Esas","Ese"],0,"Ces chaussures-là sont chères."],["El abrigo es ___ caro que la chaqueta.",["más","tan","como"],0,"Le manteau est plus cher que la veste."],["La falda es tan bonita ___ el vestido.",["que","como","más"],1,"La jupe est aussi jolie que la robe."],["Las zapatillas son ___ caras que los zapatos.",["menos","tan","como"],0,"Les baskets sont moins chères que les chaussures."],["¿Cuánto cuesta ___ pantalón?",["esta","este","estas"],1,"Combien coûte ce pantalon ?"]]},{"id":"p-serestar","nivel":4,"lugar":"salud","titulo":"Ser ou estar ?","explica":["L'espagnol a deux verbes pour « être ». **Ser** sert à définir : identité, origine, caractère, profession. *Diego es fuerte. Soy de Sevilla.*","**Estar** sert pour ce qui est passager et pour situer : état, émotion, santé, lieu. *Estoy cansado. La farmacia está en la plaza.* Astuce : si ça peut changer dans la journée, c'est souvent **estar**."],"tabla":[["","ser","estar"],["yo","soy","estoy"],["tú","eres","estás"],["él / ella","es","está"],["nosotros","somos","estamos"],["vosotros","sois","estáis"],["ellos / ellas","son","están"]],"ejemplos":[["Estoy muy triste.","Je suis très triste."],["Eres fuerte, Diego.","Tu es fort, Diego."],["El pie no está roto.","Le pied n'est pas cassé."]],"ejercicio":[["Hoy ___ cansado.",["soy","estoy"],1,"Aujourd'hui, je suis fatigué."],["Diego ___ de Sevilla.",["es","está"],0,"Diego est de Séville."],["¿Por qué ___ triste, Lucía?",["eres","estás"],1,"Pourquoi es-tu triste, Lucía ?"],["La doctora López ___ muy simpática.",["es","está"],0,"La docteure López est très sympathique."],["La farmacia ___ en la plaza.",["es","está"],1,"La pharmacie est sur la place."],["Mis amigos ___ enfermos hoy.",["son","están"],1,"Mes amis sont malades aujourd'hui."]]},{"id":"p-futuro","nivel":3,"lugar":"radio","titulo":"Le futur simple","explica":["Le futur espagnol se forme comme en français : on garde l'**infinitif entier** et on ajoute **-é, -ás, -á, -emos, -éis, -án**. Ces terminaisons sont les mêmes pour tous les verbes !","Quelques verbes ont un radical irrégulier : **tener → tendr-**, **hacer → har-**, **poder → podr-**, **salir → saldr-**, **decir → dir-**. *Tendremos que proteger nuestra privacidad.*"],"tabla":[["","hablar","tener (tendr-)"],["yo","hablar**é**","tendr**é**"],["tú","hablar**ás**","tendr**ás**"],["él / ella","hablar**á**","tendr**á**"],["nosotros","hablar**emos**","tendr**emos**"],["vosotros","hablar**éis**","tendr**éis**"],["ellos / ellas","hablar**án**","tendr**án**"]],"ejemplos":[["La inteligencia artificial nos ayudará.","L'intelligence artificielle nous aidera."],["¿Cómo será la vida en 2050?","Comment sera la vie en 2050 ?"],["Tendremos que verificar las noticias.","Nous devrons vérifier les informations."]],"ejercicio":[["En 2050, los robots ___ en casa.",["trabajarán","trabajará","trabajaré"],0,"En 2050, les robots travailleront à la maison."],["Yo ___ periodista.",["seré","seriré","serás"],0,"Je serai journaliste."],["Mañana, ¿tú ___ un móvil nuevo?",["tenerás","tendrás","tendré"],1,"Demain, tu auras un nouveau portable ?"],["Nosotros ___ un programa de radio.",["haceremos","haremos","harán"],1,"Nous ferons une émission de radio."],["Mañana, Pablo ___ las noticias.",["compartirá","compartiré","compartirán"],0,"Demain, Pablo partagera les informations."],["Los jóvenes ___ hablar con la IA.",["poderán","podrán","podremos"],1,"Les jeunes pourront parler avec l'IA."]]},{"id":"p-indefinido","nivel":3,"lugar":"museo","titulo":"Raconter au passé : le pretérito indefinido","explica":["Pour raconter une action terminée dans le passé (*ayer, el año pasado, en 1937…*), on utilise le **pretérito indefinido**.","Verbes en **-ar** : -é, -aste, -ó, -amos, -asteis, -aron. Verbes en **-er / -ir** : -í, -iste, -ió, -imos, -isteis, -ieron. Attention à l'accent : *visito* (je visite) n'est pas *visitó* (il a visité). **Ir** et **ser** ont la même forme : *fui, fuiste, fue…* Et **hacer** donne *hice, hiciste, hizo…*"],"tabla":[["","visitar","nacer","ir / ser"],["yo","visit**é**","nac**í**","fui"],["tú","visit**aste**","nac**iste**","fuiste"],["él / ella","visit**ó**","nac**ió**","fue"],["nosotros","visit**amos**","nac**imos**","fuimos"],["vosotros","visit**asteis**","nac**isteis**","fuisteis"],["ellos / ellas","visit**aron**","nac**ieron**","fueron"]],"ejemplos":[["Fui al museo con mi clase.","Je suis allé au musée avec ma classe."],["Picasso pintó el Guernica en 1937.","Picasso a peint Guernica en 1937."],["¿Qué hiciste el fin de semana?","Qu'as-tu fait ce week-end ?"]],"ejercicio":[["Ayer yo ___ el museo.",["visité","visito","visitó"],0,"Hier, j'ai visité le musée."],["Picasso ___ el Guernica en 1937.",["pinté","pintó","pinta"],1,"Picasso a peint Guernica en 1937."],["Frida Kahlo ___ en 1907.",["nací","nació","nacieron"],1,"Frida Kahlo est née en 1907."],["El año pasado nosotros ___ a Bogotá.",["fuimos","fueron","vamos"],0,"L'an dernier, nous sommes allés à Bogotá."],["¿Qué ___ tú el sábado?",["hice","hiciste","hizo"],1,"Qu'as-tu fait samedi ?"],["Mis padres ___ el cuadro.",["descubrió","descubrieron","descubrimos"],1,"Mes parents ont découvert le tableau."]]},{"id":"p-obligacion","nivel":3,"lugar":"huerto","titulo":"Exprimer l'obligation","explica":["Trois façons de dire ce qu'il faut faire : **hay que + infinitif** (il faut, de façon générale), **tener que + infinitif** (devoir, pour une personne précise) et **deber + infinitif** (devoir, sens moral).","*Hay que reciclar.* (il faut recycler, en général) / *Tengo que regar las plantas.* (je dois arroser) / *Debemos proteger el planeta.* (nous devons protéger la planète)."],"tabla":[["","tener que","deber"],["yo","tengo que","debo"],["tú","tienes que","debes"],["él / ella","tiene que","debe"],["nosotros","tenemos que","debemos"],["vosotros","tenéis que","debéis"],["ellos / ellas","tienen que","deben"]],"ejemplos":[["Hay que ahorrar agua.","Il faut économiser l'eau."],["Tenemos que cuidar el planeta.","Nous devons prendre soin de la planète."],["Todos debemos reciclar.","Nous devons tous recycler."]],"ejercicio":[["___ que reciclar el plástico.",["Hay","Tiene","Debe"],0,"Il faut recycler le plastique."],["Yo tengo ___ regar las plantas.",["de","que","a"],1,"Je dois arroser les plantes."],["Nosotros ___ que ahorrar agua.",["tenemos","tienen","hay"],0,"Nous devons économiser l'eau."],["Los ciudadanos ___ proteger la naturaleza.",["debe","deben","debemos"],1,"Les citoyens doivent protéger la nature."],["Sofía ___ que plantar tomates.",["tiene","tienes","hay"],0,"Sofía doit planter des tomates."],["Para salvar el planeta, ___ usar menos plástico.",["hay que","tengo","debe que"],0,"Pour sauver la planète, il faut utiliser moins de plastique."]]},{"id":"p-opinion","nivel":3,"lugar":"ayuntamiento","titulo":"Donner son avis et argumenter","explica":["Pour donner ton avis : **creo que, pienso que, en mi opinión, me parece que** + indicatif. *Creo que es una buena idea.*","Pour argumenter, relie tes idées : **además** (de plus), **sin embargo** (cependant), **por eso** (c'est pourquoi), **porque** (parce que). Pour réagir : **estoy de acuerdo / no estoy de acuerdo**. Après *no creo que*, on emploie le subjonctif : ce sera pour plus tard !"],"tabla":[["pour…","on dit"],["donner son avis","creo que, pienso que, en mi opinión"],["ajouter","además, también"],["opposer","sin embargo, pero"],["conclure","por eso, entonces"],["réagir","estoy de acuerdo, no estoy de acuerdo"]],"ejemplos":[["En mi opinión, hay mucha contaminación.","À mon avis, il y a beaucoup de pollution."],["No estoy de acuerdo.","Je ne suis pas d'accord."],["Además, podemos crear un carril bici.","De plus, nous pouvons créer une piste cyclable."]],"ejercicio":[["___ que es una buena idea.",["Creo","Además","Por eso"],0,"Je crois que c'est une bonne idée."],["Hay mucho ruido. ___, hay que cerrar la plaza.",["Sin embargo","Por eso","Porque"],1,"Il y a beaucoup de bruit. C'est pourquoi il faut fermer la place."],["Es una buena idea; ___, es cara.",["sin embargo","además","por eso"],0,"C'est une bonne idée ; cependant, elle coûte cher."],["No estoy ___ acuerdo contigo.",["en","de","a"],1,"Je ne suis pas d'accord avec toi."],["Cierro la plaza ___ hay mucha contaminación.",["porque","además","sin embargo"],0,"Je ferme la place parce qu'il y a beaucoup de pollution."],["Es bueno para el planeta. ___, es bueno para la salud.",["Además","Sin embargo","Pero"],0,"C'est bon pour la planète. De plus, c'est bon pour la santé."]]}]}</script>
+<script>
+(function(){
+'use strict';
+
+/* ---------- Data ---------- */
+var D = JSON.parse(document.getElementById('palabras-data').textContent);
+var KEY = 'palabras-v3';
+var INT = [0, 1, 2, 4, 8, 16];
+var app = document.getElementById('app');
+
+var VEC = {}, LUG = {}, PIS = {}, WORDS = [], BYID = {};
+var ART_RE = /^(el|la|los|las) (.+)$/;
+
+function mkWord(l, p, i){
+  var forms = p[0].split(' / ');
+  var main = forms[0];
+  var mw = main.split(' ');
+  for (var q = 1; q < forms.length; q++){
+    if (forms[q].indexOf(' ') < 0 && mw.length > 1 && !ART_RE.test(main)) forms[q] = mw.slice(0, -1).join(' ') + ' ' + forms[q];
+  }
+  var m = ART_RE.exec(main);
+  var flags = p[5] || {};
+  var w = {id: l.id + ':' + i, lugar: l.id, nivel: l.nivel, es: p[0], fr: p[1], e: p[2], ej: p[3], ejfr: p[4],
+    forms: forms, main: main, art: m ? m[1] : null, bare: m ? m[2] : main};
+  var noun = !!m && !flags.nog;
+  for (var k = 1; k < forms.length; k++){
+    var m2 = ART_RE.exec(forms[k]);
+    if (m2 && m && m2[1] !== m[1]) noun = false;
+  }
+  w.noun = noun;
+  w.typable = main.indexOf('…') < 0 && !/[¿¡?!]/.test(main) && main.split(' ').length <= 3;
+  w.tokens = p[3].split(' ');
+  w.orderable = w.tokens.length >= 4 && w.tokens.length <= 9;
+  return w;
+}
+D.vecinos.forEach(function(v){ VEC[v.id] = v; });
+D.lugares.forEach(function(l){
+  LUG[l.id] = l; l.words = [];
+  l.palabras.forEach(function(p, i){ var w = mkWord(l, p, i); l.words.push(w); WORDS.push(w); BYID[w.id] = w; });
+});
+D.pistas.forEach(function(p){ PIS[p.id] = p; });
+
+/* ---------- State ---------- */
+function defaults(){
+  return {grade: 5, w: {}, ep: {}, pista: {}, cfg: {font: 'std', size: 0, spacing: 0, rate: 0.9, voz: 'es', acentos: 1}};
+}
+function load(){
+  var s = defaults();
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (raw){
+      var o = JSON.parse(raw);
+      if (o && typeof o === 'object'){
+        if ([3,4,5].indexOf(Number(o.grade)) >= 0) s.grade = Number(o.grade);
+        if (o.w && typeof o.w === 'object') s.w = o.w;
+        if (o.ep && typeof o.ep === 'object') s.ep = o.ep;
+        if (o.pista && typeof o.pista === 'object') s.pista = o.pista;
+        if (o.cfg && typeof o.cfg === 'object'){ for (var k in s.cfg){ if (o.cfg.hasOwnProperty(k)) s.cfg[k] = o.cfg[k]; } }
+      }
+    }
+  } catch (e) {}
+  return s;
+}
+var S = load();
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+var view = {page: 'inicio', lugar: null, tab: 'episodio', scope: 'nivel', pista: null};
+var G = null;      // current game
+var EP = null;     // current episode
+var PX = null;     // current grammar exercise
+
+/* ---------- Helpers ---------- */
+function $(id){ return document.getElementById(id); }
+function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function md(s){ return esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\*(.+?)\*/g, '<i>$1</i>'); }
+function shuffle(a){ var b = a.slice(), i, j, t; for (i = b.length - 1; i > 0; i--){ j = Math.floor(Math.random() * (i + 1)); t = b[i]; b[i] = b[j]; b[j] = t; } return b; }
+function findIn(arr, fn){ for (var i = 0; i < arr.length; i++){ if (fn(arr[i])) return arr[i]; } return null; }
+function ico(name, cls){ return '<img class="' + (cls || 'ico') + '" src="assets/' + name + '.webp" alt="" aria-hidden="true">'; }
+function portrait(id, cls){
+  if (VEC[id]) return '<img class="' + (cls || 'avatar') + '" src="assets/p-' + id + '.webp" alt="' + esc(VEC[id].nombre) + '">';
+  var x = D.extras[id];
+  return '<span class="' + (cls || 'avatar') + '" role="img" aria-label="' + esc(x ? x.nombre : '') + '">' + (x ? x.avatar : '🙂') + '</span>';
+}
+function speakerName(id){ return VEC[id] ? VEC[id].nombre : (D.extras[id] ? D.extras[id].nombre : id); }
+function nivelLabel(n){ return n + 'e'; }
+function fold(s){
+  return String(s).replace(/[áàâä]/g,'a').replace(/[éèêë]/g,'e').replace(/[íìîï]/g,'i').replace(/[óòôö]/g,'o').replace(/[úùûü]/g,'u').replace(/ñ/g,'n');
+}
+function clean(s){ return String(s).toLowerCase().replace(/[¡¿]/g,'').replace(/[.!?,;:]+$/,'').replace(/\s+/g,' ').replace(/^\s+|\s+$/g,''); }
+function isLetter(c){ return /[a-záéíóúüñ]/i.test(c); }
+function today(){ var d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 86400000); }
+
+/* ---------- Spaced repetition ---------- */
+function st(id){ return S.w[id] || {b: 0, n: 0}; }
+function record(id, ok){
+  var s = st(id);
+  s.b = ok ? Math.min(5, s.b + 1) : 1;
+  s.n = today() + INT[s.b];
+  S.w[id] = s; save();
+}
+function touch(id){ var s = st(id); if (s.b === 0){ s.b = 1; s.n = today(); } S.w[id] = s; save(); }
+function seen(id){ return st(id).b > 0; }
+function mastered(id){ return st(id).b >= 4; }
+function isDue(w){ var s = st(w.id); return s.b > 0 && s.n <= today(); }
+function open(l){ return l.nivel >= S.grade; }
+function available(){ return WORDS.filter(function(w){ return open(LUG[w.lugar]); }); }
+function lugarStats(l){
+  var s = 0, m = 0;
+  l.words.forEach(function(w){ if (seen(w.id)) s++; if (mastered(w.id)) m++; });
+  return {n: l.words.length, s: s, m: m, ep: S.ep[l.id] || 0};
+}
+function medal(l){
+  var x = lugarStats(l);
+  if (x.ep >= 2 && x.m / x.n >= 0.8) return 'oro';
+  if (x.ep >= 2) return 'plata';
+  if (x.s > 0) return 'visto';
+  return 'nuevo';
+}
+var MEDAL_TXT = {oro: 'Or', plata: 'Argent', visto: 'Commencé', nuevo: 'Nouveau'};
+function vecinoUnlocked(id){
+  for (var i = 0; i < D.lugares.length; i++){ var l = D.lugares[i]; if (l.guia === id && (S.ep[l.id] || 0) >= 2) return true; }
+  return false;
+}
+function dueCount(){ return available().filter(isDue).length; }
+
+/* ---------- Speech ---------- */
+var VOICES = [];
+var HAS_TTS = ('speechSynthesis' in window) && ('SpeechSynthesisUtterance' in window);
+function loadVoices(){ if (HAS_TTS) VOICES = window.speechSynthesis.getVoices() || []; }
+if (HAS_TTS){ loadVoices(); window.speechSynthesis.onvoiceschanged = loadVoices; }
+function pickVoice(lang){
+  var L = lang.toLowerCase(), i, v, vl, spain = null, latam = null, any = null;
+  for (i = 0; i < VOICES.length; i++){
+    v = VOICES[i]; vl = String(v.lang || '').replace('_', '-').toLowerCase();
+    if (vl === L) return v;
+    if (vl.indexOf('es') === 0){
+      if (!any) any = v;
+      if (vl === 'es-es'){ if (!spain) spain = v; } else if (!latam) latam = v;
+    }
+  }
+  if (L !== 'es-es' && latam) return latam;
+  return spain || any;
+}
+function utter(text, lang){
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = lang; var v = pickVoice(lang); if (v) u.voice = v;
+  u.rate = Number(S.cfg.rate) || 0.9;
+  return u;
+}
+function speak(text, lang){
+  if (!HAS_TTS){ toast('La lecture audio n\u2019est pas disponible sur ce navigateur.'); return; }
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utter(text, lang || 'es-ES'));
+}
+function speakQueue(list){
+  if (!HAS_TTS){ toast('La lecture audio n\u2019est pas disponible sur ce navigateur.'); return; }
+  window.speechSynthesis.cancel();
+  var i = 0;
+  function next(){
+    if (i >= list.length) return;
+    var u = utter(list[i].text, list[i].lang); i++;
+    u.onend = function(){ setTimeout(next, 250); };
+    window.speechSynthesis.speak(u);
+  }
+  next();
+}
+function wordLang(){ return S.cfg.voz === 'latam' ? 'es-MX' : 'es-ES'; }
+function speakerLang(id){
+  if (!S.cfg.acentos) return 'es-ES';
+  if (VEC[id]) return VEC[id].voz;
+  return D.extras[id] ? D.extras[id].voz : 'es-ES';
+}
+function speakWord(w){ speak(w.main.replace(/…/g, ' '), wordLang()); }
+
+/* ---------- Toast & modal ---------- */
+var toastTimer = null;
+function toast(msg){
+  var t = $('toast'); t.textContent = msg; t.className = 'toast on';
+  clearTimeout(toastTimer); toastTimer = setTimeout(function(){ t.className = 'toast'; }, 2800);
+}
+var lastFocus = null;
+function openModal(title, html){
+  lastFocus = document.activeElement;
+  $('modal-root').innerHTML = '<div class="modal-bg" data-act="modal-bg"><div class="modal" role="dialog" aria-modal="true" aria-label="' + esc(title) + '">' +
+    '<div class="modal-head"><h2>' + esc(title) + '</h2><button class="btn small" data-act="close-modal">Fermer</button></div>' + html + '</div></div>';
+  var b = $('modal-root').querySelector('[data-act="close-modal"]'); if (b) b.focus();
+}
+function closeModal(){ $('modal-root').innerHTML = ''; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+
+/* ---------- Navigation ---------- */
+var NAV = [
+  ['barrio', 'Mi barrio', 'i-pueblo'], ['juegos', 'Juegos', 'i-mando'], ['repasos', 'Repasos', 'i-calendario'],
+  ['gramatica', 'Gramática', 'i-farol'], ['diccionario', 'Diccionario', 'i-diccionario'], ['progreso', 'Progreso', 'i-trofeo']
 ];
-const KEY='palabras-v1';let saved={};try{saved=JSON.parse(localStorage.getItem(KEY))||{}}catch{};let state={page:'inicio',grade:Number(saved.grade)||5,theme:'familia',quiz:null,answered:false,story:0};const progress=saved.progress||{};const $=s=>document.querySelector(s);const all=()=>DATA.flatMap(t=>t[4].map((w,i)=>({id:t[0]+':'+i,theme:t[0],level:t[3],es:w[0],fr:w[1],emoji:w[2],example:w[3]})));const available=()=>all().filter(w=>w.level>=state.grade);function persist(){saved.grade=state.grade;saved.progress=progress;localStorage.setItem(KEY,JSON.stringify(saved))}function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function say(s){if(!('speechSynthesis'in window))return alert('Synthèse vocale indisponible sur ce navigateur.');speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(s);u.lang='es-ES';u.rate=.84;speechSynthesis.speak(u)}function go(page){state.page=page;state.answered=false;render()}function setGrade(g){state.grade=Number(g);persist();render()}function setTheme(t){state.theme=t;go('words')}function mark(id){progress[id]=(progress[id]||0)+1;persist();render()}function level(w){return Math.min(4,progress[w.id]||0)}function stats(){let ws=available();return {total:ws.length,seen:ws.filter(w=>level(w)>0).length,mastered:ws.filter(w=>level(w)>=4).length}}function popNav(p){return `<span class="pop-icon pop-${({inicio:2,biblioteca:1,juegos:3,repasos:4,diccionario:5,progreso:6,aventura:2}[p]||1)}" aria-hidden="true"></span>`}function nav(){return [['inicio','Inicio'],['biblioteca','Biblioteca'],['juegos','Juegos'],['repasos','Repasos'],['diccionario','Diccionario'],['progreso','Progreso'],['aventura','Mi barrio']].map(([p,t])=>`<button class="${state.page===p?'active':''}" onclick="go('${p}')">${popNav(p)} ${t}</button>`).join('')}function wordCard(w){return `<article class="word"><span class="symbol">${w.emoji}</span><strong>${escapeHtml(w.es)}</strong><span class="muted">${escapeHtml(w.fr)}</span><small>${escapeHtml(w.example)}</small><div class="actions"><button onclick="say('${w.id}')" data-speak="${w.id}">🔊 Escuchar</button><button onclick="mark('${w.id}')">⭐ ${level(w)}/4</button></div></article>`}function speech(id){let w=all().find(x=>x.id===id);if(w)say(w.es)}
-function render(){const s=stats();$('#grade').value=String(state.grade);$('#nav').innerHTML=nav();let h='';if(state.page==='inicio'){h=`<section class="landing" aria-label="Accueil ¡PALABRAS!"><img class="landing-logo" src="assets/logo-palabras.png..PNG?v=2" alt="¡PALABRAS!" decoding="async"><div class="landing-menu"><button onclick="go('biblioteca')"><span class="pop-icon pop-1" aria-hidden="true"></span> <span>Mi biblioteca</span></button><button onclick="go('aventura')"><span class="pop-icon pop-2" aria-hidden="true"></span> <span>Mi barrio</span></button><button onclick="go('juegos')"><span class="pop-icon pop-3" aria-hidden="true"></span> <span>Mis juegos</span></button><button onclick="go('repasos')"><span class="pop-icon pop-4" aria-hidden="true"></span> <span>Mis repasos</span></button><button onclick="go('diccionario')"><span class="pop-icon pop-5" aria-hidden="true"></span> <span>Mi diccionario</span></button><button onclick="go('progreso')"><span class="pop-icon pop-6" aria-hidden="true"></span> <span>Mi progreso</span></button></div></section>`}
-if(state.page==='biblioteca'){h=`<section class="panel"><h2><span class="pop-icon pop-1" aria-hidden="true"></span> Mi biblioteca</h2><p>Choisis un thème. Les thèmes des niveaux précédents restent disponibles.</p><div class="grid">${DATA.filter(t=>t[3]>=state.grade).map(t=>`<button class="tile" onclick="setTheme('${t[0]}')">${popNav("biblioteca")}<b>${t[2]}</b><small>${t[4].length} palabras · ${t[3]}e</small></button>`).join('')}</div></section>`}
-if(state.page==='words'){let t=DATA.find(t=>t[0]===state.theme);h=`<section class="panel"><button onclick="go('biblioteca')">← Biblioteca</button><h2 style="margin-top:16px">${t[1]} ${t[2]}</h2><p>Écoute, observe et entraîne-toi. Chaque étoile représente une rencontre réussie avec le mot.</p><div class="grid">${all().filter(w=>w.theme===t[0]).map(wordCard).join('')}</div><p><button class="primary" onclick="startQuiz('es','${t[0]}')">🎮 Practicar este tema</button></p></section>`}
-if(state.page==='diccionario'){h=`<section class="panel"><h2><span class="pop-icon pop-5" aria-hidden="true"></span> Mi diccionario</h2><div class="toolbar"><input id="search" placeholder="Buscar / Rechercher…" oninput="filterWords()"><select id="filter"><option value="all">Todos los temas</option>${DATA.map(t=>`<option value="${t[0]}">${t[2]}</option>`).join('')}</select></div><div class="grid" id="wordList"></div></section>`}
-if(state.page==='juegos'){h=`<section class="panel"><h2><span class="pop-icon pop-3" aria-hidden="true"></span> Mis juegos</h2><p>Deux modes de rappel actifs dans cette V1. Les autres ateliers seront ajoutés ensuite.</p><div class="grid"><button class="tile" onclick="startQuiz('es')"><span class="pop-icon pop-3" aria-hidden="true"></span><b>Encuentra la palabra</b><small>Français → espagnol</small></button><button class="tile" onclick="startQuiz('fr')"><span class="pop-icon pop-4" aria-hidden="true"></span><b>¿Qué significa?</b><small>Espagnol → français</small></button><button class="tile" onclick="startQuiz('audio')"><span class="pop-icon pop-5" aria-hidden="true"></span><b>Escucha y elige</b><small>Écoute le mot et reconnais-le</small></button></div></section>`}
-if(state.page==='quiz'){let q=state.quiz;if(!q){startQuiz('es');return}h=`<section class="panel"><button onclick="go('juegos')">← Juegos</button><h2 style="margin-top:20px">${q.mode==='audio'?'🔊 Escucha y elige':q.mode==='fr'?'¿Qué significa?':'Encuentra la palabra'}</h2><p>Pregunta ${q.index+1} / ${q.questions.length} · ${q.score} puntos</p><div class="bar"><span style="width:${100*q.index/q.questions.length}%"></span></div><h2 style="margin-top:24px">${q.mode==='audio'?`<button class="primary" onclick="speech('${q.current.id}')">🔊 Escuchar</button>`:escapeHtml(q.mode==='fr'?q.current.es:q.current.fr)}</h2><div class="choices">${q.options.map((o,i)=>`<button ${state.answered?'disabled':''} onclick="answer(${i})">${escapeHtml(q.mode==='fr'?o.fr:o.es)}</button>`).join('')}</div><p class="feedback" id="feedback"></p>${state.answered?'<button class="primary" onclick="nextQuestion()">Siguiente →</button>':''}</section>`}
-if(state.page==='result'){let q=state.quiz;h=`<section class="panel"><h2>🎉 ¡Muy bien!</h2><p>Tu puntuación : <b>${q.score}/${q.questions.length}</b></p><p>Les mots réussis sont enregistrés dans ta progression.</p><button class="primary" onclick="startQuiz('${q.mode}')">Volver a jugar</button> <button onclick="go('progreso')">Mi progreso</button></section>`}
-if(state.page==='repasos'){let due=available().filter(w=>level(w)<4).sort((a,b)=>level(a)-level(b));h=`<section class="panel"><h2><span class="pop-icon pop-4" aria-hidden="true"></span> Mis repasos</h2><p>Entraîne-toi sur les mots non encore maîtrisés. La V1 utilise un suivi local simplifié ; une planification temporelle des révisions sera ajoutée ensuite.</p><p><b>${due.length}</b> mots à consolider.</p><button class="primary" onclick="startQuiz('es',null,true)">Comenzar el repaso</button><div class="grid" style="margin-top:20px">${due.slice(0,12).map(wordCard).join('')}</div></section>`}
-if(state.page==='progreso'){let p=Math.round(100*s.mastered/Math.max(1,s.total));h=`<section class="panel"><h2><span class="pop-icon pop-6" aria-hidden="true"></span> Mi progreso</h2><p><b>${s.seen}</b> mots découverts sur ${s.total} disponibles · <b>${s.mastered}</b> maîtrisés.</p><div class="bar"><span style="width:${p}%"></span></div><p>${p}% du lexique disponible maîtrisé.</p><button onclick="exportProgress()">⬇️ Exportar progreso</button> <button onclick="$('#importFile').click()">⬆️ Importar progreso</button><input id="importFile" type="file" accept="application/json" class="hidden" onchange="importProgress(event)"><h3 style="margin-top:25px">Progreso por tema</h3><div class="grid">${DATA.filter(t=>t[3]>=state.grade).map(t=>{let ws=all().filter(w=>w.theme===t[0]);return `<div class="word"><b>${t[1]} ${t[2]}</b><span>${ws.filter(w=>level(w)>=4).length}/${ws.length} dominadas</span></div>`}).join('')}</div></section>`}
-if(state.page==='aventura'){let scenes=[['👧','¡Hola! Soy Lucía. ¿Cómo te llamas?','Bonjour ! Je suis Lucía. Comment t’appelles-tu ?'],['👦','Me llamo Mateo. ¡Mucho gusto!','Je m’appelle Mateo. Enchanté !'],['👧','¿Te gusta el instituto?','Tu aimes le collège ?'],['👦','Sí, me gusta mucho. ¿Y a ti?','Oui, j’aime beaucoup. Et toi ?']];let scene=scenes[state.story%scenes.length];h=`<section class="panel"><span class="pill">Episodio 1 · Un nuevo compañero</span><h2 style="margin-top:12px">💬 Mi barrio</h2><p>Découvre la première mini-BD et écoute les dialogues.</p><div class="comic"><div class="frame"><div class="face face-pop face-pop-4"></div><div class="bubble">¡Hola! Soy Lucía.</div><small>En el instituto</small></div><div class="frame"><div class="face face-pop face-pop-2"></div><div class="bubble">Me llamo Mateo.</div><small>Un nuevo compañero</small></div><div class="frame"><div class="face face-pop face-pop-6"></div><div class="bubble">¡Mucho gusto!</div><small>Una nueva amistad</small></div></div><div class="panel" style="margin-top:20px"><h3>Diálogo interactivo · ${state.story%scenes.length+1}/4</h3><div class="bubble"><b>${scene[0]} ${scene[1]}</b></div><button onclick="sayScene()">🔊 Escuchar</button> <button onclick="toggleTranslation()">🇫🇷 Traduction</button><p id="translation" class="hidden">${scene[2]}</p><button class="primary" onclick="state.story++;render()">Siguiente →</button></div><button onclick="setTheme('escuela')">📚 Aprender vocabulario escolar</button></section>`}
-$('#view').innerHTML=h;if(state.page==='diccionario')filterWords();if(state.page==='quiz'&&state.answered)$('#feedback').textContent=state.lastFeedback||'';document.querySelectorAll('[data-speak]').forEach(b=>b.onclick=()=>speech(b.dataset.speak))}
-function filterWords(){let term=($('#search')?.value||'').toLocaleLowerCase();let t=$('#filter')?.value||'all';let ws=available().filter(w=>(t==='all'||w.theme===t)&&(w.es.toLocaleLowerCase().includes(term)||w.fr.toLocaleLowerCase().includes(term)));$('#wordList').innerHTML=ws.map(wordCard).join('')||'<p>No hay resultados.</p>';document.querySelectorAll('[data-speak]').forEach(b=>b.onclick=()=>speech(b.dataset.speak))}
-function shuffle(a){return [...a].sort(()=>Math.random()-.5)}function startQuiz(mode,theme=null,review=false){let pool=available().filter(w=>(!theme||w.theme===theme)&&(!review||level(w)<4));if(pool.length<4)pool=available();let questions=shuffle(pool).slice(0,Math.min(10,pool.length));state.quiz={mode,questions,index:0,score:0};state.answered=false;state.page='quiz';buildQuestion()}
-function buildQuestion(){let q=state.quiz;if(q.index>=q.questions.length){go('result');return}q.current=q.questions[q.index];let opts=shuffle(available().filter(w=>w.id!==q.current.id));let unique=[];let field=q.mode==='fr'?'fr':'es';for(let w of opts){if(!unique.some(x=>x[field]===w[field]))unique.push(w);if(unique.length===3)break}q.options=shuffle([q.current,...unique]);state.answered=false;render()}
-function answer(i){if(state.answered)return;let q=state.quiz;let correct=q.options[i].id===q.current.id;state.answered=true;if(correct){q.score++;progress[q.current.id]=Math.min(4,(progress[q.current.id]||0)+1);persist()}else{progress[q.current.id]=Math.max(0,(progress[q.current.id]||0)-1);persist()}state.lastFeedback=correct?'✅ ¡Correcto! '+q.current.es+' = '+q.current.fr:'💡 La bonne réponse : '+q.current.es+' = '+q.current.fr;render()}
-function nextQuestion(){state.quiz.index++;buildQuestion()}function sayScene(){let lines=['¡Hola! Soy Lucía. ¿Cómo te llamas?','Me llamo Mateo. ¡Mucho gusto!','¿Te gusta el instituto?','Sí, me gusta mucho. ¿Y a ti?'];say(lines[state.story%4])}function toggleTranslation(){$('#translation').classList.toggle('hidden')}function exportProgress(){let blob=new Blob([JSON.stringify({app:'palabras-v1',grade:state.grade,progress},null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='palabras-progreso.json';a.click();URL.revokeObjectURL(a.href)}function importProgress(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let obj=JSON.parse(r.result);if(obj.app!=='palabras-v1'||!obj.progress||typeof obj.progress!=='object'||Array.isArray(obj.progress))throw Error('Format incorrect');for(let [id,n] of Object.entries(obj.progress)){if(all().some(w=>w.id===id)&&Number.isInteger(n)&&n>=0&&n<=4)progress[id]=n}if([3,4,5].includes(Number(obj.grade)))state.grade=Number(obj.grade);persist();render();alert('Progreso importado.')}catch{alert('Fichier de progression invalide.')}};r.readAsText(f)}document.querySelector('#grade').addEventListener('change',e=>setGrade(e.target.value));render();
-</script></body></html>
+var NAV_PARENT = {lugar: 'barrio', partida: 'juegos', resultado: 'juegos', pista: 'gramatica'};
+function go(page){
+  if (HAS_TTS) window.speechSynthesis.cancel();
+  view.page = page;
+  render();
+  window.scrollTo(0, 0);
+}
+function renderNav(){
+  var cur = NAV_PARENT[view.page] || view.page;
+  $('nav').innerHTML = NAV.map(function(n){
+    return '<button class="navbtn" data-act="go" data-page="' + n[0] + '"' + (cur === n[0] ? ' aria-current="page"' : '') + '>' + ico(n[2]) + n[1] + '</button>';
+  }).join('');
+}
+function applyCfg(){
+  var c = [];
+  if (view.page === 'inicio') c.push('is-landing');
+  if (S.cfg.font === 'lexend') c.push('f-lexend');
+  if (S.cfg.size == 1) c.push('sz-1');
+  if (S.cfg.size == 2) c.push('sz-2');
+  if (S.cfg.spacing == 1) c.push('sp-1');
+  document.body.className = c.join(' ');
+}
+function render(){
+  applyCfg();
+  $('grade').value = String(S.grade);
+  renderNav();
+  var p = view.page, h = '';
+  if (p === 'inicio') h = pInicio();
+  else if (p === 'barrio') h = pBarrio();
+  else if (p === 'lugar') h = pLugar();
+  else if (p === 'juegos') h = pJuegos();
+  else if (p === 'partida') h = pPartida();
+  else if (p === 'resultado') h = pResultado();
+  else if (p === 'repasos') h = pRepasos();
+  else if (p === 'gramatica') h = pGramatica();
+  else if (p === 'pista') h = pPista();
+  else if (p === 'diccionario') h = pDiccionario();
+  else if (p === 'progreso') h = pProgreso();
+  app.innerHTML = h;
+  after();
+}
+function after(){
+  if (view.page === 'diccionario') fillDic();
+  if (view.page === 'partida' && G){
+    var it = G.items[G.i];
+    if (!G.answered && it.t === 'escribe'){ var inp = $('esc-input'); if (inp) inp.focus(); }
+    if (!G.answered && it.t === 'audio' && !it.played){ it.played = true; setTimeout(function(){ speakWord(it.w); }, 250); }
+    if (G.answered){ var nb = $('next-btn'); if (nb) nb.focus(); }
+  }
+}
+
+/* ---------- Pages ---------- */
+function pInicio(){
+  var due = dueCount();
+  var items = [
+    ['barrio', 'i-pueblo', 'Mi barrio', 'Visite le quartier et ses voisins'],
+    ['juegos', 'i-mando', 'Juegos', 'Entraîne-toi avec les mots'],
+    ['repasos', 'i-calendario', 'Repasos', 'Révise au bon moment'],
+    ['gramatica', 'i-farol', 'Gramática', 'Les fiches de grammaire'],
+    ['diccionario', 'i-diccionario', 'Diccionario', 'Tous les mots du quartier'],
+    ['progreso', 'i-trofeo', 'Mi progreso', 'Tes cartes et tes progrès']
+  ];
+  return '<section class="landing" aria-label="Accueil"><img class="landing-logo" src="assets/logo.webp" alt="¡Palabras!">' +
+    '<div class="landing-menu">' + items.map(function(x){
+      var badge = (x[0] === 'repasos' && due > 0) ? '<span class="badge" aria-label="' + due + ' mots à revoir">' + due + '</span>' : '';
+      return '<button class="btn" data-act="go" data-page="' + x[0] + '">' + ico(x[1]) + '<span><b>' + x[2] + badge + '</b><small>' + x[3] + '</small></span></button>';
+    }).join('') + '</div></section>';
+}
+
+function fachada(l){
+  var x = lugarStats(l), md_ = medal(l), locked = !open(l);
+  var pct = Math.round(100 * x.m / x.n);
+  return '<button class="fachada' + (locked ? ' locked' : '') + '" data-act="lugar" data-id="' + l.id + '" aria-label="' + esc(l.nombre + ', ' + l.tema + (locked ? ', réservé à la ' + nivelLabel(l.nivel) : '')) + '">' +
+    '<span class="tejado"></span><span class="muro">' +
+    '<span class="ventana">' + ico(l.icono, 'v') + '</span>' +
+    '<span class="plaque sm">' + esc(l.nombre) + '</span>' +
+    '<span class="tema">' + esc(l.tema) + '</span>' +
+    '<span class="mini-bar" aria-hidden="true"><span style="width:' + pct + '%"></span></span>' +
+    '<span class="estado"><span>' + x.m + ' / ' + x.n + ' mots acquis</span><span class="sello ' + md_ + '">' + MEDAL_TXT[md_] + '</span></span>' +
+    '</span>' + portrait(l.guia, 'guia') +
+    (locked ? '<span class="candado">Ouvre en ' + nivelLabel(l.nivel) + '</span>' : '') + '</button>';
+}
+function pBarrio(){
+  var h = '<section class="page"><div class="page-head"><h1 class="plaque big">Mi barrio</h1>' +
+    '<p class="lede">Chaque voisin te fait visiter son lieu : un épisode à écouter, des mots, des jeux, une fiche de grammaire et un peu de culture. Termine un épisode pour découvrir le pays de ton guide.</p></div>';
+  h += '<h2>Los vecinos</h2><div class="vecinos">' + D.vecinos.map(function(v){
+    var un = vecinoUnlocked(v.id);
+    return '<button class="vecino" data-act="vecino" data-id="' + v.id + '">' + portrait(v.id, 'p') + '<b>' + esc(v.nombre) + '</b><small>' + esc(v.ciudad) + '<br>' + esc(v.pais) + '</small>' +
+      (un ? '' : '<span class="lock">Carte à débloquer</span>') + '</button>';
+  }).join('') + '</div>';
+  D.calles.forEach(function(c){
+    var ls = D.lugares.filter(function(l){ return l.nivel === c.nivel; });
+    h += '<div class="calle"><div class="street-sign"><h2 class="plaque">' + esc(c.nombre) + '</h2><span class="nivel-tag">' + nivelLabel(c.nivel) + '</span></div>' +
+      '<div class="fachadas">' + ls.map(fachada).join('') + '</div></div>';
+  });
+  return h + '</section>';
+}
+
+/* Place */
+var TABS = [['episodio', 'Episodio', 'i-arco'], ['palabras', 'Palabras', 'i-diccionario'], ['jugar', 'Jugar', 'i-mando'], ['pista', 'Gramática', 'i-farol'], ['cultura', 'Cultura', 'i-flor']];
+function pLugar(){
+  var l = LUG[view.lugar], v = VEC[l.guia];
+  var h = '<section class="page"><button class="btn small volver" data-act="go" data-page="barrio">' + ico('u-atras') + 'Mi barrio</button>' +
+    '<div class="lugar-hero">' + portrait(l.guia, 'guia-big') + '<div><h1 class="plaque big">' + esc(l.nombre) + '</h1>' +
+    '<p class="sub">' + esc(l.tema) + ' <span class="muted">(' + nivelLabel(l.nivel) + ', avec ' + esc(v.nombre) + ')</span></p>' +
+    '<div class="bubble"><p class="es">' + esc(l.intro[0]) + '</p><p class="fr hidden" id="intro-fr">' + esc(l.intro[1]) + '</p>' +
+    '<div class="row"><button class="btn small" data-act="say-intro">' + ico('u-sonido') + 'Escuchar</button><button class="btn small" data-act="toggle" data-target="intro-fr">Traduction</button></div></div>' +
+    '</div></div>';
+  h += '<div class="tabs" role="tablist">' + TABS.map(function(t){
+    return '<button class="tab" role="tab" data-act="tab" data-tab="' + t[0] + '" aria-selected="' + (view.tab === t[0]) + '">' + ico(t[2]) + t[1] + '</button>';
+  }).join('') + '</div><div class="panel" role="tabpanel">';
+  if (view.tab === 'episodio') h += tEpisodio(l);
+  else if (view.tab === 'palabras') h += tPalabras(l);
+  else if (view.tab === 'jugar') h += tJugar(l);
+  else if (view.tab === 'pista') h += tPista(l);
+  else h += tCultura(l);
+  return h + '</div></section>';
+}
+function markLine(text, l){
+  var forms = [];
+  l.words.forEach(function(w){
+    w.forms.forEach(function(f){
+      var b = f.replace(ART_RE, '$2').replace(/…/g, '').replace(/[¿?¡!]/g, '').replace(/^\s+|\s+$/g, '');
+      if (b.length >= 3) forms.push({f: b.toLowerCase(), id: w.id});
+    });
+  });
+  forms.sort(function(a, b){ return b.f.length - a.f.length; });
+  var low = text.toLowerCase(), marks = [], taken = [];
+  function free(s, e){ for (var i = s; i < e; i++){ if (taken[i]) return false; } return true; }
+  forms.forEach(function(fo){
+    var idx = low.indexOf(fo.f);
+    while (idx >= 0){
+      var end = idx + fo.f.length;
+      var before = idx === 0 ? ' ' : low.charAt(idx - 1), aft = end >= low.length ? ' ' : low.charAt(end);
+      if (!isLetter(before) && !isLetter(aft) && free(idx, end)){
+        marks.push({s: idx, e: end, id: fo.id});
+        for (var k = idx; k < end; k++) taken[k] = true;
+      }
+      idx = low.indexOf(fo.f, idx + 1);
+    }
+  });
+  marks.sort(function(a, b){ return a.s - b.s; });
+  var out = '', pos = 0;
+  marks.forEach(function(m){
+    out += esc(text.slice(pos, m.s)) + '<button class="mot" data-act="mot" data-id="' + m.id + '">' + esc(text.slice(m.s, m.e)) + '</button>';
+    pos = m.e;
+  });
+  return out + esc(text.slice(pos));
+}
+function tEpisodio(l){
+  var e = l.episodio;
+  if (!EP || EP.lugar !== l.id) EP = {lugar: l.id, shown: 1, mode: 'lectura', qi: 0, score: 0, answered: false, choice: -1};
+  var first = e.lineas[0][0];
+  var h = '<div class="ep-title"><h2>Episodio : ' + esc(e.titulo) + '</h2>';
+  var done = S.ep[l.id] || 0;
+  if (done >= 2) h += '<span class="sello plata">Épisode réussi</span>';
+  h += '</div>';
+  if (EP.mode === 'lectura'){
+    h += '<p class="muted">Écoute chaque réplique. Les mots soulignés sont dans la liste du lieu : touche-les pour voir leur sens.</p><div class="lineas">';
+    for (var i = 0; i < EP.shown; i++){
+      var ln = e.lineas[i];
+      h += '<div class="linea' + (ln[0] === first ? '' : ' der') + '"><div class="who">' + portrait(ln[0], 'avatar') + esc(speakerName(ln[0])) + '</div>' +
+        '<div class="burbuja"><p class="es">' + markLine(ln[1], l) + '</p>' +
+        '<div class="row"><button class="btn small" data-act="say-line" data-i="' + i + '" aria-label="Écouter la réplique">' + ico('u-sonido') + '</button>' +
+        '<button class="btn small" data-act="toggle" data-target="lfr-' + i + '">FR</button></div>' +
+        '<p class="fr hidden" id="lfr-' + i + '">' + esc(ln[2]) + '</p></div></div>';
+    }
+    h += '</div><div class="row">';
+    if (EP.shown < e.lineas.length) h += '<button class="btn primary" data-act="ep-next">' + ico('u-play') + 'Réplique suivante</button>';
+    else h += '<button class="btn primary" data-act="ep-quiz">' + ico('u-medalla') + 'Répondre aux questions</button>';
+    h += '<button class="btn" data-act="ep-all">' + ico('u-sonido') + 'Tout écouter</button>';
+    if (EP.shown > 1) h += '<button class="btn ghost" data-act="ep-restart">' + ico('u-repetir') + 'Recommencer</button>';
+    h += '</div>';
+    return h;
+  }
+  if (EP.mode === 'quiz'){
+    var q = e.preguntas[EP.qi];
+    h += '<p class="muted">Question ' + (EP.qi + 1) + ' sur ' + e.preguntas.length + '</p><h3>' + esc(q[0]) + '</h3><div class="opts">';
+    q[1].forEach(function(o, j){
+      var cls = '';
+      if (EP.answered){ if (j === q[2]) cls = ' ok'; else if (j === EP.choice) cls = ' ko'; }
+      h += '<button class="opt' + cls + '" data-act="ep-resp" data-i="' + j + '"' + (EP.answered ? ' disabled' : '') + '>' + esc(o) + '</button>';
+    });
+    h += '</div>';
+    if (EP.answered){
+      var ok = EP.choice === q[2];
+      h += '<div class="feedback ' + (ok ? 'ok' : 'ko') + '"><b class="title">' + (ok ? '¡Muy bien!' : 'Pas tout à fait.') + '</b>' +
+        (ok ? '' : 'La bonne réponse : ' + esc(q[1][q[2]]) + '. Relis l\u2019épisode si besoin.') + '</div>' +
+        '<div class="row" style="margin-top:14px"><button class="btn primary" id="next-btn" data-act="ep-qnext">' + (EP.qi + 1 < e.preguntas.length ? 'Question suivante' : 'Voir mon résultat') + '</button></div>';
+    }
+    return h;
+  }
+  // result
+  var n = e.preguntas.length, passed = EP.score >= 2, v = VEC[l.guia];
+  h += '<div class="feedback ' + (passed ? 'ok' : 'casi') + '"><b class="title">' + EP.score + ' / ' + n + (passed ? ' : ¡Episodio superado!' : ' : presque !') + '</b>' +
+    (passed ? (EP.unlocked ? 'Tu as débloqué la carte de ' + esc(v.nombre) + ' : découvre son pays dans l\u2019onglet Cultura.' : 'Bravo, tu as bien compris l\u2019épisode.')
+            : 'Il faut 2 bonnes réponses pour réussir l\u2019épisode. Réécoute-le, puis réessaie.') + '</div>' +
+    '<div class="row" style="margin-top:14px"><button class="btn" data-act="ep-restart">' + ico('u-repetir') + 'Réécouter l\u2019épisode</button>' +
+    '<button class="btn primary" data-act="tab" data-tab="palabras">' + ico('i-diccionario') + 'Voir les mots du lieu</button></div>';
+  return h;
+}
+function pips(w){
+  var b = st(w.id).b, h = '<span class="pips' + (b >= 4 ? ' done' : '') + '" title="Niveau ' + b + ' sur 5" aria-label="Niveau ' + b + ' sur 5">';
+  for (var i = 1; i <= 5; i++) h += '<span' + (i <= b ? ' class="on"' : '') + '></span>';
+  return h + '</span>';
+}
+function wordCard(w){
+  return '<article class="word"><div class="top-line"><span class="emo" aria-hidden="true">' + w.e + '</span>' + pips(w) + '</div>' +
+    '<strong>' + esc(w.es) + '</strong><span class="fr">' + esc(w.fr) + '</span>' +
+    '<div class="ej">' + esc(w.ej) + '<i>' + esc(w.ejfr) + '</i></div>' +
+    '<div class="row"><button class="btn small" data-act="say-word" data-id="' + w.id + '">' + ico('u-sonido') + 'Mot</button>' +
+    '<button class="btn small" data-act="say-ej" data-id="' + w.id + '">' + ico('u-sonido') + 'Phrase</button></div></article>';
+}
+function tPalabras(l){
+  var x = lugarStats(l);
+  return '<div class="row" style="justify-content:space-between;margin-bottom:14px"><h2 style="margin:0">Las palabras de ' + esc(l.nombre.toLowerCase()) + '</h2>' +
+    '<span>' + x.m + ' / ' + x.n + ' acquis</span></div>' +
+    '<p class="muted">Les points montrent où tu en es pour chaque mot. Ils avancent uniquement quand tu réussis un jeu.</p>' +
+    '<div class="words">' + l.words.map(wordCard).join('') + '</div>' +
+    '<div class="row" style="margin-top:18px"><button class="btn primary" data-act="tab" data-tab="jugar">' + ico('i-mando') + 'Jouer avec ces mots</button></div>';
+}
+var GAMES = [
+  {id: 'es', nombre: 'Encuentra la palabra', desc: 'Lis en français, trouve le mot espagnol.', ico: 'i-mando'},
+  {id: 'fr', nombre: '¿Qué significa?', desc: 'Lis en espagnol, trouve le sens.', ico: 'i-diccionario'},
+  {id: 'audio', nombre: 'Escucha y elige', desc: 'Écoute le mot, choisis ce qu\u2019il veut dire.', ico: 'u-sonido'},
+  {id: 'escribe', nombre: 'Escribe', desc: 'Écris le mot en espagnol, avec les accents.', ico: 'i-libros'},
+  {id: 'genero', nombre: '¿El, la, los o las?', desc: 'Trouve le bon article.', ico: 'i-flor'},
+  {id: 'ordena', nombre: 'Ordena la frase', desc: 'Remets la phrase dans l\u2019ordre.', ico: 'i-arco'},
+  {id: 'mix', nombre: 'Desafío del barrio', desc: 'Un peu de tout, en 10 questions.', ico: 'i-molino'}
+];
+function gameTiles(scope){
+  return '<div class="games">' + GAMES.map(function(g){
+    return '<button class="game" data-act="start" data-type="' + g.id + '" data-scope="' + scope + '">' + ico(g.ico) + '<b>' + esc(g.nombre) + '</b><small>' + esc(g.desc) + '</small></button>';
+  }).join('') + '</div>';
+}
+function tJugar(l){ return '<h2>Jugar en ' + esc(l.nombre.toLowerCase()) + '</h2><p class="muted">Chaque partie dure 10 questions sur les mots de ce lieu.</p>' + gameTiles(l.id); }
+function tPista(l){
+  var p = PIS[l.pista], best = S.pista[p.id];
+  return '<h2>' + esc(p.titulo) + '</h2><div class="explica"><p>' + md(p.explica[0]) + '</p></div>' +
+    '<p class="muted">' + (best != null ? 'Ton meilleur score : ' + best + ' / ' + p.ejercicio.length + '.' : 'Pas encore d\u2019exercice fait.') + '</p>' +
+    '<button class="btn primary" data-act="open-pista" data-id="' + p.id + '">' + ico('i-farol') + 'Ouvrir la fiche et s\u2019entraîner</button>';
+}
+function tCultura(l){
+  var v = VEC[l.guia], un = vecinoUnlocked(v.id);
+  return '<h2>Cultura</h2><div class="explica"><p>' + md(l.cultura) + '</p></div>' +
+    '<div class="panel" style="margin:18px 0 0;box-shadow:none;background:#FFF9E6"><div class="row" style="align-items:flex-start;flex-wrap:nowrap">' + portrait(v.id, 'avatar') +
+    '<div><h3 style="margin-bottom:6px">El país de ' + esc(v.nombre) + ' : ' + esc(v.pais) + '</h3>' +
+    (un ? '<p style="margin:0">' + esc(v.cultura) + '</p>' : '<p class="muted" style="margin:0">Réussis l\u2019épisode de ' + esc(v.nombre) + ' pour débloquer cette carte.</p>') +
+    '</div></div></div>';
+}
+
+/* Games */
+function pJuegos(){
+  var opts = [['nivel', 'Tout mon niveau']].concat(D.lugares.filter(open).map(function(l){ return [l.id, l.nombre]; }));
+  if (!LUG[view.scope] && view.scope !== 'nivel') view.scope = 'nivel';
+  if (LUG[view.scope] && !open(LUG[view.scope])) view.scope = 'nivel';
+  return '<section class="page"><div class="page-head"><h1 class="plaque big">Juegos</h1><p class="lede">Choisis d\u2019abord les mots, puis le jeu. Les mots que tu dois revoir passent en premier.</p></div>' +
+    '<div class="chips" role="group" aria-label="Choisir les mots">' + opts.map(function(o){
+      return '<button class="chip" data-act="scope" data-scope="' + o[0] + '" aria-pressed="' + (view.scope === o[0]) + '">' + esc(o[1]) + '</button>';
+    }).join('') + '</div>' + gameTiles(view.scope) + '</section>';
+}
+function poolFor(scope){
+  var av = available();
+  if (scope === 'repaso') return av.filter(isDue);
+  if (scope === 'nuevos') return av.filter(function(w){ return !seen(w.id); });
+  if (LUG[scope]) return LUG[scope].words.slice();
+  return av;
+}
+function eligible(type, w){
+  if (type === 'genero') return w.noun;
+  if (type === 'escribe') return w.typable;
+  if (type === 'ordena') return w.orderable;
+  return true;
+}
+function prio(w){ var s = st(w.id); if (s.b === 0) return 1; if (s.n <= today()) return 0; return 2 + s.b; }
+function startGame(type, scope){
+  var pool = poolFor(scope).filter(function(w){ return type === 'mix' || eligible(type, w); });
+  if (!pool.length){
+    toast(scope === 'repaso' ? 'Aucun mot à revoir aujourd\u2019hui.' : 'Pas assez de mots pour ce jeu ici. Choisis un autre jeu ou d\u2019autres mots.');
+    return;
+  }
+  pool = shuffle(pool);
+  var keyed = pool.map(function(w, i){ return {w: w, p: prio(w), i: i}; });
+  keyed.sort(function(a, b){ return a.p - b.p || a.i - b.i; });
+  var items = keyed.slice(0, 10).map(function(k){
+    var w = k.w, t = type;
+    if (type === 'mix'){
+      var c = ['es', 'fr', 'audio'];
+      if (w.typable) c.push('escribe');
+      if (w.noun) c.push('genero');
+      if (w.orderable) c.push('ordena');
+      t = c[Math.floor(Math.random() * c.length)];
+    }
+    return {w: w, t: t, ok: null, neutral: false};
+  });
+  G = {type: type, scope: scope, items: items, i: 0, score: 0, answered: false, choice: -1, fb: null};
+  prepItem();
+  go('partida');
+}
+function makeOptions(w, field){
+  function key(x){ return field === 'es' ? x.main : x.fr; }
+  var same = LUG[w.lugar].words.filter(function(x){ return x.id !== w.id && x.noun === w.noun; });
+  var other = LUG[w.lugar].words.filter(function(x){ return x.id !== w.id && x.noun !== w.noun; });
+  var far = available().filter(function(x){ return x.lugar !== w.lugar; });
+  var all = shuffle(same).concat(shuffle(other), shuffle(far));
+  var out = [w], used = {};
+  used[key(w)] = 1;
+  for (var i = 0; i < all.length && out.length < 4; i++){
+    var k = key(all[i]);
+    if (!used[k]){ used[k] = 1; out.push(all[i]); }
+  }
+  return shuffle(out);
+}
+function prepItem(){
+  var it = G.items[G.i];
+  G.answered = false; G.choice = -1; G.fb = null;
+  if (it.t === 'es') it.opts = makeOptions(it.w, 'es');
+  else if (it.t === 'fr' || it.t === 'audio') it.opts = makeOptions(it.w, 'fr');
+  else if (it.t === 'genero') it.opts = ['el', 'la', 'los', 'las'];
+  else if (it.t === 'ordena'){
+    var toks = it.w.tokens.map(function(t, i){ return {t: t, i: i}; });
+    var sh = shuffle(toks), tries = 0;
+    while (tries < 5 && sh.map(function(x){ return x.t; }).join(' ') === it.w.ej){ sh = shuffle(toks); tries++; }
+    it.bank = sh; it.built = [];
+  }
+}
+var TYPE_TITLE = {es: 'Encuentra la palabra', fr: '¿Qué significa?', audio: 'Escucha y elige', escribe: 'Escribe', genero: '¿El, la, los o las?', ordena: 'Ordena la frase'};
+function pPartida(){
+  if (!G){ return pJuegos(); }
+  var it = G.items[G.i], w = it.w, n = G.items.length;
+  var h = '<section class="page"><div class="partida"><div class="p-head"><button class="btn small" data-act="quit">' + ico('u-atras') + 'Quitter</button>' +
+    '<span><b>' + esc(TYPE_TITLE[it.t]) + '</b></span><span>' + (G.i + 1) + ' / ' + n + '</span></div>' +
+    '<div class="bar" aria-hidden="true"><span style="width:' + Math.round(100 * G.i / n) + '%"></span></div><div class="panel">';
+  if (it.t === 'es'){
+    h += '<div class="prompt"><span class="emo" aria-hidden="true">' + w.e + '</span><span class="hint">Comment dit-on…</span><span class="big">' + esc(w.fr) + '</span></div>' + optsHtml(it, 'es');
+  } else if (it.t === 'fr'){
+    h += '<div class="prompt"><span class="hint">Que veut dire…</span><span class="big">' + esc(w.main) + '</span>' +
+      '<button class="btn small" style="margin-top:10px" data-act="say-word" data-id="' + w.id + '">' + ico('u-sonido') + 'Écouter</button></div>' + optsHtml(it, 'fr');
+  } else if (it.t === 'audio'){
+    h += '<div class="prompt"><span class="hint">Écoute et choisis le sens</span><br><button class="btn listen" data-act="say-word" data-id="' + w.id + '" aria-label="Écouter le mot">' + ico('u-sonido') + '</button></div>' + optsHtml(it, 'fr');
+  } else if (it.t === 'genero'){
+    h += '<div class="prompt"><span class="emo" aria-hidden="true">' + w.e + '</span><span class="hint">Quel article ?</span><span class="big">___ ' + esc(w.bare) + '</span><span class="hint">(' + esc(w.fr) + ')</span></div>';
+    h += '<div class="opts">' + it.opts.map(function(o, j){
+      var cls = '';
+      if (G.answered){ if (o === w.art) cls = ' ok'; else if (j === G.choice) cls = ' ko'; }
+      return '<button class="opt' + cls + '" data-act="resp" data-i="' + j + '"' + (G.answered ? ' disabled' : '') + '>' + o + '</button>';
+    }).join('') + '</div>';
+  } else if (it.t === 'escribe'){
+    h += '<div class="prompt"><span class="emo" aria-hidden="true">' + w.e + '</span><span class="hint">Écris en espagnol' + (w.art ? ', avec l\u2019article' : '') + ' :</span><span class="big">' + esc(w.fr) + '</span></div>' +
+      '<div class="typing"><label class="sr" for="esc-input">Ta réponse</label><input id="esc-input" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="es" value="' + esc(G.input || '') + '"' + (G.answered ? ' disabled' : '') + '>' +
+      '<div class="acentos">' + ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü'].map(function(c){ return '<button data-act="acento" data-c="' + c + '"' + (G.answered ? ' disabled' : '') + '>' + c + '</button>'; }).join('') + '</div>' +
+      (G.answered ? '' : '<div class="row" style="justify-content:center"><button class="btn primary" data-act="check-esc">Vérifier</button><button class="btn ghost" data-act="skip">Je ne sais pas</button></div>') + '</div>';
+  } else if (it.t === 'ordena'){
+    h += '<div class="prompt"><span class="hint">Remets la phrase dans l\u2019ordre :</span><span class="big" style="font-size:1.2rem;font-family:var(--body);font-weight:400">' + esc(w.ejfr) + '</span></div>' +
+      '<div class="zona" aria-label="Ta phrase">' + (it.built.length ? it.built.map(function(x, j){ return '<button class="token" data-act="quitar" data-i="' + j + '"' + (G.answered ? ' disabled' : '') + '>' + esc(x.t) + '</button>'; }).join('') : '<span class="muted">Touche les mots dans l\u2019ordre</span>') + '</div>' +
+      '<div class="banco">' + it.bank.map(function(x, j){ return '<button class="token" data-act="poner" data-i="' + j + '"' + (G.answered ? ' disabled' : '') + '>' + esc(x.t) + '</button>'; }).join('') + '</div>' +
+      (G.answered ? '' : '<div class="row" style="justify-content:center"><button class="btn primary" data-act="check-ord"' + (it.bank.length ? ' disabled' : '') + '>Vérifier</button><button class="btn ghost" data-act="reset-ord">Effacer</button></div>');
+  }
+  if (G.answered) h += feedbackHtml(it);
+  return h + '</div></div></section>';
+}
+function optsHtml(it, field){
+  return '<div class="opts">' + it.opts.map(function(o, j){
+    var cls = '';
+    if (G.answered){ if (o.id === it.w.id) cls = ' ok'; else if (j === G.choice) cls = ' ko'; }
+    return '<button class="opt' + cls + '" data-act="resp" data-i="' + j + '"' + (G.answered ? ' disabled' : '') + '>' + esc(field === 'es' ? o.main : o.fr) + '</button>';
+  }).join('') + '</div>';
+}
+function feedbackHtml(it){
+  var w = it.w, cls = it.ok ? 'ok' : (it.neutral ? 'casi' : 'ko');
+  var title = it.ok ? '¡Correcto!' : (it.neutral ? 'Presque !' : 'Pas cette fois.');
+  var body = '';
+  if (G.fb) body += '<p style="margin:0 0 6px">' + esc(G.fb) + '</p>';
+  if (it.t === 'ordena') body += '<p style="margin:0"><b>' + esc(w.ej) + '</b><br><i>' + esc(w.ejfr) + '</i></p>';
+  else body += '<p style="margin:0"><b>' + esc(w.es) + '</b> : ' + esc(w.fr) + '</p><p style="margin:6px 0 0" class="muted">' + esc(w.ej) + ' <i>' + esc(w.ejfr) + '</i></p>';
+  var last = G.i + 1 >= G.items.length;
+  return '<div class="feedback ' + cls + '"><b class="title">' + title + '</b>' + body + '</div>' +
+    '<div class="row" style="margin-top:14px;justify-content:space-between"><button class="btn small" data-act="' + (it.t === 'ordena' ? 'say-ej' : 'say-word') + '" data-id="' + w.id + '">' + ico('u-sonido') + 'Réécouter</button>' +
+    '<button class="btn primary" id="next-btn" data-act="next">' + (last ? 'Voir mon résultat' : 'Question suivante') + '</button></div>';
+}
+function finish(ok, choice, neutral, fb){
+  var it = G.items[G.i];
+  G.answered = true; G.choice = choice; G.fb = fb || null;
+  it.ok = ok; it.neutral = !!neutral;
+  if (neutral) touch(it.w.id); else record(it.w.id, ok);
+  if (ok) G.score++;
+  render();
+  if (it.t === 'ordena') speak(it.w.ej, wordLang()); else speakWord(it.w);
+}
+function checkTyped(w, input){
+  var a = clean(input), i, m, f;
+  if (!a) return null;
+  for (i = 0; i < w.forms.length; i++){ if (clean(w.forms[i]) === a) return 'ok'; }
+  for (i = 0; i < w.forms.length; i++){ if (fold(clean(w.forms[i])) === fold(a)) return 'acento'; }
+  for (i = 0; i < w.forms.length; i++){
+    f = w.forms[i]; m = ART_RE.exec(f);
+    if (m && fold(clean(m[2])) === fold(a)) return 'articulo';
+  }
+  return 'ko';
+}
+function pResultado(){
+  var n = G.items.length, s = G.score;
+  var msg = s === n ? '¡Perfecto!' : (s >= n * 0.7 ? '¡Muy bien!' : (s >= n * 0.4 ? '¡Bien! Sigue así.' : 'Courage, on recommence ?'));
+  var back = LUG[G.scope] ? '<button class="btn" data-act="back-lugar" data-id="' + G.scope + '">' + ico('u-atras') + LUG[G.scope].nombre + '</button>' : '';
+  return '<section class="page"><div class="partida"><div class="panel"><h1 class="plaque">' + msg + '</h1>' +
+    '<p style="font-size:1.3rem;margin:16px 0"><b>' + s + ' / ' + n + '</b> bonnes réponses.</p>' +
+    '<p class="muted">Les mots réussis remontent d\u2019une case dans tes révisions. Ceux que tu as ratés reviendront dès demain.</p>' +
+    '<ul class="resumen">' + G.items.map(function(it){
+      return '<li class="' + (it.ok ? 'ok' : 'ko') + '">' + (it.ok ? '✓ ' : (it.neutral ? '~ ' : '✗ ')) + '<b>' + esc(it.w.main) + '</b> : ' + esc(it.w.fr) + '</li>';
+    }).join('') + '</ul>' +
+    '<div class="row" style="margin-top:18px"><button class="btn primary" data-act="start" data-type="' + G.type + '" data-scope="' + G.scope + '">' + ico('u-repetir') + 'Rejouer</button>' +
+    '<button class="btn" data-act="go" data-page="juegos">' + ico('i-mando') + 'Autre jeu</button>' + back + '</div></div></div></section>';
+}
+
+/* Reviews */
+function pRepasos(){
+  var av = available(), boxes = [0, 0, 0, 0, 0, 0], due = 0, nuevos = 0;
+  av.forEach(function(w){ var b = st(w.id).b; boxes[b]++; if (isDue(w)) due++; if (b === 0) nuevos++; });
+  var labels = ['jamais vus', 'à revoir demain', 'dans 2 jours', 'dans 4 jours', 'dans 8 jours', 'acquis (16 jours)'];
+  var h = '<section class="page"><div class="page-head"><h1 class="plaque big">Repasos</h1>' +
+    '<p class="lede">Chaque bonne réponse fait avancer un mot d\u2019une case : il revient de plus en plus tard. Une erreur le renvoie à la case 1. Révise un peu chaque jour plutôt que beaucoup une seule fois.</p></div>' +
+    '<div class="panel"><h2>' + (due ? due + ' mot' + (due > 1 ? 's' : '') + ' à revoir aujourd\u2019hui' : 'Rien à revoir aujourd\u2019hui') + '</h2>' +
+    '<div class="cajas">' + boxes.map(function(c, i){ return '<div class="caja"><b>' + c + '</b><small>' + (i === 0 ? '' : 'Case ' + i + '<br>') + labels[i] + '</small></div>'; }).join('') + '</div>' +
+    '<div class="row">';
+  if (due) h += '<button class="btn primary" data-act="start" data-type="mix" data-scope="repaso">' + ico('i-calendario') + 'Réviser maintenant</button>';
+  if (nuevos) h += '<button class="btn' + (due ? '' : ' primary') + '" data-act="start" data-type="mix" data-scope="nuevos">' + ico('u-play') + 'Découvrir de nouveaux mots</button>';
+  if (!due && !nuevos) h += '<p>Tous les mots de ton niveau sont en cours. Reviens demain !</p>';
+  h += '</div></div>';
+  var dueWords = av.filter(isDue).slice(0, 12);
+  if (dueWords.length) h += '<h2>À revoir</h2><div class="words">' + dueWords.map(wordCard).join('') + '</div>';
+  return h + '</section>';
+}
+
+/* Grammar */
+function pGramatica(){
+  var h = '<section class="page"><div class="page-head"><h1 class="plaque big">Gramática</h1><p class="lede">Une fiche par lieu. Chaque fiche explique un point, donne des exemples tirés des épisodes et propose six exercices.</p></div>';
+  var openP = D.pistas.filter(function(p){ return p.nivel >= S.grade; });
+  if (openP.length > 1) h += '<div class="row" style="margin-bottom:22px"><button class="btn primary" data-act="pista-mix">' + ico('u-repetir') + 'Révision mélangée de mon niveau</button></div>';
+  D.calles.forEach(function(c){
+    h += '<div class="street-sign"><h2 class="plaque">' + esc(c.nombre) + '</h2><span class="nivel-tag">' + nivelLabel(c.nivel) + '</span></div><div class="pistas" style="margin-bottom:26px">';
+    D.pistas.filter(function(p){ return p.nivel === c.nivel; }).forEach(function(p){
+      var locked = p.nivel < S.grade, best = S.pista[p.id];
+      h += '<button class="pista-card' + (locked ? ' locked' : '') + '" data-act="open-pista" data-id="' + p.id + '">' + ico(LUG[p.lugar].icono) +
+        '<span><b>' + esc(p.titulo) + '</b><small>' + esc(LUG[p.lugar].nombre) + (best != null ? ', meilleur score ' + best + ' / ' + p.ejercicio.length : '') + '</small>' +
+        (locked ? '<small>Ouvre en ' + nivelLabel(p.nivel) + '</small>' : '') + '</span></button>';
+    });
+    h += '</div>';
+  });
+  return h + '</section>';
+}
+function pPista(){
+  var mix = view.pista === 'mix', p = mix ? null : PIS[view.pista];
+  var h = '<section class="page"><button class="btn small volver" data-act="go" data-page="gramatica">' + ico('u-atras') + 'Gramática</button>';
+  if (!mix){
+    h += '<div class="page-head"><h1 class="plaque big">' + esc(p.titulo) + '</h1></div><div class="panel"><div class="explica">' + p.explica.map(function(x){ return '<p>' + md(x) + '</p>'; }).join('') + '</div>';
+    if (p.tabla){
+      h += '<div class="tabla-wrap"><table class="conj">' + p.tabla.map(function(r, i){
+        return '<tr>' + r.map(function(c){ return i === 0 ? '<th>' + md(c) + '</th>' : '<td>' + md(c) + '</td>'; }).join('') + '</tr>';
+      }).join('') + '</table></div>';
+    }
+    h += '<h3>Ejemplos</h3><ul class="ejemplos">' + p.ejemplos.map(function(e, i){
+      return '<li><button class="btn small" data-act="say-ejp" data-i="' + i + '" aria-label="Écouter">' + ico('u-sonido') + '</button><span><b>' + esc(e[0]) + '</b> <i class="muted">' + esc(e[1]) + '</i></span></li>';
+    }).join('') + '</ul><button class="btn ghost" data-act="lugar" data-id="' + p.lugar + '">' + ico(LUG[p.lugar].icono) + 'Aller à ' + esc(LUG[p.lugar].nombre.toLowerCase()) + '</button></div>';
+  } else {
+    h += '<div class="page-head"><h1 class="plaque big">Révision mélangée</h1><p class="lede">Dix questions tirées de toutes les fiches de ton niveau.</p></div>';
+  }
+  h += '<div class="panel">' + exHtml() + '</div>';
+  return h + '</section>';
+}
+function startPX(id){
+  var items;
+  if (id === 'mix'){
+    items = [];
+    D.pistas.filter(function(p){ return p.nivel >= S.grade; }).forEach(function(p){ p.ejercicio.forEach(function(e){ items.push(e); }); });
+    items = shuffle(items).slice(0, 10);
+  } else items = PIS[id].ejercicio.slice();
+  PX = {id: id, items: items, i: 0, score: 0, answered: false, choice: -1, done: false};
+}
+function filled(e, opt){ return e[0].replace('___', opt); }
+function exHtml(){
+  if (!PX || PX.id !== view.pista) startPX(view.pista);
+  var n = PX.items.length;
+  if (PX.done){
+    return '<h2>Résultat : ' + PX.score + ' / ' + n + '</h2><p>' + (PX.score === n ? '¡Perfecto! Ce point est bien compris.' : (PX.score >= n / 2 ? 'Bien ! Relis les erreurs et recommence pour viser le sans-faute.' : 'Relis la fiche et les exemples, puis réessaie.')) + '</p>' +
+      '<button class="btn primary" data-act="px-restart">' + ico('u-repetir') + 'Recommencer</button>';
+  }
+  var e = PX.items[PX.i];
+  var parts = esc(e[0]).split('___');
+  var gap = PX.answered ? '<span class="gap">' + esc(e[1][e[2]]) + '</span>' : '<span class="gap">&nbsp;</span>';
+  var h = '<p class="muted">Exercice : ' + (PX.i + 1) + ' sur ' + n + '</p><div class="frase">' + parts.join(gap) + '</div><div class="opts">';
+  e[1].forEach(function(o, j){
+    var cls = '';
+    if (PX.answered){ if (j === e[2]) cls = ' ok'; else if (j === PX.choice) cls = ' ko'; }
+    h += '<button class="opt' + cls + '" data-act="px-resp" data-i="' + j + '"' + (PX.answered ? ' disabled' : '') + '>' + esc(o) + '</button>';
+  });
+  h += '</div>';
+  if (PX.answered){
+    var ok = PX.choice === e[2];
+    h += '<div class="feedback ' + (ok ? 'ok' : 'ko') + '"><b class="title">' + (ok ? '¡Correcto!' : 'Pas cette fois.') + '</b><b>' + esc(filled(e, e[1][e[2]])) + '</b><br><i>' + esc(e[3]) + '</i></div>' +
+      '<div class="row" style="margin-top:14px;justify-content:space-between"><button class="btn small" data-act="px-say">' + ico('u-sonido') + 'Écouter</button><button class="btn primary" id="next-btn" data-act="px-next">' + (PX.i + 1 < n ? 'Suivante' : 'Voir mon résultat') + '</button></div>';
+  }
+  return h;
+}
+
+/* Dictionary */
+function pDiccionario(){
+  return '<section class="page"><div class="page-head"><h1 class="plaque big">Diccionario</h1><p class="lede">Cherche en espagnol ou en français. Pas besoin de taper les accents.</p></div>' +
+    '<div class="dic-tools"><label class="sr" for="dic-q">Rechercher</label><input id="dic-q" type="search" placeholder="Buscar, rechercher…" autocomplete="off">' +
+    '<label class="sr" for="dic-l">Lieu</label><select id="dic-l"><option value="all">Tous les lieux</option>' +
+    D.lugares.filter(open).map(function(l){ return '<option value="' + l.id + '">' + esc(l.nombre) + '</option>'; }).join('') + '</select></div>' +
+    '<p class="muted" id="dic-count"></p><div class="dic-list" id="dic-list"></div></section>';
+}
+function fillDic(){
+  var q = $('dic-q'), sel = $('dic-l'), list = $('dic-list');
+  if (!q || !list) return;
+  var term = fold(clean(q.value)), lid = sel.value;
+  var ws = available().filter(function(w){
+    if (lid !== 'all' && w.lugar !== lid) return false;
+    if (!term) return true;
+    return fold(w.es.toLowerCase()).indexOf(term) >= 0 || fold(w.fr.toLowerCase()).indexOf(term) >= 0;
+  });
+  ws.sort(function(a, b){ var x = fold(a.bare.toLowerCase()), y = fold(b.bare.toLowerCase()); return x < y ? -1 : (x > y ? 1 : 0); });
+  $('dic-count').textContent = ws.length + ' mot' + (ws.length > 1 ? 's' : '');
+  list.innerHTML = ws.length ? ws.map(function(w){
+    return '<div class="dic-row"><span class="emo" aria-hidden="true">' + w.e + '</span><strong>' + esc(w.es) + '</strong><span class="fr-col">' + esc(w.fr) + '</span>' +
+      '<small>' + esc(LUG[w.lugar].nombre) + '</small><button class="btn small" data-act="say-word" data-id="' + w.id + '" aria-label="Écouter ' + esc(w.main) + '">' + ico('u-sonido') + '</button></div>';
+  }).join('') : '<p>Aucun mot trouvé. Essaie un autre mot ou choisis « Tous les lieux ».</p>';
+}
+
+/* Progress */
+function pProgreso(){
+  var av = available(), s = 0, m = 0;
+  av.forEach(function(w){ if (seen(w.id)) s++; if (mastered(w.id)) m++; });
+  var openL = D.lugares.filter(open), eps = openL.filter(function(l){ return (S.ep[l.id] || 0) >= 2; }).length;
+  var openP = D.pistas.filter(function(p){ return p.nivel >= S.grade; }), pd = openP.filter(function(p){ return S.pista[p.id] != null && S.pista[p.id] >= 4; }).length;
+  var h = '<section class="page"><div class="page-head"><h1 class="plaque big">Mi progreso</h1><p class="lede">Ta progression est enregistrée sur cet appareil. Pour changer d\u2019appareil, exporte-la puis importe-la.</p></div>' +
+    '<div class="stats"><div class="stat"><b>' + s + '</b><small>mots découverts sur ' + av.length + '</small></div><div class="stat"><b>' + m + '</b><small>mots acquis</small></div>' +
+    '<div class="stat"><b>' + eps + ' / ' + openL.length + '</b><small>épisodes réussis</small></div><div class="stat"><b>' + pd + ' / ' + openP.length + '</b><small>fiches de grammaire réussies (4 / 6 ou plus)</small></div></div>' +
+    '<div class="panel"><h2>Mis cromos del barrio</h2><p class="muted">Argent : épisode réussi. Or : épisode réussi et 80 % des mots du lieu acquis.</p><div class="cromos">' +
+    D.lugares.map(function(l){
+      var md_ = open(l) ? medal(l) : 'nuevo';
+      return '<button class="cromo ' + md_ + '" data-act="lugar" data-id="' + l.id + '">' + ico(l.icono, 'c') + '<b>' + esc(l.nombre) + '</b><span class="sello ' + md_ + '">' + (open(l) ? MEDAL_TXT[md_] : nivelLabel(l.nivel)) + '</span></button>';
+    }).join('') + '</div></div>' +
+    '<div class="panel"><h2>Las cartas de los vecinos</h2><div class="vecinos" style="margin:0">' + D.vecinos.map(function(v){
+      var un = vecinoUnlocked(v.id);
+      return '<button class="vecino" data-act="vecino" data-id="' + v.id + '"' + (un ? '' : ' style="opacity:.6"') + '>' + portrait(v.id, 'p') + '<b>' + esc(v.nombre) + '</b><small>' + (un ? esc(v.pais) : 'À débloquer') + '</small></button>';
+    }).join('') + '</div></div>' +
+    '<div class="panel"><h2>Sauvegarde</h2><div class="row"><button class="btn" data-act="export">Exporter ma progression</button><button class="btn" data-act="import">Importer une progression</button></div></div></section>';
+  return h;
+}
+
+/* Settings */
+function seg(k, opts){
+  return '<span class="seg" role="group">' + opts.map(function(o){
+    return '<button data-act="cfg" data-k="' + k + '" data-v="' + o[0] + '" aria-pressed="' + (String(S.cfg[k]) === String(o[0])) + '">' + o[1] + '</button>';
+  }).join('') + '</span>';
+}
+function openAjustes(confirmReset){
+  var h = '<div class="cfg-row"><span>Police</span>' + seg('font', [['std', 'Standard'], ['lexend', 'Lexend']]) + '</div>' +
+    '<div class="cfg-row"><span>Taille du texte</span>' + seg('size', [[0, 'Normale'], [1, 'Grande'], [2, 'Très grande']]) + '</div>' +
+    '<div class="cfg-row"><span>Espacement</span>' + seg('spacing', [[0, 'Normal'], [1, 'Large']]) + '</div>' +
+    '<div class="cfg-row"><span>Vitesse de la voix</span>' + seg('rate', [[0.7, 'Lente'], [0.9, 'Normale']]) + '</div>' +
+    '<div class="cfg-row"><span>Accent des mots</span>' + seg('voz', [['es', 'Espagne'], ['latam', 'Amérique latine']]) + '</div>' +
+    '<div class="cfg-row"><span>Chaque voisin parle avec l\u2019accent de son pays</span>' + seg('acentos', [[1, 'Oui'], [0, 'Non']]) + '</div>' +
+    '<p class="muted" style="font-size:.85rem">Les accents dépendent des voix installées sur l\u2019appareil. S\u2019il n\u2019y en a pas, la voix espagnole standard est utilisée.</p>' +
+    '<div class="cfg-row"><span>Progression</span><span class="row"><button class="btn small" data-act="export">Exporter</button><button class="btn small" data-act="import">Importer</button>' +
+    (confirmReset ? '<button class="btn small" data-act="reset-yes" style="background:var(--error)">Oui, tout effacer</button><button class="btn small" data-act="ajustes">Annuler</button>'
+                  : '<button class="btn small" data-act="reset-ask">Tout effacer</button>') + '</span></div>';
+  openModal('Réglages', h);
+}
+function openVecino(id){
+  var v = VEC[id], un = vecinoUnlocked(id);
+  var ls = D.lugares.filter(function(l){ return l.guia === id; });
+  var h = '<div class="vec-modal">' + portrait(id, 'p') + '<div><p style="margin:0 0 6px"><b>' + esc(v.nombre) + '</b>, ' + v.edad + ' ans, ' + esc(v.ciudad) + ' (' + esc(v.pais) + ')</p>' +
+    '<div class="bubble" style="margin-bottom:12px"><p class="es">' + esc(v.frase) + '</p><p class="fr">' + esc(v.frasefr) + '</p><button class="btn small" data-act="say-vec" data-id="' + id + '">' + ico('u-sonido') + 'Escuchar</button></div>' +
+    (un ? '<h3>El país de ' + esc(v.nombre) + '</h3><p>' + esc(v.cultura) + '</p>' : '<p class="muted">Réussis un épisode de ' + esc(v.nombre) + ' pour découvrir son pays.</p>') +
+    '<div class="row">' + ls.map(function(l){ return '<button class="btn small" data-act="lugar" data-id="' + l.id + '">' + ico(l.icono) + esc(l.nombre) + '</button>'; }).join('') + '</div></div></div>';
+  openModal(v.nombre, h);
+}
+
+/* Export / import */
+function exportProgress(){
+  try {
+    var blob = new Blob([JSON.stringify({app: KEY, date: new Date().toISOString(), data: S}, null, 1)], {type: 'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'palabras-progression.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1500);
+    toast('Fichier de progression téléchargé.');
+  } catch (e) { toast('Export impossible sur ce navigateur.'); }
+}
+$('importFile').addEventListener('change', function(ev){
+  var f = ev.target.files && ev.target.files[0];
+  if (!f) return;
+  var r = new FileReader();
+  r.onload = function(){
+    try {
+      var o = JSON.parse(r.result);
+      if (!o || o.app !== KEY || !o.data || typeof o.data.w !== 'object') throw new Error('format');
+      var d = o.data, w = {};
+      for (var id in d.w){ if (d.w.hasOwnProperty(id) && BYID[id] && typeof d.w[id] === 'object'){ var b = Number(d.w[id].b), n = Number(d.w[id].n); if (b >= 0 && b <= 5) w[id] = {b: b, n: isFinite(n) ? n : 0}; } }
+      S.w = w;
+      S.ep = (d.ep && typeof d.ep === 'object') ? d.ep : {};
+      S.pista = (d.pista && typeof d.pista === 'object') ? d.pista : {};
+      if ([3,4,5].indexOf(Number(d.grade)) >= 0) S.grade = Number(d.grade);
+      save(); closeModal(); render(); toast('Progression importée.');
+    } catch (e) { toast('Ce fichier n\u2019est pas une progression ¡Palabras!.'); }
+    ev.target.value = '';
+  };
+  r.readAsText(f);
+});
+
+function scrollLast(){
+  var ls = app.querySelectorAll('.linea'); if (!ls.length) return;
+  var el = ls[ls.length - 1], r = el.getBoundingClientRect();
+  if (r.bottom > window.innerHeight - 90) window.scrollBy(0, r.bottom - window.innerHeight + 120);
+}
+
+/* ---------- Actions ---------- */
+var ACT = {
+  'go': function(el){ go(el.getAttribute('data-page')); },
+  'lugar': function(el){
+    var l = LUG[el.getAttribute('data-id')];
+    if (!open(l)){ toast(l.nombre + ' ouvre en ' + nivelLabel(l.nivel) + '. Si tu es dans cette classe, change ton niveau en haut.'); return; }
+    closeModal();
+    if (view.lugar !== l.id){ view.tab = 'episodio'; EP = null; }
+    view.lugar = l.id; go('lugar');
+  },
+  'back-lugar': function(el){ view.lugar = el.getAttribute('data-id'); view.tab = 'jugar'; go('lugar'); },
+  'tab': function(el){ view.tab = el.getAttribute('data-tab'); if (HAS_TTS) window.speechSynthesis.cancel(); render(); },
+  'toggle': function(el){ var t = $(el.getAttribute('data-target')); if (t) t.classList.toggle('hidden'); },
+  'say-intro': function(){ var l = LUG[view.lugar]; speak(l.intro[0], speakerLang(l.guia)); },
+  'say-word': function(el){ var w = BYID[el.getAttribute('data-id')]; if (w) speakWord(w); },
+  'say-ej': function(el){ var w = BYID[el.getAttribute('data-id')]; if (w) speak(w.ej, wordLang()); },
+  'say-vec': function(el){ var v = VEC[el.getAttribute('data-id')]; speak(v.frase, speakerLang(v.id)); },
+  'say-line': function(el){ var ln = LUG[view.lugar].episodio.lineas[+el.getAttribute('data-i')]; speak(ln[1], speakerLang(ln[0])); },
+  'say-ejp': function(el){ var e = PIS[view.pista].ejemplos[+el.getAttribute('data-i')]; speak(e[0], 'es-ES'); },
+  'mot': function(el){ var w = BYID[el.getAttribute('data-id')]; if (w){ toast(w.es + ' : ' + w.fr); speakWord(w); } },
+  'ep-next': function(){
+    var e = LUG[view.lugar].episodio;
+    if (EP.shown < e.lineas.length){ EP.shown++; render(); scrollLast(); var ln = e.lineas[EP.shown - 1]; speak(ln[1], speakerLang(ln[0])); }
+  },
+  'ep-all': function(){
+    var e = LUG[view.lugar].episodio;
+    EP.shown = e.lineas.length; render();
+    speakQueue(e.lineas.map(function(ln){ return {text: ln[1], lang: speakerLang(ln[0])}; }));
+  },
+  'ep-restart': function(){ EP = {lugar: view.lugar, shown: 1, mode: 'lectura', qi: 0, score: 0, answered: false, choice: -1}; render(); },
+  'ep-quiz': function(){ EP.mode = 'quiz'; EP.qi = 0; EP.score = 0; EP.answered = false; if (HAS_TTS) window.speechSynthesis.cancel(); render(); },
+  'ep-resp': function(el){
+    if (EP.answered) return;
+    var q = LUG[view.lugar].episodio.preguntas[EP.qi];
+    EP.choice = +el.getAttribute('data-i'); EP.answered = true;
+    if (EP.choice === q[2]) EP.score++;
+    render();
+  },
+  'ep-qnext': function(){
+    var l = LUG[view.lugar], e = l.episodio;
+    if (EP.qi + 1 < e.preguntas.length){ EP.qi++; EP.answered = false; EP.choice = -1; render(); return; }
+    var before = vecinoUnlocked(l.guia);
+    if (EP.score >= 2){ S.ep[l.id] = Math.max(S.ep[l.id] || 0, EP.score); save(); }
+    EP.unlocked = !before && vecinoUnlocked(l.guia);
+    EP.mode = 'fin'; render();
+  },
+  'open-pista': function(el){
+    var p = PIS[el.getAttribute('data-id')];
+    if (p.nivel < S.grade){ toast('Cette fiche est pour la ' + nivelLabel(p.nivel) + '.'); return; }
+    view.pista = p.id; PX = null; go('pista');
+  },
+  'pista-mix': function(){ view.pista = 'mix'; PX = null; go('pista'); },
+  'px-resp': function(el){
+    if (PX.answered) return;
+    var e = PX.items[PX.i];
+    PX.choice = +el.getAttribute('data-i'); PX.answered = true;
+    if (PX.choice === e[2]) PX.score++;
+    render(); speak(filled(e, e[1][e[2]]), 'es-ES');
+  },
+  'px-say': function(){ var e = PX.items[PX.i]; speak(filled(e, e[1][e[2]]), 'es-ES'); },
+  'px-next': function(){
+    if (PX.i + 1 < PX.items.length){ PX.i++; PX.answered = false; PX.choice = -1; render(); return; }
+    PX.done = true;
+    if (PX.id !== 'mix'){ S.pista[PX.id] = Math.max(S.pista[PX.id] == null ? 0 : S.pista[PX.id], PX.score); save(); }
+    render();
+  },
+  'px-restart': function(){ startPX(view.pista); render(); },
+  'scope': function(el){ view.scope = el.getAttribute('data-scope'); render(); },
+  'start': function(el){ startGame(el.getAttribute('data-type'), el.getAttribute('data-scope')); },
+  'quit': function(){
+    if (G && LUG[G.scope]){ view.lugar = G.scope; view.tab = 'jugar'; go('lugar'); } else go(G && (G.scope === 'repaso' || G.scope === 'nuevos') ? 'repasos' : 'juegos');
+  },
+  'resp': function(el){
+    if (!G || G.answered) return;
+    var it = G.items[G.i], j = +el.getAttribute('data-i');
+    var ok = it.t === 'genero' ? it.opts[j] === it.w.art : it.opts[j].id === it.w.id;
+    finish(ok, j);
+  },
+  'acento': function(el){
+    var inp = $('esc-input'); if (!inp) return;
+    var c = el.getAttribute('data-c'), s = inp.selectionStart, e = inp.selectionEnd, v = inp.value;
+    if (typeof s !== 'number'){ s = e = v.length; }
+    inp.value = v.slice(0, s) + c + v.slice(e); G.input = inp.value;
+    inp.focus(); try { inp.setSelectionRange(s + 1, s + 1); } catch (x) {}
+  },
+  'check-esc': function(){
+    var inp = $('esc-input'); if (!inp || G.answered) return;
+    G.input = inp.value;
+    var w = G.items[G.i].w, r = checkTyped(w, inp.value);
+    if (r === null){ toast('Écris ta réponse, ou touche « Je ne sais pas ».'); inp.focus(); return; }
+    if (r === 'ok') finish(true, -1);
+    else if (r === 'acento') finish(false, -1, true, 'C\u2019est le bon mot, mais vérifie les accents ou le ñ : en espagnol, ils changent le sens (año, ano…).');
+    else if (r === 'articulo') finish(false, -1, true, 'Le mot est juste, mais il manque l\u2019article : apprends toujours le nom avec el ou la.');
+    else finish(false, -1, false, 'Tu as écrit : ' + inp.value);
+  },
+  'skip': function(){ if (!G.answered) finish(false, -1); },
+  'poner': function(el){ var it = G.items[G.i], j = +el.getAttribute('data-i'); it.built.push(it.bank.splice(j, 1)[0]); render(); },
+  'quitar': function(el){ var it = G.items[G.i], j = +el.getAttribute('data-i'); it.bank.push(it.built.splice(j, 1)[0]); render(); },
+  'reset-ord': function(){ var it = G.items[G.i]; it.bank = it.bank.concat(it.built); it.built = []; render(); },
+  'check-ord': function(){
+    var it = G.items[G.i];
+    if (it.bank.length) return;
+    var ok = it.built.map(function(x){ return x.t; }).join(' ') === it.w.ej;
+    finish(ok, -1);
+  },
+  'next': function(){
+    if (G.i + 1 < G.items.length){ G.i++; prepItem(); render(); return; }
+    go('resultado');
+  },
+  'vecino': function(el){ openVecino(el.getAttribute('data-id')); },
+  'ajustes': function(){ openAjustes(false); },
+  'close-modal': function(){ closeModal(); },
+  'modal-bg': function(el, ev){ if (ev.target === el) closeModal(); },
+  'cfg': function(el){
+    var k = el.getAttribute('data-k'), v = el.getAttribute('data-v');
+    S.cfg[k] = (k === 'font' || k === 'voz') ? v : Number(v);
+    save(); applyCfg(); openAjustes(false);
+    if (k === 'rate' || k === 'voz') speak('¡Hola! Bienvenido al barrio.', wordLang());
+  },
+  'reset-ask': function(){ openAjustes(true); },
+  'reset-yes': function(){
+    var cfg = S.cfg, g = S.grade; S = defaults(); S.cfg = cfg; S.grade = g; save();
+    G = null; EP = null; PX = null; closeModal(); go('inicio'); toast('Progression effacée.');
+  },
+  'export': function(){ exportProgress(); },
+  'import': function(){ $('importFile').click(); }
+};
+document.addEventListener('click', function(ev){
+  var t = ev.target;
+  while (t && t !== document){
+    if (t.getAttribute && t.getAttribute('data-act')){
+      if (t.disabled) return;
+      var a = t.getAttribute('data-act');
+      if (ACT[a]){ ACT[a](t, ev); }
+      return;
+    }
+    t = t.parentNode;
+  }
+});
+document.addEventListener('keydown', function(ev){
+  if (ev.key === 'Escape' && $('modal-root').innerHTML) closeModal();
+  if (ev.key === 'Enter' && ev.target && ev.target.id === 'esc-input'){ ev.preventDefault(); ACT['check-esc'](); }
+});
+document.addEventListener('input', function(ev){
+  if (!ev.target) return;
+  if (ev.target.id === 'esc-input' && G) G.input = ev.target.value;
+  if (ev.target.id === 'dic-q') fillDic();
+});
+document.addEventListener('change', function(ev){ if (ev.target && ev.target.id === 'dic-l') fillDic(); });
+$('grade').addEventListener('change', function(ev){
+  S.grade = Number(ev.target.value); save();
+  if (view.page === 'lugar' && !open(LUG[view.lugar])) view.page = 'barrio';
+  if (view.page === 'pista' && view.pista !== 'mix' && PIS[view.pista].nivel < S.grade) view.page = 'gramatica';
+  if (view.page === 'partida' || view.page === 'resultado'){ view.page = 'juegos'; }
+  PX = null; render();
+});
+
+render();
+})();
+</script>
+</body>
+</html>
